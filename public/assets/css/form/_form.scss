@@ -1,0 +1,328 @@
+.main-form-container {
+    background-color: #DFE6E9;
+}
+.form-container {
+    width: 480px;
+    max-width: 95%;
+    margin: 30px auto 150px;
+    color: $black;
+    .separator {
+        display: block;
+        margin: 20px auto;
+        width: 70%;
+        height: 4px;
+        border-radius: 20px;
+        background-color: #707070;
+        
+    }
+    .form-head {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 15px;
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: auto;
+            img {
+                width: 100%;
+            }
+        }
+        .title {
+            margin: 10px auto 10px;
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .disc {
+            font-size: 20px;
+            font-weight: 500;
+            max-width: 100%;
+            // white-space: nowrap;
+        }
+    }
+    .form-box {
+        border-radius: 10px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.39);
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin: 15px auto 30px;
+        }
+        .input-items {
+            @include flex;
+            flex-direction: column;
+        }
+        .input-item {
+            width: 100%;
+            margin-bottom: 18px;
+            label {
+                display: inline-block;
+                width: 100%;
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+            input {
+                display: inline-block;
+                width: 100%;
+            }
+        }
+        input {
+            @include input;
+        }
+        .select-item {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            position: relative;
+
+            @include flex;
+            label {
+                text-align: right;
+                display: inline-block;
+                width: 150px;
+                white-space: nowrap;
+                margin-bottom: 15px;
+                font-weight: 500;
+                margin-left: 15px;
+            }
+            select {
+                @include select;
+                width: 100%;
+                margin-right: auto;
+                @include media(phone-sm) {
+                    width: 100%;
+                }
+            }
+        }
+        .order-date {
+            margin-bottom: 20px;
+            &>h3 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .timing {
+                @include flex;
+                margin-bottom: 20px;
+                label {
+                    margin-bottom: 10px;
+                    font-weight: 500;
+                }
+                .date {
+                    width: 100%;
+                    div[type="datepicker"] {
+                        max-width: 100%;
+                        .placeholder {
+                            height: 35px;
+                            width: 100%;
+                        }
+                    }
+                }
+                .time {
+                    width: 100%;
+                    select[type="timepicker"] {
+                        height: 35px;
+                        width: 100%;
+                    }
+                }
+                @include media(phone-lg) {
+                    flex-direction: column;
+                    .date {
+                        
+                        margin-bottom: 15px;
+                        div[type="datepicker"] {
+                            width: 100%;
+                        }
+                    }
+                    label {
+                        margin-left: 20px;
+                        
+                    }
+                }
+            }
+            .working-hours-box {
+                color: $white;
+                background-color: $black;
+                width: 100%;
+                padding: 10px 20px 20px;
+                border-radius: 10px;
+                &>h3 {
+
+                    text-align: center;
+                    margin-bottom: 15px;
+                }
+                &>h5 {
+                    text-align: center;
+                    padding: 10px 0 20px;
+                }
+                &>div {
+                    @include flex;
+                    white-space: nowrap;
+                    .start_1, .start_2 {
+                        margin-left: auto;
+                        direction: ltr;
+                        margin-right: 10%;
+                        @include media(phone-sm) {
+                            margin-right: 0;
+                        }
+
+                    }
+                    .finish_1, .finish_2 {
+                        margin-right: auto;
+                        margin-left: 10%;
+                        direction: ltr;
+                        @include media(phone-sm) {
+                            margin-right: 0;
+                        }
+
+                    }
+                    .arrow {
+                        position: relative;
+                        width: 80px;
+                        span {
+                            height: 2px;
+                            width: 15px;
+                            background-color: $white;
+                            display: inline-block;
+                            position: absolute;
+                            top: 50%;
+                            border-radius: 10px;
+                            &:nth-child(1) {
+                                transform: rotate(45deg);
+                                left: 18px;
+                                top: 4px;
+                                position: absolute;
+                            }
+                            &:nth-child(2) {
+                                left: 18px;
+                                top: -6px;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .address {
+            &>h3 {
+                text-align: center;
+                font-weight: 600;
+                margin-bottom: 15px;
+                span {
+                    font-size: 14px;
+                    margin-right: 8px;
+                }
+            }
+            &>h5 {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .written {
+                margin-bottom: 15px;
+                input {
+                    display: inline-block;
+                    width: 100%;
+                }
+            }
+
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+        }
+        .notes {
+            margin-bottom: 20px;
+            textarea {
+                display: inline-block;
+                @include input;
+                width: 100%;
+            }
+        }
+        .submit-btn {
+            @include btn-circle($light-green, $dark-green);
+            font-size: 18px;
+            padding: 5px 50px;
+            display: block;
+            max-width: max-content;
+            margin: 0 auto 15px;
+        }
+        
+
+    }
+    .phone-item {
+        position: relative;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        .phone-ext {
+            position: absolute;
+            background-color: $black;
+            font-weight: 500;
+            font-size: 16px;
+            color: $white;
+            direction: ltr;
+            padding: 6px;
+            padding-right: 15px;
+            top: 30px;
+            left: 0;
+            border-radius: 8px 0 0 8px;
+        }
+    }
+}
+
+
+#map-form {
+    height: 100%;
+    width: 100%;
+    direction: rtl;
+}
+
+
+
+.captcha-con {
+    margin: auto;
+    margin-bottom: 15px;
+    width: max-content;
+    display: flex;
+    .captcha {
+        span {
+            font-size: 20px;
+        }
+    }
+
+    .equal {
+        margin: auto 5px;
+        font-size: 20px;
+    }
+    .result input {
+        margin: auto 5px;
+        width: 35px !important;
+        padding: 4px 7px!important;
+        text-align-last: center;
+        background-color: $black;
+        color: $white;
+        
+    }
+}
+.cap-notice {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.captcha-done {
+    animation: captcha 0.8s ease 1;
+    @keyframes captcha {
+        0% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+}

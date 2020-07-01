@@ -1,0 +1,112 @@
+
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>الملاحظات</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container notes">
+        <div class="search-container">
+            <h3>البحث المتقدم</h3>
+            <div class="search-box">
+                <div class="select-item">
+                    <select id="note-taker-search" onclick="rotateSelect(this)">
+                        <option value="">صاحب الملاحظة</option>
+                        <?php foreach($this->users as $user):?>
+                        <option value="<?=$user->name?>"><?=$user->name?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <span></span>
+                </div>
+                <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
+                <input type="text" placeholder="الملاحظة" id="note-search">
+            </div>
+        </div>
+        <div class="add-new">
+            <button class="btn-add-new-note" onclick="popupBox('.add-note-box')">أضف ملاحظة جديدة</button>
+        </div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th colspan="3">الملاحظة</th>
+                            <th>صاحب الملاحظة</th>
+                            <th>التاريخ</th>
+                            
+                            <th>الإجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php foreach($this->notes as $note):?>
+                        <tr>
+                            <td><?php echo $note->id;?></td>
+                            <td colspan="3"><?php echo $note->note;?></td>
+                            <td><?php echo $note->note_taker_name;?></td>
+                            <td><?php echo $note->create_date;?></td>
+
+                            <?php if(empty($note->status)):?>
+                            <td class="action">
+                                <form method="POST">
+                                    <input type="hidden" name="note_id" value="<?php echo $note->id;?>">
+                                    <button class="btn-done" type="submit" name="update_note">تم الاطلاع</button>
+                                </form>
+                            </td>
+                            <?php else:?>
+                            <td><?php echo $note->status;?></td>
+                            <?php endif;?>
+
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Add New note Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="add-note-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST">
+            <h3>إضافة ملاحظة جديدة</h3>
+            <div class="input-items">
+                <div class="input-item"><textarea name="note" placeholder="الملاحظة"></textarea></div>
+                <div class="input-item"><button class="add-btn" type="submit" name="add_note">اضافة</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Add New note Box END-->
+
+
+<script>
+    //search with date
+    document.querySelector('div[type="datepicker"]').onclick = e => {
+        let date_search = document.querySelector('input[name="date-search"]');
+        searchInput(date_search, 4);
+        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 4);
+    }
+
+    //search with note
+    let note_search = document.querySelector('#note-search');
+    note_search.oninput = e => searchInput(note_search, 2);
+
+    //search with note-taker
+    let note_taker_search = document.querySelector('#note-taker-search');
+    note_taker_search.oninput = e => searchInput(note_taker_search, 3);
+</script>

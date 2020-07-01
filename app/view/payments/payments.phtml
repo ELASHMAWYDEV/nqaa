@@ -1,0 +1,194 @@
+
+
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>المبلغ اليومي</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container payments">
+        <div class="search-container">
+            <h3>البحث المتقدم</h3>
+            <div class="search-box">
+                <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
+
+                <div class="select-item">
+                    <select id="technical-search" onclick="rotateSelect(this)">
+                        <option value="">صاحب السلفة</option>
+
+                        <?php foreach( $this->users as $user):?>
+                        <option value="<?=$user->name?>"><?=$user->name?></option>
+                        <?php endforeach; ?>
+
+                    </select>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="add-new">
+            <button class="btn-add-new-payment" onclick="popupBox('.add-payment-box')">أضف مبلغ جديد</button>
+        </div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>التاريخ</th>
+                            <th>الوارد كاش</th>
+                            <th>الوارد نقاط البيع</th>
+                            <th>المصروفات</th>
+                            <th>السلفة</th>
+                            <th>الصافي</th>
+                            <?php if($this->role('مدير')):?>
+                                <th>الإجراء</th>
+                            <?php endif;?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->payments as $payment):?>
+                        <tr>
+                            <td><?=$payment->id?></td>
+                            <td><?=$payment->create_date?></td>
+                            <td><?=$payment->cash?></td>
+                            <td><?=$payment->net?></td>
+                            <td><?=$payment->payments?></td>
+                            <td><?=$payment->advance?></td>
+                            <td><?=$payment->total?></td>
+                            <?php if($this->role('مدير')):?>
+                                <td><img onclick="popupBox('.delete-payment-box'); get_payment_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المبلغ اليومي" title="حذف المستخدم" data-payment-id="<?=$payment->id;?>"></td>
+                            <?php endif;?>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Add New payment Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="add-payment-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" name="payment_form">
+            <h3>إضافة مبلغ جديد</h3>
+            <div class="input-items">
+                <div class="input-item">
+                    <label>الوارد كاش</label><input type="number" name="cash" id="" min="0" placeholder="الوارد كاش" value="0">
+                </div>
+                <div class="input-item">
+                    <label>الوارد شبكة</label><input type="number" name="net" id="" min="0" placeholder="الوارد شبكة" value="0">
+                </div>
+                <div class="input-item">            
+                    <label>المصروفات</label><input type="number" name="payments" id="" min="0" placeholder="المصروفات" value="0">
+                </div>            
+                <div class="input-item">
+                    <label>السلفة</label><input type="number" name="advance" id="advance_input" min="0" placeholder="السلفة" value="0">
+                </div>
+                <div class="select-item" style="display: none;" id="advance_select">
+                    <select name="advance_maker_id" >
+                        <option value="">صاحب السلفة</option>
+                        <?php foreach( $this->users as $user):?>
+                        <option value="<?=$user->id?>"><?=$user->name?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <span></span>
+                </div>
+                <div class="input-item"><button class="add-btn" type="submit" name="add_payment">اضافة</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Add New payment Box END-->
+
+
+
+
+
+<!--Delete payment Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="delete-payment-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST">
+            <input type="hidden" name="id">
+            <h3>حذف المبلغ اليومي رقم #<span class="payment_id"></span></h3>
+            <div class="input-items">
+                <div class="input-item"><button class="delete-btn" type="submit" name="delete_payment">حذف</button></div>
+                <div class="input-item"><button class="abort-btn" onclick="abort('.delete-payment-box')">الغاء</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Delete payment Box END-->
+
+
+<script>
+    
+    //add payment box => show select tag on input change
+    var advance_input = document.querySelector('#advance_input');
+    var advance_select = document.querySelector('#advance_select');
+
+    advance_input.oninput = e => {
+        var advance_value = advance_input.value;
+
+        if (advance_value > 0) {
+            show(advance_select);
+        } else {
+            advance_select.querySelector('select').selectedIndex = '0';
+            hide(advance_select);
+        }
+
+    }
+
+    //////////////////////////////////////////
+
+    var payment_form = document.forms['payment_form'];
+
+    payment_form.onsubmit = e => {
+        var advance_value = advance_input.value;
+        if ( advance_value > 0 && advance_select.querySelector('select').selectedIndex == '0') {
+            e.preventDefault();
+            messages(['يجب اختيار صاحب السلفة اذا كان هناك سلفة']);
+        }
+        
+        if ( payment_form['cash'].value == '' || payment_form['net'].value == '' || payment_form['payments'].value == '' ) {
+            e.preventDefault();
+            messages(['يجب ملئ جميع الخانات ، أو وضع صفر']);
+        }
+
+    }
+
+
+
+    //search with date
+    document.querySelector('div[type="datepicker"]').onclick = e => {
+        let date_search = document.querySelector('input[name="date-search"]');
+        searchInput(date_search, 2);
+        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 2);
+    }
+
+    //search with technical
+    let technical_search = document.querySelector('#technical-search');
+    technical_search.oninput = e => searchInput(technical_search, 6);
+</script>

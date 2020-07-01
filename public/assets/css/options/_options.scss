@@ -1,0 +1,52 @@
+.options {
+    
+    .options-box {
+        background-color: $light-gray;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .option {
+        padding-bottom: 20px;
+        &>h4 {
+            text-align: center;
+            padding: 10px;
+            background-color: $black;
+            color: $white;
+            
+        }
+        &>h5 {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+        .input-items {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px 50px;
+            justify-content: center;
+
+        }
+        .input-item { 
+            display: flex;
+            justify-content: center;
+            &:nth-child(2) {
+                margin-right: 30px;
+            }
+            label {
+                margin-left: 20px;
+            }
+        }
+        .select-item {
+            position: relative;
+            width: max-content;
+            select {
+                @include select;
+            }
+        }
+    }
+
+    .save-btn {
+        @include btn-adv($light-green, $dark-green);
+        margin-right: 30px;
+    }
+
+}

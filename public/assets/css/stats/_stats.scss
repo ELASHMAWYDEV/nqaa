@@ -1,0 +1,59 @@
+.stats {
+    margin-bottom: 65px;
+    width: 100%;
+    .head {
+        @include flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        h3 {
+            font-weight: 600;
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .select-item {
+            margin: auto;
+            text-align: center;
+            position: relative;
+            select {
+                @include select;
+            }
+        }
+        @include media(tablet-lg) {
+            flex-direction: column;
+            .select-item {
+                transform: none;
+                margin-top: 15px;
+            }
+        }
+    }
+    .boxs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 0px;
+        align-items: center;
+        .stats-box {
+            &:nth-child(odd) {
+                @include stats-box(200deg, $light-green, $dark-green);
+            }
+            // &:nth-child(even) {
+            //     @include stats-box(180deg, $light-purple, $dark-purple);
+            // }
+            &:nth-child(even) {
+                @include stats-box(-160deg, $light-red, $dark-red);
+            }
+        }
+        
+
+    }
+
+    .line {
+        display: block;
+        width: 80%;
+        height: 3px;
+        background-color: $black;
+        border-radius: 5px;
+        margin: auto;
+    }
+}

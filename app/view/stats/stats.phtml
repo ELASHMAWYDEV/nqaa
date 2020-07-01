@@ -1,0 +1,296 @@
+
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>الإحصائيات</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container">
+
+    <?php if(!$this->role('فني')):?>
+        <div class="stats">
+            <div class="head">
+                <h3>الطلبات</h3>
+            </div>
+            <div class="boxs">
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->today1_finish?></div>
+                        <div class="title">تركيب<br>اليوم<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->today2_finish?></div>
+                        <div class="title">صيانة<br>اليوم<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->today1_nonfinish?></div>
+                        <div class="title">تركيب<br>اليوم<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->today2_nonfinish?></div>
+                        <div class="title">صيانة<br>اليوم<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->yesterday1_finish?></div>
+                        <div class="title">تركيب<br>الأمس<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->yesterday2_finish?></div>
+                        <div class="title">صيانة<br>الأمس<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->yesterday1_nonfinish?></div>
+                        <div class="title">تركيب<br>الأمس<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->yesterday2_nonfinish?></div>
+                        <div class="title">صيانة<br>الأمس<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->thismonth1_finish?></div>
+                        <div class="title">تركيب<br>هذا الشهر<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->thismonth2_finish?></div>
+                        <div class="title">صيانة<br>هذا الشهر<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->thismonth1_nonfinish?></div>
+                        <div class="title">تركيب<br>هذا الشهر<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->thismonth2_nonfinish?></div>
+                        <div class="title">صيانة<br>هذا الشهر<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->lastmonth1_finish?></div>
+                        <div class="title">تركيب<br>الشهر الماضي<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->lastmonth2_finish?></div>
+                        <div class="title">صيانة<br>الشهر الماضي<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->lastmonth1_nonfinish?></div>
+                        <div class="title">تركيب<br>الشهر الماضي<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->lastmonth2_nonfinish?></div>
+                        <div class="title">صيانة<br>الشهر الماضي<br>غير منتهية</div>
+                    </div>
+                </div>
+            </div>
+            <span class="line"></span>
+        </div>
+    <?php endif;?>
+
+    <?php if(!$this->role('مشرف')):?>
+        <div class="stats">
+            <div class="head">
+                <h3>احصائيات الفني</h3>
+                <form method="POST" name="technical_form">
+                    <div class="select-item">
+                        <select name="technical" id="technical_select" onclick="rotateSelect(this)">
+                            <?php if(!$this->role('فني')):?>
+                                <option value="">اختر الفني</option>
+                                <?php foreach($this->technicals as $techy):?>
+                                    <option value="<?=$techy->name?>"><?=$techy->name?></option>
+                                <?php endforeach;?>
+                            <?php else:?>
+                                <option value="<?=$_SESSION['name']?>"><?=$_SESSION['name']?></option>
+                            <?php endif;?>
+                        </select>
+                        <span></span>
+                    </div>
+                    <input type="hidden" name="technical_stats" value="technical_stats">
+                </form>
+            </div>
+            <?php if($this->technical):?>
+            <div class="boxs">
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_today1_finish?></div>
+                        <div class="title">تركيب<br>اليوم<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_today2_finish?></div>
+                        <div class="title">صيانة<br>اليوم<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_today1_nonfinish?></div>
+                        <div class="title">تركيب<br>اليوم<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_today2_nonfinish?></div>
+                        <div class="title">صيانة<br>اليوم<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_yesterday1_finish?></div>
+                        <div class="title">تركيب<br>الأمس<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_yesterday2_finish?></div>
+                        <div class="title">صيانة<br>الأمس<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_yesterday1_nonfinish?></div>
+                        <div class="title">تركيب<br>الأمس<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_yesterday2_nonfinish?></div>
+                        <div class="title">صيانة<br>الأمس<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_thismonth1_finish?></div>
+                        <div class="title">تركيب<br>هذا الشهر<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_thismonth2_finish?></div>
+                        <div class="title">صيانة<br>هذا الشهر<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_thismonth1_nonfinish?></div>
+                        <div class="title">تركيب<br>هذا الشهر<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_thismonth2_nonfinish?></div>
+                        <div class="title">صيانة<br>هذا الشهر<br>غير منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_lastmonth1_finish?></div>
+                        <div class="title">تركيب<br>الشهر الماضي<br>منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_lastmonth2_finish?></div>
+                        <div class="title">صيانة<br>الشهر الماضي<br>منتهية</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->techy_lastmonth1_nonfinish?></div>
+                        <div class="title">تركيب<br>الشهر الماضي<br>غير منتهية</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->techy_lastmonth2_nonfinish?></div>
+                        <div class="title">صيانة<br>الشهر الماضي<br>غير منتهية</div>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+            <span class="line"></span>
+        </div>
+    <?php endif;?>
+
+    <?php if($this->role('مدير')):?>
+        <div class="stats">
+            <div class="head">
+                <h3>احصائيات المبلغ اليومي</h3>
+                <form method="POST" name="payment_stats">
+                    <div class="select-item">
+                        <select name="period" onchange="document.forms['payment_stats'].submit();" onclick="rotateSelect(this)">
+                            <option value="today">اليوم</option>
+                            <option value="yesterday">الأمس</option>
+                            <option value="this_month">هذا الشهر</option>
+                            <option value="last_month">الشهر الماضي</option>
+                        </select>
+                        <span></span>
+                    </div>
+                    <input type="hidden" name="payment_stats" value="payment_stats">
+                </form>
+            </div>
+            <div class="boxs">
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->cash?></div>
+                        <div class="title">الوارد كاش</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->net?></div>
+                        <div class="title">الوارد نقاط البيع</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->payments?></div>
+                        <div class="title">المصروفات</div>
+                    </div>
+                    <span></span>
+                    <div class="item">
+                        <div class="num"><?=$this->advance?></div>
+                        <div class="title">السلفة</div>
+                    </div>
+                </div>
+                <div class="stats-box">
+                    <div class="item">
+                        <div class="num"><?=$this->total?></div>
+                        <div class="title">الصافي</div>
+                    </div>
+                </div>
+            </div>         
+            <span class="line"></span>   
+        </div>
+    <?php endif;?>
+    </div>
+
+</div>
+
+
+<script>
+    let technical_form = document.forms['technical_form'];
+    let technical_select = document.querySelector('#technical_select')
+    technical_form.onchange = e => {
+        technical_form.submit();
+    }
+
+
+    if (`<?=$this->technical?>`) 
+            document.querySelector(`select[name="technical"] option[value="<?=$this->technical?>"]`).setAttribute('selected', 'true');
+
+    if (`<?=$this->period?>`) 
+            document.querySelector(`select[name="period"] option[value="<?=$this->period?>"]`).setAttribute('selected', 'true');
+
+</script>

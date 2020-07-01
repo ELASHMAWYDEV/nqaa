@@ -1,0 +1,107 @@
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>الصيانة الدورية</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container regular">
+        <div class="search-container">
+            <h3>البحث المتقدم</h3>
+            <div class="search-box">
+                <input type="text" id="old-id-search" placeholder="رقم الطلب القديم">
+                <input type="text" id="name-search" placeholder="اسم العميل">
+                <input type="text" id="phone-search" placeholder="الجوال">
+                <div class="select-item">
+                    <select id="region-search" onclick="rotateSelect(this)">
+                        <option value="">الحي / المنطقة</option>
+                        <?php foreach ($this->regions as $region):?>
+                            <option value="<?=$region->region?>"><?=$region->region?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <span></span>
+                </div>
+                <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>اسم العميل</th>
+                            <th>الجوال</th>
+                            <th>الحي / المنطقة</th>
+                            <th>العنوان بالتفصيل</th>
+                            <th>تاريخ الصيانة القادم</th>
+                            <th>رقم الطلب القديم</th>
+                            <th>الاجراء</th>
+                            <th>واتساب</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php foreach($this->regulars as $regular):?>
+                        <tr>
+                            <td><?=$regular->id?></td>
+                            <td><?=$regular->name?></td>
+                            <td><?=$regular->phone?></td>
+                            <td><?=$regular->region?></td>
+                            <td><?=$regular->address?></td>
+                            <td><?=$regular->next_date?></td>
+                            <td><?=$regular->old_order_id?></td>
+                            <td class="action">
+                                <?php if(empty($regular->action)):?>
+                                <form method="POST" onsubmit="return confirm('هل أنت متأكد أنك أنشأت طلب جديد باسم العميل: <?=$regular->name?> \n في صفحة الطلبات ؟');">
+                                    <input type="hidden" name="id" value="<?=$regular->id?>">
+                                    <button class="btn-done" type="submit">تم انشاء طلب جديد للعميل</button>
+                                </form>
+                                <?php else:?>
+                                <?=$regular->action?>
+                                <?php endif;?>
+                            </td>
+                            <td><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966<?=$regular->phone?>&text=مرحبا <?=$regular->name?>%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?=ROOT_URL . 'form'?>%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
+
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+     //search with old_id
+     let old_id_search = document.querySelector('#old-id-search');
+    old_id_search.oninput = e => searchInput(old_id_search, 7);
+
+
+    //search with name
+    let name_search = document.querySelector('#name-search');
+    name_search.oninput = e => searchInput(name_search, 2);
+
+    //search with phone
+    let phone_search = document.querySelector('#phone-search');
+    phone_search.oninput = e => searchInput(phone_search, 3);
+
+    //search with region
+    let region_search = document.querySelector('#region-search');
+    region_search.oninput = e => searchInput(region_search, 4);
+    
+    //search with date
+    document.querySelector('div[type="datepicker"]').onclick = e => {
+        let date_search = document.querySelector('input[name="date-search"]');
+        searchInput(date_search, 6);
+        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 6);
+    }
+
+
+
+</script>

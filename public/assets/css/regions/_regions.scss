@@ -1,0 +1,58 @@
+.regions {
+    .search-container {
+        @include search-container;
+
+    }
+    .add-new {
+        @include flex;
+        margin: 30px auto;
+        .btn-add-new-region {
+            @include btn-adv($light-purple, $dark-purple);
+            font-size: 18px;
+        }
+    }
+
+    .table-container {
+        @include table-container;
+        .btn-delete {
+            @include btn-adv($light-red,$dark-red);
+            padding: 2px 10px;
+            font-size: 12px;
+        }
+
+    }
+
+
+}
+
+.add-region-box,.delete-region-box {
+    display: none;
+    @include box;
+    @include box-animate;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .add-btn {
+        @include btn-adv($light-green,$dark-green);
+        font-size: 16px;
+    }
+    .delete-btn {
+        @include btn-adv($light-red,$dark-red);
+        font-size: 16px;
+        margin-left: 40px;
+    }
+    .abort-btn {
+        @include btn-adv($light-purple,$dark-purple);
+        font-size: 16px;
+    }
+
+}
+
+.delete-region-box {
+    .input-items {
+        flex-direction: row !important;
+    }
+}
+

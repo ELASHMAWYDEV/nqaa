@@ -1,0 +1,512 @@
+//display flex
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/******************************/
+
+
+
+
+//transition
+@mixin trans {
+    transition: 0.3s ease;
+}
+/******************************/
+
+
+
+
+//floating box animation
+@mixin box-animate {
+    animation: box 0.3s ease 1;
+}
+@keyframes box {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(unset);
+    }
+}
+/******************************/
+
+
+
+
+//Boxs centered
+@mixin box {
+    margin: auto;
+    position: absolute;
+    z-index: 19;
+    padding: 45px 20px 25px;
+    border-radius: 8px;
+    background-color: $white;
+    min-height: max-content;
+    width: max-content;
+    max-width: 98%;
+    top: 0;
+    label {
+        display: inline-block;
+        width: 130px;
+        white-space: nowrap;
+        font-weight: 500;
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    input {
+        @include input;
+        @include media(phone-lg) {
+            width: 100% !important;
+        }
+    }
+    textarea {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background-color: $light-gray;
+        color: $dark-gray;
+        border: 1.5px solid transparent;
+        outline: none;
+        font-weight: 500;
+        font-size: 18px;
+        min-width: 250px;
+        @include trans;
+        &:focus {
+            border: 1.5px solid #0984e3;
+        }
+    }
+    .input-items {
+        @include flex;
+        flex-direction: column;
+        .input-item {
+            margin: 12px auto;
+            width: 100%;
+            @include flex;
+            
+        }
+        .select-item {
+            width: 70%;
+            position: relative;
+            margin: 15px 0;
+            select {
+                @include select;
+                width: 100%;
+                font-weight: 600;
+    
+            }
+        }
+    }
+    &>span {
+        display: block;
+        width: 70%;
+        height: 1.5px;
+        background-color: $dark-gray;
+        margin: 15px auto;
+        border-radius: 5px;
+    }
+    @include media(phone-lg) {
+        width: 98%;
+        .input-item {
+            flex-direction: column;
+        }
+        label {
+            width: 100%;
+            margin-left: 0;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+        }
+    }
+}
+/******************************/
+
+
+//Floating boxs container
+.float-box-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 95%;
+    margin: 30px auto;
+    z-index: 18;
+    @include flex;
+    display: none;
+}
+/*****************************/
+
+
+//stats box
+@mixin stats-box($deg,$bottom, $top) {
+    border-radius: 10px;
+    background: linear-gradient($deg, $top 0%, $bottom 100%);
+    @include flex;
+    height: max-content;
+    width: 350px;
+    min-width: 250px;
+    color: $white;
+    margin: 0 30px 40px;
+    padding: 15px 5px;
+    span {
+        display: block;
+        height: 60px;
+        width: 1.5px;
+        background-color: $white;
+        margin: 0 10px;
+        border-radius: 10px;
+    }
+    .item {
+        margin: auto;
+        text-align: center;
+        .num {
+            font-size: 24px;
+            font-weight: 500;
+            @include media(phone-sm) {
+                font-size: 18px;
+            }
+        }
+        .title {
+            font-size: 18px;
+            white-space: nowrap;
+            @include media(phone-sm) {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+/******************************/
+
+
+
+
+//buttons
+@mixin btn-circle($bg, $border) {
+    cursor: pointer;
+    background-color: $bg;
+    border: 1.5px solid $border;
+    color: $white;
+    border-radius: 25px;
+    padding: 4px 15px;
+    transition: 0.2s ease;
+    outline: none;
+    &:hover {
+        background-color: $border;
+    }
+    &:active {
+        transform: scale(0.95);
+        transition: 0s ease;
+    }
+}
+
+@mixin btn-adv($bg,$border) {
+    cursor: pointer;
+    background-color: $bg;
+    border: 1.5px solid $border;
+    color: $white;
+    border-radius: 9px 0 9px 0;
+    padding: 5px 20px;
+    transition: 0.2s ease;
+    outline: none;
+    width: max-content;
+    &:hover {
+        background-color: $border;
+    }
+    &:active {
+        transform: scale(0.95);
+        transition: 0s ease;
+    }
+}
+/******************************/
+
+
+
+
+//black box big container
+.box-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 17;
+}
+/*****************************/
+
+
+
+
+
+//closing tag
+.closing {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    &>span {
+        display: block;
+        width: 20px;
+        height: 5px;
+        border-radius: 10px;
+        background-color: $dark-gray;
+        transform-origin: center;
+        position: relative;
+        @include trans;
+        &:nth-child(1) {
+            transform: rotate(45deg);
+            top: 5px;
+        }
+        &:nth-child(2) {
+            transform: rotate(-45deg);
+        }
+        
+    }
+    &:hover {
+        span {
+            background-color: $black;
+        }
+    }
+}
+/******************************/
+
+
+//select tag style
+@mixin select {
+    cursor: pointer;
+    width: 180px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    text-align-last: center;
+    background-color: $white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+    -webkit-appearance: none;
+    position: relative;
+    & + span {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        display: block;
+        transform:  translateY(-5px) rotate(0deg);
+        border: 6px solid transparent;
+        border-top: 8px solid $black;
+        @include trans;
+        transform-origin: 6px 4px;
+        
+    }
+    option {
+        text-align: center;
+    }
+}
+.rotate {
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+/***************************/
+
+
+//input tag
+@mixin input {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background-color: $light-gray;
+    color: $dark-gray;
+    border: 1.5px solid transparent;
+    outline: none;
+    font-weight: 500;
+    font-size: 14px;
+    width: 180px;
+    @include trans;
+    &:focus {
+        border: 1.5px solid #0984e3;
+    }
+}
+/*****************************/
+
+
+
+//search box style
+@mixin search-container {
+    &>h3 {
+        text-align: center;
+        padding: 10px;
+        color: $black;
+        font-size: 20px;
+    }
+    .search-box {
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+        row-gap: 12px;
+        column-gap: 25px;
+        background-color: $black;
+        border-radius: 8px;
+        padding: 18px;
+        input {
+            @include input;
+            width: 100%;
+        }
+        .select-item {
+            width: 100%;
+            position: relative;
+            select {
+                @include select;
+                width: 100%;
+                
+            }
+
+        }
+        div[type="datepicker"] {
+            width: 100%;
+            .placeholder {
+                width: 100%;
+                padding: 2.5px;
+                font-size: 18px;
+                background-color: #fff;
+                &:active {
+                    background-color: #eee;
+                }
+            }
+        }
+    }
+
+    @include media(tablet-sm) {
+        .search-box {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @include media(phone-lg) {
+        .search-box {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @include media(phone-sm) {
+        .search-box {
+            grid-template-columns: repeat(1, 1fr);
+            row-gap: 20px;
+        }
+    }
+}
+/***************************/
+
+
+
+//Table Style
+@mixin table-container {
+    margin: 40px auto;
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+        overflow-x: auto;
+    }
+    table {
+        border-collapse: collapse;
+        text-align: right;
+        width: 100%;
+        
+        // min-width: 800px;
+        
+    }
+    th {
+        background-color: $black;
+        color: $white;
+        padding: 8px 0 8px 30px;
+        font-weight: 500;
+        white-space: nowrap;
+        &:nth-child(1) {
+
+            padding-right: 20px;
+        }
+        &:nth-last-child() {
+            padding-left: 20px;
+        }
+    }
+    td {
+        white-space: nowrap;
+        padding: 6px 0px 6px 35px;
+        &:nth-child(1) {
+            padding-right: 20px;
+        }
+        &:nth-last-child() {
+            padding-left: 20px;
+        }
+    }
+    td.action {
+        @include flex;
+        justify-content: start;
+    }
+    tr {
+        &:nth-child(odd) {
+            background-color: $light-blue;
+        }
+        &:nth-child(even) {
+            background-color: $white;
+        }
+        
+    }
+    img {
+        width: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+    button {
+        margin-left: 10px;
+    }
+    .pagination {
+        @include flex;
+        justify-content: start;
+        margin: 20px 0;
+        button {
+            display: inline-block;
+            border: 1px solid transparent;
+            outline: none;
+            color: $white;
+            background-color: $black;
+            transition: 0.1s ease;
+            width: 30px;
+            height: 30px;
+
+            @include flex;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            &:hover, &.active-page {
+                background-color: $light-gray;
+                color: $black;
+                border: 1px solid $black;
+
+            }
+        }
+    }
+}
+
+
+@mixin timepicker {
+    @include select;
+    height: 35px;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    option {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}

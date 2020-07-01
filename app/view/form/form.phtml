@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?=PUBLIC_URL?>assets/css/style.css">
+    <link rel="icon" href="<?=PUBLIC_URL?>assets/img/logo.png">
+    <title>شركة نقاء الماء التجارية | طلب موعد جديد</title>
+</head>
+<body>
+    <div class="main-form-container">
+        <div class="form-container">
+            <div class="form-head">
+                <div class="logo"><img src="<?=PUBLIC_URL?>assets/img/logo.png" alt=""></div>
+                <div class="title">مؤسسة نقاء الماء التجارية</div>
+                <div class="disc">لأجهزة تحلية و تنقية المياة المنزلية و مراوح و شبكات الرذاذ</div>
+            </div>
+            <form name="order-form" method="POST">
+                <div class="form-box">
+                    <div class="title">تقديم طلب صيانة / تركيب جديد</div>
+                    <div class="input-items">
+                        <div class="input-item">
+                            <label for="">الاسم بالكامل</label>
+                            <input type="text" placeholder="الاسم بالكامل" name="name" required>
+                        </div>
+                        <div class="input-item phone-item">
+                            <label for="">الجوال</label>
+                            <input type="text" placeholder="مثال: 543210000" name="phone" maxlength="9" pattern="[0-9]{9}" title="يجب ادخال رقم هاتفك المكون من 9 أرقام ، بالأرقام الانجليزية فقط" required>
+                            <div class="phone-ext">+ 966</div>
+                        </div>
+                        <div class="input-item">
+                            <label for="">نوع الخدمة</label>
+                            <div class="select-item">
+                                <select name="type" id="" onclick="rotateSelect(this)" required>
+                                    <option value="">نوع الخدمة</option>
+                                    <option value="صيانة">صيانة</option>
+                                    <option value="تركيب">تركيب</option>
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <label for="">الحي / المنطقة</label>
+                            <div class="select-item">
+                                <select name="region" id="" onclick="rotateSelect(this)" required>
+                                    <option value="">الحي / المنطقة</option>
+                                    <?php foreach($this->regions as $region):?>
+                                        <option value="<?=$region->region?>"><?=$region->region?></option>
+                                    <?php endforeach;?>
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <span class="separator"></span>
+
+                    <div class="order-date">
+                        <h3>اختر موعد <span>الصيانة</span></h3>
+                        <div class="timing">
+                            <div class="date">
+                                <!-- <label for="">التاريخ</label> -->
+                                <div type="datepicker" placeholder="التاريخ" name="date"></div>
+                            </div>
+                            <div class="time">
+                                <!-- <label for="">الوقت</label> -->
+                                <div class="select-item">
+                                    <select name="time" type="timepicker" onclick="rotateSelect(this)" required></select>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="working-hours-box">
+                            <h3>مواعيد العمل الخاصة بنا</h3>
+                            <h5>الدوام الصباحي</h5>
+                            <div>
+                                <div class="start_1">9:00 am</div>
+                                <div class="arrow">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="finish_1">8:00 pm</div>
+                            </div>
+                            <h5>الدوام المسائي</h5>
+                            <div>
+                                <div class="start_2">9:00 am</div>
+                                    <div class="arrow">
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                <div class="finish_2">8:00 pm</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="separator"></span>
+
+                    <div class="address">
+                        <h3>العنوان</h3>
+                        <div class="written">
+                            
+                            <input type="text" placeholder="العنوان بالتفصيل" name="address" required>
+                        </div>
+                        <h3>علي خرائط جوجل<span>(اختياري)</span></h3>
+                        <h5>ضع علامة علي بيتك</h5>
+                        <div class="map">
+                            <div id="map-form"></div>
+                            <input type="hidden" name="lat">
+                            <input type="hidden" name="lng">
+                        </div>
+                    </div>
+
+                    <span class="separator"></span>
+
+                    <div class="notes"><textarea name="notes" id="" placeholder="ملاحظات أخري (اختياري)"></textarea></div>
+                    <div class="cap-notice">لنتأكد من أنك لست روبوت<br>يرجي حل هذه المعادلة البسيطة</div>
+                    <div class="captcha-con">
+                        <div class="captcha" style="pointer-events: none;">
+                            <span>8</span>
+                            <span></span>
+                            <span>7</span>
+                        </div>
+                        <div class="equal">=</div>
+                        <div class="result"><input type="text" maxlength="2" ></div>
+                    </div>
+                    <button type="submit" name="submit" class="submit-btn">تقديم الطلب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<script>
+
+//set the start and finish time for the job //1
+setTimeout( e => {
+
+    let start_1 = document.querySelector('.start_1');
+    let finish_1 = document.querySelector('.finish_1');
+    timepicker(`<?=$this->start_hour_1?>`, `<?=$this->finish_hour_1?>`); 
+    start_1.innerText = `<?=$this->start_hour_1?>`;
+    finish_1.innerText = `<?=$this->finish_hour_1?>`;
+    
+    
+    //set the start and finish time for the job //2
+    let start_2 = document.querySelector('.start_2');
+    let finish_2 = document.querySelector('.finish_2');
+    timepicker(`<?=$this->start_hour_2?>`, `<?=$this->finish_hour_2?>`, true); 
+    start_2.innerText = `<?=$this->start_hour_2?>`;
+    finish_2.innerText = `<?=$this->finish_hour_2?>`;
+}, 100);
+
+//map
+setTimeout( e => {
+    userMap();
+
+}, 300);
+
+
+//captcha
+function capthca(form) {
+
+    let captcha_con = document.querySelector('.captcha-con');
+    let captcha = document.querySelector('.captcha-con .captcha');
+    let input = document.querySelector('.captcha-con .result input');
+    let num1_con = document.querySelector('.captcha-con .captcha span:nth-child(1)');
+    let op_con = document.querySelector('.captcha-con .captcha span:nth-child(2)');
+    let num2_con = document.querySelector('.captcha-con .captcha span:nth-child(3)');
+
+    let cap_notice = document.querySelector('.cap-notice');
+    let btn = document.querySelector('.submit-btn');
+    btn.style.filter = 'blur(6px)';
+    btn.setAttribute('disabled', 'true');
+
+    //create random numbers & operator
+    const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+
+    const op = '+';
+
+    num1_con.innerText = num1;
+    num2_con.innerText = num2;
+    op_con.innerText = op;
+
+    let result = num1 + num2;
+
+    input.oninput = e => {
+        if(input.value == result) {
+            captcha_con.classList.add('captcha-done');
+            setTimeout( e => {captcha_con.style.display = 'none';}, 800);
+            form.onsubmit = e => true;
+            btn.style.filter = '';
+            btn.removeAttribute('disabled');
+            cap_notice.innerHTML = "يمكنك متابعة الطلب الأن<br>شكرا لك";
+        } else {
+            form.onsubmit = e => false;
+        }
+    }
+}
+let form = document.forms['order-form'];
+capthca(form);
+
+
+</script>

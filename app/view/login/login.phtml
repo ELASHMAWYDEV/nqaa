@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo PUBLIC_URL;?>assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="head">
+                <h2>تسجيل الدخول</h2>
+            </div>
+            <form method="POST">
+                <div class="content">
+                    <div class="input-items">
+                        <div class="input-item"><img src="<?php echo PUBLIC_URL;?>/assets/img/profile.svg" alt=""><input type="text" name="user" placeholder="اسم المستخدم أو البريد الالكتروني" required></div>
+                        <div class="input-item"><img src="<?php echo PUBLIC_URL;?>/assets/img/lock.svg" alt=""><input type="password" name="pass" placeholder="كلمة المرور" required></div>
+                        <div class="input-item"><button class="btn-login" type="submit" name="">تسجيل الدخول</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

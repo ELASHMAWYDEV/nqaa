@@ -1,0 +1,127 @@
+
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>الأحياء</h6>
+    </div>
+
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+
+    <div class="container regions">
+
+        <div class="search-container">
+            <h3>البحث المتقدم</h3>
+            <div class="search-box">
+                <input type="text" placeholder="اسم الحي" id="region-search">
+            </div>
+        </div>
+
+
+        <div class="add-new">
+            <button class="btn-add-new-region" onclick="popupBox('.add-region-box')">أضف حي جديد</button>
+        </div>
+
+
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>الحي / المنطقة</th>
+                            <th>الإجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php foreach($this->regions as $region):?>
+                        <tr>
+                            <td><?=$region->id;?></td>
+                            <td><?=$region->region;?></td>
+                            <td class="action">
+                                <form method="POST">
+                                    <input type="hidden" name="region_id" value="<?=$region->id;?>">
+                                    <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?=$region->id;?>" class="delete_region_btn">
+                                </form>
+                            </td>
+
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Add New region Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="add-region-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST">
+            <h3>إضافة حي جديد</h3>
+            <div class="input-items">
+                <div class="input-item"><input type="text" name="region" placeholder="اسم الحي"></div>
+                <div class="input-item"><button class="add-btn" type="submit" name="add_region">اضافة</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Add New region Box END-->
+
+
+
+
+
+<!--Delete region Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="delete-region-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" onsubmit="delete_region(this)">
+            <input type="hidden" name="id">
+            <h3>حذف الحي رقم <span class="region_id"></span></h3>
+            <div class="input-items">
+                <div class="input-item"><button class="delete-btn" type="submit" name="delete_region">حذف</button></div>
+                <div class="input-item"><button class="abort-btn" type="button" onclick="abort('.delete-region-box')">الغاء</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Delete region Box END-->
+
+
+
+<script>
+
+    function get_region_delete(el){
+        let id = el.getAttribute('data-region-id');
+        let delete_region_box = document.querySelector('.delete-region-box');
+        delete_region_box.querySelector('input[name="id"]').setAttribute('value', id);
+        delete_region_box.querySelector('span.region_id').innerHTML = id;
+    }
+
+
+    //search with name
+    let search_region = document.querySelector('#region-search');
+    search_region.oninput = e => searchInput(search_region, 2);
+    
+
+</script>

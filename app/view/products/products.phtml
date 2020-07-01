@@ -1,0 +1,129 @@
+
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>المنتجات</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container products">
+        <div class="search-container">
+            <h3>البحث المتقدم</h3>
+            <div class="search-box">
+                <input type="text" placeholder="اسم المنتج" id="name-search">
+            </div>
+        </div>
+        <div class="add-new">
+            <button class="btn-add-new-products" onclick="popupBox('.add-products-box')">أضف منتج جديد</button>
+        </div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>المنتج</th>
+                            <th>السعر</th>
+                            <?php if($this->role('مدير')):?>
+                            <th>الإجراء</th>
+                            <?php endif;?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php foreach($this->products as $products):?>
+                        <tr>
+                            <td><?=$products->id;?></td>
+                            <td><?=$products->name?></td>
+                            <td><?=$products->price;?></td>
+                            <?php if($this->role('مدير')):?>    
+                            <td class="action">
+                                <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="<?php echo $products->id;?>" class="delete_product_btn">
+                            </td>
+                            <?php endif;?>
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Add New products Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="add-products-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST">
+            <h3>إضافة منتج جديد</h3>
+            <div class="input-items">
+                <div class="input-item">
+                    <label>اسم المنتج</label>
+                    <input type="text" name="name" placeholder="اسم المنتج" required>
+                </div>
+                <div class="input-item">
+                    <label>سعر المنتج</label>
+                    <input type="number" name="price" placeholder="سعر المنتج" required>
+                </div>
+                <div class="input-item"><button class="add-btn" type="submit" name="add_products">اضافة</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Add New products Box END-->
+
+
+
+
+
+
+<!--Delete products Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="delete-products-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" name="delete_products_form">
+            <input type="hidden" name="id">
+            <h3>حذف المنتج رقم #<span class="products_id"></span></h3>
+            <div class="input-items">
+                <div class="input-item"><button class="delete-btn" type="submit" name="delete_products">حذف</button></div>
+                <div class="input-item"><button class="abort-btn" type="" onclick="abort('.delete-products-box')">الغاء</button></div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!--Delete news Box END-->
+
+
+
+
+<script>
+    //search with note-taker
+    let name_search = document.querySelector('#name-search');
+    name_search.oninput = e => searchInput(name_search, 2);
+
+
+function get_products_delete(el){
+    id = el.getAttribute('data-product-id');
+    var delete_products_box = document.querySelector('.delete-products-box');
+    delete_products_box.querySelector('span.products_id').innerHTML = id;
+    document.forms['delete_products_form']['id'].setAttribute('value', id);
+
+}
+</script>

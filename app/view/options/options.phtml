@@ -1,0 +1,179 @@
+<div class="main-container">
+    <div class="page-position">
+        <h2>لوحة التحكم</h2>
+        <p>/</p>
+        <h6>الإعدادات</h6>
+    </div>
+    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <div class="container options">
+        <div class="options-box">
+            <div class="option">
+                <h4>مواعيد العمل</h4>
+                <h5>الدوام الصباحي</h5>
+                <form method="POST">
+                    <div class="input-items">
+                        <div class="input-item">
+                            <label>من</label>
+                            <div class="select-item">
+                                <select name="start_1" onclick="rotateSelect(this)">
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <label>إلي</label>
+                            <div class="select-item">
+                                <select name="finish_1" onclick="rotateSelect(this)">
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <button type="submit" name="update_work_hours_1" class="save-btn">حفظ</button>
+                        </div>
+                    </div>
+                </form>
+                <h5>الدوام المسائي</h5>
+                <form method="POST">
+                    <div class="input-items">
+                        <div class="input-item">
+                            <label>من</label>
+                            <div class="select-item">
+                                <select name="start_2" onclick="rotateSelect(this)">
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <label>إلي</label>
+                            <div class="select-item">
+                                <select name="finish_2" onclick="rotateSelect(this)">
+                                </select>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <button type="submit" name="update_work_hours_2" class="save-btn">حفظ</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="option">
+                <h4>شهور الصيانة الدورية</h4>
+                <form method="POST">
+                    <div class="input-items">
+                        <div class="input-item">
+                            <label>كل</label>
+                            <div class="select-item">
+                                <select name="regular_months" onclick="rotateSelect(this)">
+                                    <option value="1">شهر</option>
+                                    <option value="2">شهرين</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="4">4 أشهر</option>
+                                    <option value="5">5 أشهر</option>
+                                    <option value="6">6 أشهر</option>
+                                    <option value="7">7 أشهر</option>
+                                    <option value="8">8 أشهر</option>
+                                    <option value="9">9 أشهر</option>
+                                    <option value="10">10 أشهر</option>
+                                    <option value="11">11 شهر</option>
+                                    <option value="12">12 شهر</option>
+                                </select>
+                                <span></span>
+                            </div>
+                            <div class="input-item">
+                                <button type="submit" name="update_regular_months" class="save-btn">حفظ</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    let timeList = [
+    '12:00 am','12:30 am',
+    '1:00 am','1:00 am',
+    '2:00 am','2:30 am',
+    '3:00 am','3:30 am',
+    '4:00 am','4:30 am',
+    '5:00 am','5:30 am',
+    '6:00 am','6:30 am',
+    '7:00 am','7:30 am',
+    '8:00 am','8:30 am',
+    '9:00 am','9:30 am',
+    '10:00 am','10:30 am',
+    '11:00 am','11:30 am',
+    '12:00 pm','12:30 pm',
+    '1:00 pm','1:30 pm',
+    '2:00 pm','2:30 pm',
+    '3:00 pm','3:30 pm',
+    '4:00 pm','4:30 pm',
+    '5:00 pm','5:30 pm',
+    '6:00 pm','6:30 pm',
+    '7:00 pm','7:30 pm',
+    '8:00 pm','8:30 pm',
+    '9:00 pm','9:30 pm',
+    '10:00 pm','10:30 pm',
+    '11:00 pm','11:30 pm'
+    ];
+
+    //1
+    let start_1 = document.querySelector('select[name="start_1"]');
+    let finish_1 = document.querySelector('select[name="finish_1"]');
+    timeList.forEach(time => {
+        let option = document.createElement('option');
+        option.setAttribute('value', time);
+        option.innerText = time;
+        start_1.style.direction = 'ltr';
+        finish_1.style.direction = 'ltr';
+
+        let option2 = option.cloneNode(true);
+        start_1.appendChild(option);
+        finish_1.appendChild(option2);
+    });
+
+    //set the value from database
+    Array.from(start_1.options).forEach(option => {
+        if (option.value == `<?=$this->start_hour_1?>`) start_1.selectedIndex = Array.from(start_1.options).indexOf(option);
+    });
+
+    Array.from(finish_1.options).forEach(option => {
+        if (option.value == `<?=$this->finish_hour_1?>`) finish_1.selectedIndex = Array.from(finish_1.options).indexOf(option);
+    });
+
+    
+
+    //2
+    let start_2 = document.querySelector('select[name="start_2"]');
+    let finish_2 = document.querySelector('select[name="finish_2"]');
+    timeList.forEach(time => {
+        let option = document.createElement('option');
+        option.setAttribute('value', time);
+        option.innerText = time;
+        start_2.style.direction = 'ltr';
+        finish_2.style.direction = 'ltr';
+
+        let option2 = option.cloneNode(true);
+        start_2.appendChild(option);
+        finish_2.appendChild(option2);
+    });
+
+    //set the value from database
+    Array.from(start_2.options).forEach(option => {
+        if (option.value == `<?=$this->start_hour_2?>`) start_2.selectedIndex = Array.from(start_2.options).indexOf(option);
+    });
+
+    Array.from(finish_2.options).forEach(option => {
+        if (option.value == `<?=$this->finish_hour_2?>`) finish_2.selectedIndex = Array.from(finish_2.options).indexOf(option);
+    });
+
+    //regular months selection
+    let regular_months = document.querySelector('select[name="regular_months"]');
+    regular_months.selectedIndex = <?=$this->regular_months?> - 1;
+
+</script>
