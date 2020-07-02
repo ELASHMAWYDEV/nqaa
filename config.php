@@ -17,9 +17,9 @@ ini_set("log_errors", TRUE);
 
 //Database
 define('HOST', 'localhost'); //Editable 
-define('DB_NAME', 'nqaa'); //Editable
-define('DB_USER', 'root'); //Editable
-define('DB_PASS', ''); //Editable
+define('DB_NAME', 'elaszeex_nqaa'); //Editable
+define('DB_USER', 'elaszeex_test'); //Editable
+define('DB_PASS', 'qwertyuiop1234$#'); //Editable
 
 define('ROOT_FOLDER', ''); //Editable => set the sub folder for the website {Leave Empty for Root /}
 
