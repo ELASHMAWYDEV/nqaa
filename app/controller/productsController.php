@@ -12,6 +12,8 @@ class productsController extends Controller
 
         isset($_POST['delete_products']) ? $this->deleteproducts($_POST['id']) : null;
         isset($_POST['add_products']) ? $this->addproducts($_POST['name'], $_POST['price']) : null;
+        isset($_POST['edit_product']) ? $this->editProduct($_POST['id'], $_POST['name'], $_POST['price']) : null;
+
 
         $this->loggedIn();
         $this->view('products');
@@ -73,4 +75,24 @@ class productsController extends Controller
 
     
 
+
+    public function editProduct($id, $name, $price)
+    {
+
+        $sql = "UPDATE products SET name =  :name, price = :price WHERE id = :id LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'id' => $id,
+            'name' => $name,
+            'price' => $price
+        ]);
+
+        if ($stmt->rowCount() == '1') {
+            $this->success[] = "تم تعديل المنتج بنجاح";
+            $this->redirect('products', '2');
+        } else {
+            $this->errors[] = "حدث خطأ ما";
+        }
+
+    }
 }

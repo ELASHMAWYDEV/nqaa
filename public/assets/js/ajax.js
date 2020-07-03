@@ -383,3 +383,30 @@ function get_region_edit(el) {
         }
     });
 }
+
+
+
+function get_product_edit(el) {
+    let id = el.getAttribute('data-product-id');
+    let edit_product_box = document.querySelector('.edit-product-box');
+    edit_product_box.querySelector('span.product_id').innerHTML = id;
+    edit_product_box.querySelector('input[name="id"]').setAttribute('value', id);
+    const data = {get_product_by_id : 'get_product_by_id', id : id};
+    console.log(id);
+    ajax('post', ajaxUrl + 'products', data, (output) => {
+        output = JSON.parse(output);
+        messages(output.errors, output.success);
+        console.log(output);
+        if(output.reload == 'true')
+        {
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
+        }
+        else
+        {
+            outputToInput(edit_product_box, output.output); 
+            popupBox('.edit-product-box');  
+        }
+    });
+}

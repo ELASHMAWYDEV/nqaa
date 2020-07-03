@@ -20,13 +20,18 @@
             padding: 2px 10px;
             font-size: 12px;
         }
+        .btn-edit {
+            @include btn-adv($light-green,$dark-green);
+            padding: 2px 10px;
+            font-size: 12px;
+        }
 
     }
 
 
 }
 
-.add-products-box,.delete-products-box {
+.add-products-box,.delete-products-box, .edit-product-box {
     display: none;
     @include box;
     @include box-animate;
@@ -46,6 +51,10 @@
     }
     .abort-btn {
         @include btn-adv($light-purple,$dark-purple);
+        font-size: 16px;
+    }
+    .edit-btn {
+        @include btn-adv($light-green,$dark-green);
         font-size: 16px;
     }
 

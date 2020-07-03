@@ -39,6 +39,8 @@
                             <?php if($this->role('مدير')):?>    
                             <td class="action">
                                 <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="<?php echo $products->id;?>" class="delete_product_btn">
+                                <button id="btn-edit" class="btn-edit" data-region-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
+
                             </td>
                             <?php endif;?>
                         </tr>
@@ -109,6 +111,39 @@
     </div>
 </div>
 <!--Delete news Box END-->
+
+
+
+
+<!--edit product Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="edit-product-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" name="edit_product_form" onsubmit="return confirm('هل أنت متأكد من هذه التعديلات ؟');">
+            <input type="hidden" name="id">
+            <h3>تعديل المنتج رقم #<span class="product_id"></span></h3>
+            <div class="input-items">
+                <div class="input-item">
+                    <label>اسم المنتج</label>
+                    <input type="text" name="name" placeholder="اسم المنتج" required>
+                </div>
+                <div class="input-item">
+                    <label>سعر المنتج</label>
+                    <input type="number" name="price" placeholder="سعر المنتج" required>
+                </div>
+                <div class="input-item">
+                    <button type="submit" name="edit_product" class="edit-btn">حفظ</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 
