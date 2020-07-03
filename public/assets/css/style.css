@@ -4530,6 +4530,34 @@
   transition: 0s ease;
 }
 
+.regions .table-container .btn-edit {
+  cursor: pointer;
+  background-color: #2ECC71;
+  border: 1.5px solid #27AE60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.regions .table-container .btn-edit:hover {
+  background-color: #27AE60;
+}
+
+.regions .table-container .btn-edit:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
 .add-region-box, .delete-region-box, .edit-region-box {
   display: none;
   margin: auto;

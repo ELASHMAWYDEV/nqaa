@@ -6,7 +6,7 @@ class regionsAjax extends Ajax
     {
         parent::__construct();
         
-        isset($_POST['get_region_by_id']) ? $this->get_region_by_id(json_decode($_POST['id'])) : null;
+        isset($_POST['get_region_by_id']) ? $this->get_region_by_id($_POST['id']) : null;
 
 
         //prevent useregionsom accessing this page manually
@@ -18,12 +18,11 @@ class regionsAjax extends Ajax
 
     public function get_region_by_id($id)
     {
-        $this->id = $id;
+
         $this->output = $this->data->output;
-        $sql = "SELECT * FROM regions WHERE id = '$id' LIMIT 1";
+        $sql = "SELECT * FROM regions WHERE id = $id LIMIT 1";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
-
         if($stmt->rowCount() == '1') {
             $region = $stmt->fetch();
             $this->output->region = $region->region;

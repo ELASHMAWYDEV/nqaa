@@ -11,7 +11,7 @@ class regionsController extends Controller
 
         isset($_POST['add_region']) ? $this->addRegion($_POST['region']) : null;
         isset($_POST['delete_region']) ? $this->deleteRegion($_POST['id']) : null;
-        isset($_POST['edit_region']) ? $this->editRegion($_POST['id'], $_POST['name']) : null;
+        isset($_POST['edit_region']) ? $this->editRegion($_POST['id'], $_POST['region']) : null;
 
         $this->loggedIn();
         $this->view('regions');

@@ -44,7 +44,7 @@
                                     <input type="hidden" name="region_id" value="<?=$region->id;?>">
                                     <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?=$region->id;?>" class="delete_region_btn">
                                 </form>
-                                <button id="btn-edit" class="btn-edit" data-order-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
+                                <button id="btn-edit" class="btn-edit" data-region-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
 
                             </td>
 
@@ -131,7 +131,7 @@
                     <input type="text" name="region">
                 </div>
                 <div class="input-item">
-                    <button type="submit" name="edit_region" class="edit-btn"></button>
+                    <button type="submit" name="edit_region" class="edit-btn">حفظ</button>
                 </div>
             </div>
         </form>
