@@ -261,18 +261,20 @@ function datepicker() {
             if (month == 2) maxDays = 28;
             else if (month == 4 || month == 6 || month == 9 || month == 11) maxDays = 30;
             
-            for (let day = 1; day <= maxDays; day++) {
+            for (let day = 0; day <= maxDays; day++) {
                 let dayBox = document.createElement('div');
                 dayBox.classList.add('day-box');
                 dayBox.innerText = day;
                 daysContainer.appendChild(dayBox);
             }
+            document.getElementsByClassName('day-box')[0].style.display = 'none';
             setDayBox();
+
         }
 
         function setDayBox() {
             let dayBoxs = document.querySelectorAll('.day-box');
-            let dayElement = dayBoxs[day - 1];
+            let dayElement = dayBoxs[day];
             dayElement.classList.add('active-day'); 
 
 
@@ -280,11 +282,12 @@ function datepicker() {
 
 
             dayBoxs.forEach(dayBox => {
+                
                 dayBox.onclick = e => {
                     dayElement.classList.remove('active-day');
                     dayElement = dayBox;
                     dayElement.classList.add('active-day');
-                    selectedDay = Array.from(dayBoxs).indexOf(dayBox) + 1;
+                    selectedDay = Array.from(dayBoxs).indexOf(dayBox);
 
                     day = selectedDay;
                     selectedMonth = month;
