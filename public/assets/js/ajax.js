@@ -410,3 +410,32 @@ function get_product_edit(el) {
         }
     });
 }
+
+
+
+function get_payment_edit(el) {
+    let id = el.getAttribute('data-payment-id');
+    let edit_payment_box = document.querySelector('.edit-payment-box');
+    edit_payment_box.querySelector('span.payment_id').innerHTML = id;
+    edit_payment_box.querySelector('input[name="id"]').setAttribute('value', id);
+    const data = {get_payment_by_id : 'get_payment_by_id', id : id};
+    console.log(id);
+    ajax('post', ajaxUrl + 'payments', data, (output) => {
+        output = JSON.parse(output);
+        messages(output.errors, output.success);
+        console.log(output);
+        if(output.reload == 'true')
+        {
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
+        }
+        else
+        {
+            outputToInput(edit_payment_box, output.output); 
+            if (output.advance_maker_id)
+                edit_payment_box.querySelector('select[name="advance_maker_id"] option[value="'+ output.advance_maker_id +'"]').setAttribute('selected', 'true');
+            popupBox('.edit-payment-box');  
+        }
+    });
+}

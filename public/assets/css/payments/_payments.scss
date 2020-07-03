@@ -22,11 +22,16 @@
             padding: 2px 10px;
             font-size: 12px;
         }
+        .btn-edit {
+            @include btn-adv($light-green,$dark-green);
+            padding: 2px 10px;
+            font-size: 12px;
+        }
     }
 }
 
 
-.add-payment-box {
+.add-payment-box, .edit-payment-box {
     display: none;
     @include box;
     @include box-animate;
@@ -36,6 +41,10 @@
         margin-bottom: 10px;
     }
     .add-btn {
+        @include btn-adv($light-green,$dark-green);
+        font-size: 16px;
+    }
+    .edit-btn {
         @include btn-adv($light-green,$dark-green);
         font-size: 16px;
     }
