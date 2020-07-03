@@ -5199,6 +5199,276 @@
   transition: 0s ease;
 }
 
+.regular .table-container .whatsapp-btn {
+  cursor: pointer;
+  background-color: #2ECC71;
+  border: 1.5px solid #27AE60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.regular .table-container .whatsapp-btn:hover {
+  background-color: #27AE60;
+}
+
+.regular .table-container .whatsapp-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-regular-box {
+  display: none;
+  margin: auto;
+  position: absolute;
+  z-index: 19;
+  padding: 45px 20px 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 98%;
+  top: 0;
+  -webkit-animation: box 0.3s ease 1;
+          animation: box 0.3s ease 1;
+}
+
+.delete-regular-box label {
+  display: inline-block;
+  width: 130px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.delete-regular-box input {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ECF0F1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 14px;
+  width: 180px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.delete-regular-box input:focus {
+  border: 1.5px solid #0984e3;
+}
+
+@media only screen and (max-width: 480px) {
+  .delete-regular-box input {
+    width: 100% !important;
+  }
+}
+
+.delete-regular-box textarea {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ECF0F1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 18px;
+  min-width: 250px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.delete-regular-box textarea:focus {
+  border: 1.5px solid #0984e3;
+}
+
+.delete-regular-box .input-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.delete-regular-box .input-items .input-item {
+  margin: 12px auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delete-regular-box .input-items .select-item {
+  width: 70%;
+  position: relative;
+  margin: 15px 0;
+}
+
+.delete-regular-box .input-items .select-item select {
+  cursor: pointer;
+  width: 180px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-align-last: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+  font-weight: 600;
+}
+
+.delete-regular-box .input-items .select-item select + span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: block;
+  -webkit-transform: translateY(-5px) rotate(0deg);
+          transform: translateY(-5px) rotate(0deg);
+  border: 6px solid transparent;
+  border-top: 8px solid #2C3E50;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform-origin: 6px 4px;
+          transform-origin: 6px 4px;
+}
+
+.delete-regular-box .input-items .select-item select option {
+  text-align: center;
+}
+
+.delete-regular-box > span {
+  display: block;
+  width: 70%;
+  height: 1.5px;
+  background-color: #707070;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .delete-regular-box {
+    width: 98%;
+  }
+  .delete-regular-box .input-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .delete-regular-box label {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  .delete-regular-box input {
+    width: 100%;
+  }
+}
+
+.delete-regular-box .input-items {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+}
+
+.delete-regular-box h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.delete-regular-box .delete-btn {
+  cursor: pointer;
+  background-color: #E74C3C;
+  border: 1.5px solid #C0392B;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+  margin-left: 40px;
+}
+
+.delete-regular-box .delete-btn:hover {
+  background-color: #C0392B;
+}
+
+.delete-regular-box .delete-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-regular-box .abort-btn {
+  cursor: pointer;
+  background-color: #9B59B6;
+  border: 1.5px solid #8E44AD;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+}
+
+.delete-regular-box .abort-btn:hover {
+  background-color: #8E44AD;
+}
+
+.delete-regular-box .abort-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
 .products .search-container > h3 {
   text-align: center;
   padding: 10px;
