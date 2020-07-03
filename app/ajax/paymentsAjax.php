@@ -20,9 +20,9 @@ class paymentsAjax extends Ajax
     {
 
         $this->output = $this->data->output;
-        $sql = "SELECT * FROM payments WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM payments WHERE id = ? LIMIT 1";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$id]);
         if($stmt->rowCount() == '1') {
             $payment = $stmt->fetch();
             $this->output->cash = $payment->cash;

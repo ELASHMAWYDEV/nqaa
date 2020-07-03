@@ -20,9 +20,9 @@ class productsAjax extends Ajax
     {
 
         $this->output = $this->data->output;
-        $sql = "SELECT * FROM products WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM products WHERE id = ? LIMIT 1";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$id]);
         if($stmt->rowCount() == '1') {
             $product = $stmt->fetch();
             $this->output->name = $product->name;

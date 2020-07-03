@@ -12,6 +12,8 @@ class paymentsController extends Controller
 
         isset($_POST['add_payment']) ? $this->addPayment($_POST['cash'], $_POST['net'], $_POST['payments'], $_POST['advance'], $_POST['advance_maker_id']) : null;
         isset($_POST['delete_payment']) ? $this->deletePayment($_POST['id']) : null;
+        isset($_POST['edit_payment']) ? $this->editpayment($_POST['id']) : null;
+
 
         $this->loggedIn();
         $this->view('payments');
@@ -130,5 +132,28 @@ class paymentsController extends Controller
         }
     }
 
+
+    public function editPayment($id)
+    {
+
+        $sql = "UPDATE payments SET cash =  :cash, net = :net, payments = :payments, advance = :advance, advance_maker_id = :advance_maker_id WHERE id = :id LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'id' => $id,
+            'cash' => $_POST['cash'],
+            'net' => $_POST['net'],
+            'payments' => $_POST['payments'],
+            'advance' => $_POST['advance'],
+            'advance_maker_id' => $_POST['advance_maker_id']
+            
+        ]);
+
+        if ($stmt->rowCount() == '1') {
+            $this->success[] = "تم تعديل المبلغ بنجاح";
+            $this->redirect('payments', '2');
+        } else {
+            $this->errors[] = "حدث خطأ ما";
+        }
+    }
 
 }

@@ -59,7 +59,7 @@
                             <?php if($this->role('مدير')):?>
                                 <td>
                                     <img onclick="popupBox('.delete-payment-box'); get_payment_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المبلغ اليومي" title="حذف المستخدم" data-payment-id="<?=$payment->id;?>">
-                                    <button id="btn-edit" class="btn-edit" data-payment-id="<?=$payments->id?>" onclick="get_payment_edit(this);">تعديل</button>
+                                    <button id="btn-edit" class="btn-edit" data-payment-id="<?=$payment->id?>" onclick="get_payment_edit(this);">تعديل</button>
 
                                 </td>
                             <?php endif;?>
