@@ -12,6 +12,9 @@ class notesController extends Controller
 
         isset($_POST['update_note']) ? $this->takeAction($_POST['note_id']) : null;
         isset($_POST['add_note']) ? $this->addNote($_POST['note'], $_SESSION['id']) : null;
+        isset($_POST['edit_note']) ? $this->editNote($_POST['id'], $_POST['note']) : null;
+        isset($_POST['delete_note']) ? $this->deleteNote($_POST['id']) : null;
+
 
         $this->loggedIn();
         $this->view('notes');
@@ -36,15 +39,15 @@ class notesController extends Controller
         if($stmt->rowCount() != '0')
         {
             $this->notes = $stmt->fetchAll();
-            $allDone = false;
-            foreach($this->notes as $note) {
-                if(!empty($note->status)) {
-                    $allDone = true;
-                }
-            }
-            if($allDone == true) {
-                array_push($this->errors, 'تم الاطلاع علي جميع الملاحظات بالفعل');
-            }
+            // $allDone = false;
+            // foreach($this->notes as $note) {
+            //     if(!empty($note->status)) {
+            //         $allDone = true;
+            //     }
+            // }
+            // if($allDone == true) {
+            //     array_push($this->errors, 'تم الاطلاع علي جميع الملاحظات بالفعل');
+            // }
         }
         else
         {
@@ -130,5 +133,40 @@ class notesController extends Controller
             $this->errors[] = "حدث خطأ ما";
         } 
         $this->redirect('notes', '1');
+    }
+
+
+    public function editNote($id, $note)
+    {
+
+        $sql = "UPDATE notes SET note = :note WHERE id = :id LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'id' => $id,
+            'note' => $note,
+            
+        ]);
+
+        if ($stmt->rowCount() == '1') {
+            $this->success[] = "تم تعديل الملاحظة بنجاح";
+            $this->redirect('notes', '2');
+        } else {
+            $this->errors[] = "حدث خطأ ما";
+        }
+    }
+
+
+    public function deleteNote($id)
+    {
+        $sql = "DELETE FROM notes WHERE id = ? LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id]);
+
+        if ($stmt->rowCount() != '0') {
+            $this->success[] = "تم حذف الملاحظة رقم #$id بنجاح";
+            $this->redirect('notes', '2');
+        } else {
+            $this->errors[] = "حدث خطأ ما";   
+        }
     }
 }

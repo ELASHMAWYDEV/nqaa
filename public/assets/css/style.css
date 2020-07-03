@@ -1497,6 +1497,34 @@
 
 .notes .table-container .btn-done {
   cursor: pointer;
+  background-color: #9B59B6;
+  border: 1.5px solid #8E44AD;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.notes .table-container .btn-done:hover {
+  background-color: #8E44AD;
+}
+
+.notes .table-container .btn-done:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.notes .table-container .btn-edit {
+  cursor: pointer;
   background-color: #2ECC71;
   border: 1.5px solid #27AE60;
   color: #fff;
@@ -1512,18 +1540,18 @@
   font-size: 12px;
 }
 
-.notes .table-container .btn-done:hover {
+.notes .table-container .btn-edit:hover {
   background-color: #27AE60;
 }
 
-.notes .table-container .btn-done:active {
+.notes .table-container .btn-edit:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: 0s ease;
   transition: 0s ease;
 }
 
-.add-note-box {
+.add-note-box, .edit-note-box, .delete-note-box {
   display: none;
   margin: auto;
   position: absolute;
@@ -1543,7 +1571,7 @@
           animation: box 0.3s ease 1;
 }
 
-.add-note-box label {
+.add-note-box label, .edit-note-box label, .delete-note-box label {
   display: inline-block;
   width: 130px;
   white-space: nowrap;
@@ -1552,7 +1580,7 @@
   margin-left: 10px;
 }
 
-.add-note-box input {
+.add-note-box input, .edit-note-box input, .delete-note-box input {
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
@@ -1567,17 +1595,17 @@
   transition: 0.3s ease;
 }
 
-.add-note-box input:focus {
+.add-note-box input:focus, .edit-note-box input:focus, .delete-note-box input:focus {
   border: 1.5px solid #0984e3;
 }
 
 @media only screen and (max-width: 480px) {
-  .add-note-box input {
+  .add-note-box input, .edit-note-box input, .delete-note-box input {
     width: 100% !important;
   }
 }
 
-.add-note-box textarea {
+.add-note-box textarea, .edit-note-box textarea, .delete-note-box textarea {
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
@@ -1592,11 +1620,11 @@
   transition: 0.3s ease;
 }
 
-.add-note-box textarea:focus {
+.add-note-box textarea:focus, .edit-note-box textarea:focus, .delete-note-box textarea:focus {
   border: 1.5px solid #0984e3;
 }
 
-.add-note-box .input-items {
+.add-note-box .input-items, .edit-note-box .input-items, .delete-note-box .input-items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1612,7 +1640,7 @@
           flex-direction: column;
 }
 
-.add-note-box .input-items .input-item {
+.add-note-box .input-items .input-item, .edit-note-box .input-items .input-item, .delete-note-box .input-items .input-item {
   margin: 12px auto;
   width: 100%;
   display: -webkit-box;
@@ -1626,13 +1654,13 @@
           align-items: center;
 }
 
-.add-note-box .input-items .select-item {
+.add-note-box .input-items .select-item, .edit-note-box .input-items .select-item, .delete-note-box .input-items .select-item {
   width: 70%;
   position: relative;
   margin: 15px 0;
 }
 
-.add-note-box .input-items .select-item select {
+.add-note-box .input-items .select-item select, .edit-note-box .input-items .select-item select, .delete-note-box .input-items .select-item select {
   cursor: pointer;
   width: 180px;
   border-radius: 15px;
@@ -1650,7 +1678,7 @@
   font-weight: 600;
 }
 
-.add-note-box .input-items .select-item select + span {
+.add-note-box .input-items .select-item select + span, .edit-note-box .input-items .select-item select + span, .delete-note-box .input-items .select-item select + span {
   position: absolute;
   left: 10px;
   top: 50%;
@@ -1665,11 +1693,11 @@
           transform-origin: 6px 4px;
 }
 
-.add-note-box .input-items .select-item select option {
+.add-note-box .input-items .select-item select option, .edit-note-box .input-items .select-item select option, .delete-note-box .input-items .select-item select option {
   text-align: center;
 }
 
-.add-note-box > span {
+.add-note-box > span, .edit-note-box > span, .delete-note-box > span {
   display: block;
   width: 70%;
   height: 1.5px;
@@ -1679,31 +1707,31 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .add-note-box {
+  .add-note-box, .edit-note-box, .delete-note-box {
     width: 98%;
   }
-  .add-note-box .input-item {
+  .add-note-box .input-item, .edit-note-box .input-item, .delete-note-box .input-item {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .add-note-box label {
+  .add-note-box label, .edit-note-box label, .delete-note-box label {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
   }
-  .add-note-box input {
+  .add-note-box input, .edit-note-box input, .delete-note-box input {
     width: 100%;
   }
 }
 
-.add-note-box h3 {
+.add-note-box h3, .edit-note-box h3, .delete-note-box h3 {
   text-align: center;
   margin-bottom: 10px;
 }
 
-.add-note-box .add-btn {
+.add-note-box .add-btn, .edit-note-box .add-btn, .delete-note-box .add-btn {
   cursor: pointer;
   background-color: #2ECC71;
   border: 1.5px solid #27AE60;
@@ -1719,15 +1747,104 @@
   font-size: 16px;
 }
 
-.add-note-box .add-btn:hover {
+.add-note-box .add-btn:hover, .edit-note-box .add-btn:hover, .delete-note-box .add-btn:hover {
   background-color: #27AE60;
 }
 
-.add-note-box .add-btn:active {
+.add-note-box .add-btn:active, .edit-note-box .add-btn:active, .delete-note-box .add-btn:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: 0s ease;
   transition: 0s ease;
+}
+
+.add-note-box .delete-btn, .edit-note-box .delete-btn, .delete-note-box .delete-btn {
+  cursor: pointer;
+  background-color: #E74C3C;
+  border: 1.5px solid #C0392B;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+  margin-left: 40px;
+}
+
+.add-note-box .delete-btn:hover, .edit-note-box .delete-btn:hover, .delete-note-box .delete-btn:hover {
+  background-color: #C0392B;
+}
+
+.add-note-box .delete-btn:active, .edit-note-box .delete-btn:active, .delete-note-box .delete-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.add-note-box .abort-btn, .edit-note-box .abort-btn, .delete-note-box .abort-btn {
+  cursor: pointer;
+  background-color: #9B59B6;
+  border: 1.5px solid #8E44AD;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+}
+
+.add-note-box .abort-btn:hover, .edit-note-box .abort-btn:hover, .delete-note-box .abort-btn:hover {
+  background-color: #8E44AD;
+}
+
+.add-note-box .abort-btn:active, .edit-note-box .abort-btn:active, .delete-note-box .abort-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.add-note-box .edit-btn, .edit-note-box .edit-btn, .delete-note-box .edit-btn {
+  cursor: pointer;
+  background-color: #2ECC71;
+  border: 1.5px solid #27AE60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+}
+
+.add-note-box .edit-btn:hover, .edit-note-box .edit-btn:hover, .delete-note-box .edit-btn:hover {
+  background-color: #27AE60;
+}
+
+.add-note-box .edit-btn:active, .edit-note-box .edit-btn:active, .delete-note-box .edit-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-note-box .input-items {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
 }
 
 .news .add-new {

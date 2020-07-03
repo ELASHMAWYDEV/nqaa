@@ -365,11 +365,9 @@ function get_region_edit(el) {
     edit_region_box.querySelector('span.region_id').innerHTML = id;
     edit_region_box.querySelector('input[name="id"]').setAttribute('value', id);
     const data = {get_region_by_id : 'get_region_by_id', id : id};
-    console.log(id);
     ajax('post', ajaxUrl + 'regions', data, (output) => {
         output = JSON.parse(output);
         messages(output.errors, output.success);
-        console.log(output);
         if(output.reload == 'true')
         {
             setTimeout(function(){
@@ -392,7 +390,6 @@ function get_product_edit(el) {
     edit_product_box.querySelector('span.product_id').innerHTML = id;
     edit_product_box.querySelector('input[name="id"]').setAttribute('value', id);
     const data = {get_product_by_id : 'get_product_by_id', id : id};
-    console.log(id);
     ajax('post', ajaxUrl + 'products', data, (output) => {
         output = JSON.parse(output);
         messages(output.errors, output.success);
@@ -418,7 +415,6 @@ function get_payment_edit(el) {
     edit_payment_box.querySelector('span.payment_id').innerHTML = id;
     edit_payment_box.querySelector('input[name="id"]').setAttribute('value', id);
     const data = {get_payment_by_id : 'get_payment_by_id', id : id};
-    console.log(id);
     ajax('post', ajaxUrl + 'payments', data, (output) => {
         output = JSON.parse(output);
         messages(output.errors, output.success);
@@ -440,6 +436,36 @@ function get_payment_edit(el) {
             }
 
             popupBox('.edit-payment-box');  
+        }
+    });
+}
+
+
+
+
+
+function get_note_edit(el) {
+    let id = el.getAttribute('data-note-id');
+    let edit_note_box = document.querySelector('.edit-note-box');
+    edit_note_box.querySelector('span.note_id').innerHTML = id;
+    edit_note_box.querySelector('input[name="id"]').setAttribute('value', id);
+    const data = {get_note_by_id : 'get_note_by_id', id : id};
+    ajax('post', ajaxUrl + 'notes', data, (output) => {
+        output = JSON.parse(output);
+        messages(output.errors, output.success);
+        if(output.reload == 'true')
+        {
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
+        }
+        else
+        {
+            edit_note_box.querySelector('textarea[name="note"]').value = output.output.note;
+            edit_note_box.querySelector('textarea[name="note"]').setAttribute('value', output.output.note);
+
+
+            popupBox('.edit-note-box');  
         }
     });
 }

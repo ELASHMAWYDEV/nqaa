@@ -12,7 +12,7 @@ class paymentsController extends Controller
 
         isset($_POST['add_payment']) ? $this->addPayment($_POST['cash'], $_POST['net'], $_POST['payments'], $_POST['advance'], $_POST['advance_maker_id']) : null;
         isset($_POST['delete_payment']) ? $this->deletePayment($_POST['id']) : null;
-        isset($_POST['edit_payment']) ? $this->editpayment($_POST['id']) : null;
+        isset($_POST['edit_payment']) ? $this->editPayment($_POST['id']) : null;
 
 
         $this->loggedIn();

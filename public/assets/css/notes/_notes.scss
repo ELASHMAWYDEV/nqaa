@@ -27,6 +27,11 @@
     .table-container {
         @include table-container;
         .btn-done {
+            @include btn-adv($light-purple,$dark-purple);
+            padding: 2px 10px;
+            font-size: 12px;
+        }
+        .btn-edit {
             @include btn-adv($light-green,$dark-green);
             padding: 2px 10px;
             font-size: 12px;
@@ -35,7 +40,7 @@
 }
 
 
-.add-note-box {
+.add-note-box, .edit-note-box, .delete-note-box {
     display: none;
     @include box;
     @include box-animate;
@@ -49,5 +54,23 @@
         font-size: 16px;
     }
 
+    .delete-btn {
+        @include btn-adv($light-red,$dark-red);
+        font-size: 16px;
+        margin-left: 40px;
+    }
+    .abort-btn {
+        @include btn-adv($light-purple,$dark-purple);
+        font-size: 16px;
+    }
+    .edit-btn {
+        @include btn-adv($light-green,$dark-green);
+        font-size: 16px;
+    }
+}
 
+.delete-note-box {
+    .input-items {
+        flex-direction: row !important;
+    }
 }
