@@ -39,7 +39,7 @@
                             <?php if($this->role('مدير')):?>    
                             <td class="action">
                                 <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="<?php echo $products->id;?>" class="delete_product_btn">
-                                <button id="btn-edit" class="btn-edit" data-region-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
+                                <button id="btn-edit" class="btn-edit" data-product-id="<?=$products->id?>" onclick="get_product_edit(this);">تعديل</button>
 
                             </td>
                             <?php endif;?>
