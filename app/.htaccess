@@ -1,2 +1,6 @@
 RewriteEngine On
+<<<<<<< HEAD
 Options -Indexes
+=======
+Options -Indexes
+>>>>>>> elashmawy

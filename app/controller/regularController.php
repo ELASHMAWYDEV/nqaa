@@ -10,7 +10,7 @@ class regularController extends Controller
         $this->role('فني') ? header('location: stats') : null;
 
         isset($_POST['id']) ? $this->takeAction($_POST['id']) : null;
-
+        isset($_POST['delete_regular']) ? $this->deleteRegular($_POST['id']) : null;
 
         $this->loggedIn();
         $this->view('regular');
@@ -69,6 +69,22 @@ class regularController extends Controller
         } else {
             $this->errors[] = "حدث خطأ ما";
         }
+    }
+
+
+
+    public function deleteRegular($regular_id)
+    {
+        $sql = "DELETE FROM regular WHERE id = ? LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$regular_id]);
+
+        if($stmt->rowCount() != '0') {
+            $this->success[] = "تم حذف طلب الصيانة الدورية بنجاح";
+        } else {
+            $this->errors[] = "حدث خطأ ما";
+        } 
+        $this->redirect('regular', '1');
     }
 
 }
