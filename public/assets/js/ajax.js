@@ -356,3 +356,30 @@ function get_order_edit(el) {
           
     });
 }
+
+
+
+function get_region_edit(el) {
+    let id = el.getAttribute('data-region-id');
+    let edit_region_box = document.querySelector('.edit-region-box');
+    edit_region_box.querySelector('span.region_id').innerHTML = id;
+    delete_region_box.querySelector('input[name="id"]').setAttribute('value', id);
+    const data = {get_region_by_id : 'get_region_by_id', id : id};
+
+    ajax('post', ajaxUrl + 'regions', data, (output) => {
+        output = JSON.parse(output);
+        messages(output.errors, output.success);
+
+        if(output.reload == 'true')
+        {
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
+        }
+        else
+        {
+            outputToInput(edit_region_box, output.output); 
+            popupBox('.edit-region-box');  
+        }
+    });
+}

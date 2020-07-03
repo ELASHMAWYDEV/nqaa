@@ -25,7 +25,7 @@
 
 }
 
-.add-region-box,.delete-region-box {
+.add-region-box, .delete-region-box, .edit-region-box {
     display: none;
     @include box;
     @include box-animate;
@@ -45,6 +45,10 @@
     }
     .abort-btn {
         @include btn-adv($light-purple,$dark-purple);
+        font-size: 16px;
+    }
+    .edit-btn {
+        @include btn-adv($light-green,$dark-green);
         font-size: 16px;
     }
 

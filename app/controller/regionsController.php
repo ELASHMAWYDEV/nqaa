@@ -11,6 +11,7 @@ class regionsController extends Controller
 
         isset($_POST['add_region']) ? $this->addRegion($_POST['region']) : null;
         isset($_POST['delete_region']) ? $this->deleteRegion($_POST['id']) : null;
+        isset($_POST['edit_region']) ? $this->editRegion($_POST['id'], $_POST['name']) : null;
 
         $this->loggedIn();
         $this->view('regions');
@@ -73,4 +74,26 @@ class regionsController extends Controller
             $this->errors[] = 'حدث خطأ ما';
         }
     }
+
+
+    public function editRegion($id, $name)
+    {
+
+        $sql = "UPDATE regions SET region = :region WHERE id = :id LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'id' => $id,
+            'region' => $name
+        ]);
+
+        if ($stmt->rowCount() == '1') {
+            $this->success[] = "تم تعديل اسم بنجاح";
+            $this->redirect('regions', '2');
+        } else {
+            $this->errors[] = "حدث خطأ ما";
+        }
+
+    }
+
+
 }

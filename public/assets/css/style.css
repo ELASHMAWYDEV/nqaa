@@ -4530,7 +4530,7 @@
   transition: 0s ease;
 }
 
-.add-region-box, .delete-region-box {
+.add-region-box, .delete-region-box, .edit-region-box {
   display: none;
   margin: auto;
   position: absolute;
@@ -4550,7 +4550,7 @@
           animation: box 0.3s ease 1;
 }
 
-.add-region-box label, .delete-region-box label {
+.add-region-box label, .delete-region-box label, .edit-region-box label {
   display: inline-block;
   width: 130px;
   white-space: nowrap;
@@ -4559,7 +4559,7 @@
   margin-left: 10px;
 }
 
-.add-region-box input, .delete-region-box input {
+.add-region-box input, .delete-region-box input, .edit-region-box input {
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
@@ -4574,17 +4574,17 @@
   transition: 0.3s ease;
 }
 
-.add-region-box input:focus, .delete-region-box input:focus {
+.add-region-box input:focus, .delete-region-box input:focus, .edit-region-box input:focus {
   border: 1.5px solid #0984e3;
 }
 
 @media only screen and (max-width: 480px) {
-  .add-region-box input, .delete-region-box input {
+  .add-region-box input, .delete-region-box input, .edit-region-box input {
     width: 100% !important;
   }
 }
 
-.add-region-box textarea, .delete-region-box textarea {
+.add-region-box textarea, .delete-region-box textarea, .edit-region-box textarea {
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
@@ -4599,11 +4599,11 @@
   transition: 0.3s ease;
 }
 
-.add-region-box textarea:focus, .delete-region-box textarea:focus {
+.add-region-box textarea:focus, .delete-region-box textarea:focus, .edit-region-box textarea:focus {
   border: 1.5px solid #0984e3;
 }
 
-.add-region-box .input-items, .delete-region-box .input-items {
+.add-region-box .input-items, .delete-region-box .input-items, .edit-region-box .input-items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4619,7 +4619,7 @@
           flex-direction: column;
 }
 
-.add-region-box .input-items .input-item, .delete-region-box .input-items .input-item {
+.add-region-box .input-items .input-item, .delete-region-box .input-items .input-item, .edit-region-box .input-items .input-item {
   margin: 12px auto;
   width: 100%;
   display: -webkit-box;
@@ -4633,13 +4633,13 @@
           align-items: center;
 }
 
-.add-region-box .input-items .select-item, .delete-region-box .input-items .select-item {
+.add-region-box .input-items .select-item, .delete-region-box .input-items .select-item, .edit-region-box .input-items .select-item {
   width: 70%;
   position: relative;
   margin: 15px 0;
 }
 
-.add-region-box .input-items .select-item select, .delete-region-box .input-items .select-item select {
+.add-region-box .input-items .select-item select, .delete-region-box .input-items .select-item select, .edit-region-box .input-items .select-item select {
   cursor: pointer;
   width: 180px;
   border-radius: 15px;
@@ -4657,7 +4657,7 @@
   font-weight: 600;
 }
 
-.add-region-box .input-items .select-item select + span, .delete-region-box .input-items .select-item select + span {
+.add-region-box .input-items .select-item select + span, .delete-region-box .input-items .select-item select + span, .edit-region-box .input-items .select-item select + span {
   position: absolute;
   left: 10px;
   top: 50%;
@@ -4672,11 +4672,11 @@
           transform-origin: 6px 4px;
 }
 
-.add-region-box .input-items .select-item select option, .delete-region-box .input-items .select-item select option {
+.add-region-box .input-items .select-item select option, .delete-region-box .input-items .select-item select option, .edit-region-box .input-items .select-item select option {
   text-align: center;
 }
 
-.add-region-box > span, .delete-region-box > span {
+.add-region-box > span, .delete-region-box > span, .edit-region-box > span {
   display: block;
   width: 70%;
   height: 1.5px;
@@ -4686,31 +4686,31 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .add-region-box, .delete-region-box {
+  .add-region-box, .delete-region-box, .edit-region-box {
     width: 98%;
   }
-  .add-region-box .input-item, .delete-region-box .input-item {
+  .add-region-box .input-item, .delete-region-box .input-item, .edit-region-box .input-item {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .add-region-box label, .delete-region-box label {
+  .add-region-box label, .delete-region-box label, .edit-region-box label {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
   }
-  .add-region-box input, .delete-region-box input {
+  .add-region-box input, .delete-region-box input, .edit-region-box input {
     width: 100%;
   }
 }
 
-.add-region-box h3, .delete-region-box h3 {
+.add-region-box h3, .delete-region-box h3, .edit-region-box h3 {
   text-align: center;
   margin-bottom: 10px;
 }
 
-.add-region-box .add-btn, .delete-region-box .add-btn {
+.add-region-box .add-btn, .delete-region-box .add-btn, .edit-region-box .add-btn {
   cursor: pointer;
   background-color: #2ECC71;
   border: 1.5px solid #27AE60;
@@ -4726,18 +4726,18 @@
   font-size: 16px;
 }
 
-.add-region-box .add-btn:hover, .delete-region-box .add-btn:hover {
+.add-region-box .add-btn:hover, .delete-region-box .add-btn:hover, .edit-region-box .add-btn:hover {
   background-color: #27AE60;
 }
 
-.add-region-box .add-btn:active, .delete-region-box .add-btn:active {
+.add-region-box .add-btn:active, .delete-region-box .add-btn:active, .edit-region-box .add-btn:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: 0s ease;
   transition: 0s ease;
 }
 
-.add-region-box .delete-btn, .delete-region-box .delete-btn {
+.add-region-box .delete-btn, .delete-region-box .delete-btn, .edit-region-box .delete-btn {
   cursor: pointer;
   background-color: #E74C3C;
   border: 1.5px solid #C0392B;
@@ -4754,18 +4754,18 @@
   margin-left: 40px;
 }
 
-.add-region-box .delete-btn:hover, .delete-region-box .delete-btn:hover {
+.add-region-box .delete-btn:hover, .delete-region-box .delete-btn:hover, .edit-region-box .delete-btn:hover {
   background-color: #C0392B;
 }
 
-.add-region-box .delete-btn:active, .delete-region-box .delete-btn:active {
+.add-region-box .delete-btn:active, .delete-region-box .delete-btn:active, .edit-region-box .delete-btn:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: 0s ease;
   transition: 0s ease;
 }
 
-.add-region-box .abort-btn, .delete-region-box .abort-btn {
+.add-region-box .abort-btn, .delete-region-box .abort-btn, .edit-region-box .abort-btn {
   cursor: pointer;
   background-color: #9B59B6;
   border: 1.5px solid #8E44AD;
@@ -4781,11 +4781,38 @@
   font-size: 16px;
 }
 
-.add-region-box .abort-btn:hover, .delete-region-box .abort-btn:hover {
+.add-region-box .abort-btn:hover, .delete-region-box .abort-btn:hover, .edit-region-box .abort-btn:hover {
   background-color: #8E44AD;
 }
 
-.add-region-box .abort-btn:active, .delete-region-box .abort-btn:active {
+.add-region-box .abort-btn:active, .delete-region-box .abort-btn:active, .edit-region-box .abort-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.add-region-box .edit-btn, .delete-region-box .edit-btn, .edit-region-box .edit-btn {
+  cursor: pointer;
+  background-color: #2ECC71;
+  border: 1.5px solid #27AE60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+}
+
+.add-region-box .edit-btn:hover, .delete-region-box .edit-btn:hover, .edit-region-box .edit-btn:hover {
+  background-color: #27AE60;
+}
+
+.add-region-box .edit-btn:active, .delete-region-box .edit-btn:active, .edit-region-box .edit-btn:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: 0s ease;

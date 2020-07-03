@@ -44,6 +44,8 @@
                                     <input type="hidden" name="region_id" value="<?=$region->id;?>">
                                     <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?=$region->id;?>" class="delete_region_btn">
                                 </form>
+                                <button id="btn-edit" class="btn-edit" data-order-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
+
                             </td>
 
                         </tr>
@@ -106,6 +108,37 @@
     </div>
 </div>
 <!--Delete region Box END-->
+
+
+
+
+<!--edit region Box BEGIN-->
+<div class="float-box-container">
+
+    <div class="edit-region-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" name="edit_region_form" onsubmit="return confirm('هل أنت متأكد من أنك تريد تعديل اسم الحي ؟');">
+            <input type="hidden" name="id">
+            <h3>تعديل الحي رقم #<span class="region_id"></span></h3>
+            <div class="input-items">
+                <div class="input-item">
+                    <label>اسم الحي</label>
+                    <input type="text" name="region">
+                </div>
+                <div class="input-item">
+                    <button type="submit" name="edit_region" class="edit-btn"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 
 
 
