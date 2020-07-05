@@ -479,7 +479,6 @@
             transition: 0.1s ease;
             width: 30px;
             height: 30px;
-
             @include flex;
             cursor: pointer;
             font-weight: 500;
@@ -490,6 +489,55 @@
                 border: 1px solid $black;
 
             }
+        }
+        .next-btn, .prev-btn {
+            border: 1px solid transparent;
+            outline: none;
+            color: $white;
+            background-color: $black;
+            transition: 0.1s ease;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            @include flex;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 50%;
+
+            &:hover, &.active-page {
+                background-color: $dark-blue;
+                color: $black;
+            }
+            
+        }
+        .next-btn::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 30%; 
+            height: 30%;
+            border: 2px solid $white;
+            transform: rotate(45deg);
+            border-top: none;
+            border-right: none; 
+            left: 12px;
+                      
+        }
+        .prev-btn::before {
+            content: '';
+            display: block;
+            position: absolute;
+            transform: rotate(45deg);
+            width: 30%; 
+            height: 30%;
+            border: 2px solid $white;
+            border-bottom: none;
+            border-left: none;
+
+        }
+        .prev-btn {
+            margin-left: 10px;
         }
     }
 }

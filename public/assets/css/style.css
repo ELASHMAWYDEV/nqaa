@@ -623,6 +623,67 @@
   border: 1px solid #2C3E50;
 }
 
+.payments .table-container .pagination .next-btn, .payments .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.payments .table-container .pagination .next-btn:hover, .payments .table-container .pagination .next-btn.active-page, .payments .table-container .pagination .prev-btn:hover, .payments .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.payments .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.payments .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.payments .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
 .payments .table-container .btn-confirm {
   cursor: pointer;
   background-color: #2ECC71;
@@ -1495,6 +1556,67 @@
   border: 1px solid #2C3E50;
 }
 
+.notes .table-container .pagination .next-btn, .notes .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.notes .table-container .pagination .next-btn:hover, .notes .table-container .pagination .next-btn.active-page, .notes .table-container .pagination .prev-btn:hover, .notes .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.notes .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.notes .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.notes .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
 .notes .table-container .btn-done {
   cursor: pointer;
   background-color: #9B59B6;
@@ -2016,6 +2138,67 @@
   background-color: #ECF0F1;
   color: #2C3E50;
   border: 1px solid #2C3E50;
+}
+
+.news .table-container .pagination .next-btn, .news .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.news .table-container .pagination .next-btn:hover, .news .table-container .pagination .next-btn.active-page, .news .table-container .pagination .prev-btn:hover, .news .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.news .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.news .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.news .table-container .pagination .prev-btn {
+  margin-left: 10px;
 }
 
 .news .table-container .btn-delete {
@@ -2695,6 +2878,67 @@
   background-color: #ECF0F1;
   color: #2C3E50;
   border: 1px solid #2C3E50;
+}
+
+.users .table-container .pagination .next-btn, .users .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.users .table-container .pagination .next-btn:hover, .users .table-container .pagination .next-btn.active-page, .users .table-container .pagination .prev-btn:hover, .users .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.users .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.users .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.users .table-container .pagination .prev-btn {
+  margin-left: 10px;
 }
 
 .users .table-container .btn-edit {
@@ -3946,6 +4190,67 @@
   border: 1px solid #2C3E50;
 }
 
+.orders .table-container .pagination .next-btn, .orders .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.orders .table-container .pagination .next-btn:hover, .orders .table-container .pagination .next-btn.active-page, .orders .table-container .pagination .prev-btn:hover, .orders .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.orders .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.orders .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.orders .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
 .orders .table-container .btn-edit {
   cursor: pointer;
   background-color: #9B59B6;
@@ -4674,6 +4979,67 @@
   border: 1px solid #2C3E50;
 }
 
+.regions .table-container .pagination .next-btn, .regions .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.regions .table-container .pagination .next-btn:hover, .regions .table-container .pagination .next-btn.active-page, .regions .table-container .pagination .prev-btn:hover, .regions .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.regions .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.regions .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.regions .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
 .regions .table-container .btn-delete {
   cursor: pointer;
   background-color: #E74C3C;
@@ -5398,6 +5764,67 @@
   border: 1px solid #2C3E50;
 }
 
+.regular .table-container .pagination .next-btn, .regular .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.regular .table-container .pagination .next-btn:hover, .regular .table-container .pagination .next-btn.active-page, .regular .table-container .pagination .prev-btn:hover, .regular .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.regular .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.regular .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.regular .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
 .regular .table-container .btn-done {
   cursor: pointer;
   background-color: #9B59B6;
@@ -5986,6 +6413,67 @@
   background-color: #ECF0F1;
   color: #2C3E50;
   border: 1px solid #2C3E50;
+}
+
+.products .table-container .pagination .next-btn, .products .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2C3E50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.products .table-container .pagination .next-btn:hover, .products .table-container .pagination .next-btn.active-page, .products .table-container .pagination .prev-btn:hover, .products .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2C3E50;
+}
+
+.products .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.products .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.products .table-container .pagination .prev-btn {
+  margin-left: 10px;
 }
 
 .products .table-container .btn-delete {

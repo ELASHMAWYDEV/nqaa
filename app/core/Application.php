@@ -34,14 +34,20 @@ class Application
         {
             $url = explode('/', $request);
             //edit $url[index] if the root is a subdirectory to the main website
-             
-            if(isset($url[0]) && $url[0] != 'ajax') {
+            
+            if(empty(ROOT_FOLDER)) {
+                $index = 0;
+            } else {
+                $index = count(explode(ROOT_URL, '/'));
+            }
 
-                $this->controller =  $url[0] . 'Controller';
+            if(isset($url[$index]) && $url[$index] != 'ajax') {
 
-            } else if($url[0] == 'ajax' && isset($url[1])) {
+                $this->controller =  $url[$index] . 'Controller';
 
-                $this->ajax = $url[1] . 'Ajax';
+            } else if($url[$index] == 'ajax' && isset($url[$index + 1])) {
+
+                $this->ajax = $url[$index + 1] . 'Ajax';
 
             } else {
 

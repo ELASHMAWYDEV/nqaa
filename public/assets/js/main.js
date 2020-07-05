@@ -124,17 +124,111 @@ function DisplayTable (table_items, rows_per_page, page) {
 function SetupPagination (table_items, rows_per_page, pagination_container) {
 
     pagination_container.innerHTML = '';
-    let page_count = Math.ceil(table_items.length  / rows_per_page);
+    // let page_count = Math.ceil(table_items.length  / rows_per_page);
+    let page_count = 10;
 
-    for (let i = 1; i < page_count + 1; i++) {
-        let button = PaginationBtn(i, table_items);
-        pagination_container.appendChild(button);
+
+    //prev button
+    let prev_btn = document.createElement('div');
+    prev_btn.classList.add('prev-btn');
+    pagination_container.appendChild(prev_btn);
+
+    //next button
+    let next_btn = document.createElement('div');
+    next_btn.classList.add('next-btn');
+    pagination_container.appendChild(next_btn);
+
+
+    if(page_count < 4) {
+
+        for (let i = 1; i < page_count + 1; i++) {
+            let button = PaginationBtn(i, table_items);
+            pagination_container.appendChild(button);
+        }
+
+
+    } else {
+        next_btn.style.display = 'flex';
+        
+        btn_list = [];
+        
+        for (let i = 1; i < page_count + 1; i++) {
+
+            let button = PaginationBtn(i, table_items);
+
+            //save all buttons in a list
+            btn_list.push(button);
+            btn_list.slice(4).forEach(btn => btn.style.display = 'none');
+            // if (i < 5 && current_page == 1) {
+
+                pagination_container.insertBefore(button, next_btn);
+
+            // }
+
+            button.onclick = e => {
+                if (i > 5 && current_page == 4) {
+                    pagination_container.insertBefore(button, next_btn);
+        
+
+                }
+                current_page = btn_list.indexOf(button) + 1;
+                checkButtons(current_page, page_count, next_btn, prev_btn, btn_list)
+            }
+
+
+            //next button
+            next_btn.onclick = e => {
+                if(current_page == page_count) {
+                    return false;
+                }
+                current_page += 1;
+
+                let old_btn = btn_list.find(btn => btn.classList.contains('active-page'));
+                old_btn.classList.remove('active-page');
+
+                let new_btn = btn_list[btn_list.indexOf(old_btn) + 1];
+                new_btn.classList.add('active-page');
+
+
+                checkButtons(current_page, page_count, next_btn, prev_btn, btn_list)
+                DisplayTable(table_items, rows_per_page, current_page);
+
+            }
+
+
+
+            //prev button
+            prev_btn.onclick = e => {
+                if(current_page == 1) {
+                    return false;
+                }
+
+                current_page -= 1;
+
+                let old_btn = btn_list.find(btn => btn.classList.contains('active-page'));
+                old_btn.classList.remove('active-page');
+
+                let new_btn = btn_list[btn_list.indexOf(old_btn) - 1];
+                new_btn.classList.add('active-page');
+
+
+                checkButtons(current_page, page_count, next_btn, prev_btn, btn_list)
+                DisplayTable(table_items, rows_per_page, current_page);
+
+            }
+
+
+
+
+            
+        }
     }
 }
 
 
 function PaginationBtn(page, table_items) {
     let button = document.createElement('button');
+    let i = page;
     button.innerText = page;
     if(current_page == page) button.classList.add('active-page');
     button.addEventListener('click', function(e){
@@ -145,10 +239,51 @@ function PaginationBtn(page, table_items) {
         let current_btn = document.querySelector('.pagination button.active-page');
         current_btn.classList.remove('active-page');
         this.classList.add('active-page');
+
+        
     });
     return button;
 }
 
+
+
+function checkButtons(current_page, page_count, next_btn, prev_btn, btn_list) {
+
+    //prev button display
+    if(current_page == 4 && prev_btn.style.display == 'none' || current_page > 4) {
+        prev_btn.style.display = 'flex';
+    }
+    
+    if(current_page > 1) {
+        prev_btn.style.display = 'flex';
+    }
+    
+
+    //next button display
+    if(page_count == 1) {
+        next_btn.style.display = 'none';
+    }
+
+
+    /////////////////////////////////
+
+    if(current_page >= 4 && page_count > 4) {
+
+        btn_list.slice(0, current_page - 3).forEach(btn => btn.style.display = 'none');
+        btn_list.slice(current_page + 1).forEach(btn => btn.style.display = 'none');
+        btn_list.slice(current_page - 3, current_page + 1).forEach(btn => btn.style.display = 'flex');
+
+    } else if(current_page < 4 && page_count > 4) {
+        btn_list.slice(4).forEach(btn => btn.style.display = 'none');
+        btn_list.slice(0, current_page + 1).forEach(btn => btn.style.display = 'flex');
+
+    }
+
+    if(current_page == page_count) {
+        btn_list.slice(current_page - 4).forEach(btn => btn.style.display = 'flex');
+    }
+    
+}
 //THIS WHOLE SECTION IS PUT IN THE END OF ANY PAGE THAT HAS A TABLE
             //==>START<==//
 // var table_items = document.querySelectorAll('table tbody tr');

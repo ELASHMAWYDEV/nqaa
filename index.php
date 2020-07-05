@@ -1,10 +1,11 @@
 <?php
 
-
+//config file
+require 'config.php';
 //modules
 define(__DIR__, dirname(__FILE__));
 define('DS',DIRECTORY_SEPARATOR);
-define('ROOT', __DIR__ . DS);
+define('ROOT',  __DIR__ . DS);
 define('APP', ROOT . 'app' . DS);
 define('MODEL', APP . 'model' . DS);
 define('CONTROLLER', APP . 'controller' . DS);
@@ -28,7 +29,6 @@ function class_loader($class_name) {
 }
 spl_autoload_register('class_loader');
 
-//config file
-require 'config.php';
+
 new Application;
 // var_dump($_SERVER['REQUEST_URI']);
