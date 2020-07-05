@@ -124,8 +124,7 @@ function DisplayTable (table_items, rows_per_page, page) {
 function SetupPagination (table_items, rows_per_page, pagination_container) {
 
     pagination_container.innerHTML = '';
-    // let page_count = Math.ceil(table_items.length  / rows_per_page);
-    let page_count = 10;
+    let page_count = Math.ceil(table_items.length  / rows_per_page);
 
 
     //prev button
@@ -139,7 +138,10 @@ function SetupPagination (table_items, rows_per_page, pagination_container) {
     pagination_container.appendChild(next_btn);
 
 
-    if(page_count < 4) {
+    if(page_count < 5) {
+
+        next_btn.style.display = 'none';
+        prev_btn.style.display = 'none';
 
         for (let i = 1; i < page_count + 1; i++) {
             let button = PaginationBtn(i, table_items);
