@@ -332,7 +332,9 @@ function get_order_edit(el) {
 
             if (output.time)
                 edit_order_box.querySelector('select[name="time"] option[value="'+ output.time +'"]').setAttribute('selected', 'true');
-            edit_order_box.querySelector('select[name="region"] option[value="'+ output.region +'"]').setAttribute('selected', 'true');
+            
+            if(output.region)
+                edit_order_box.querySelector('select[name="region"] option[value="'+ output.region +'"]').setAttribute('selected', 'true');
 
             if (output.status)
                 edit_order_box.querySelector('select[name="status"] option[value="'+ output.status +'"]').setAttribute('selected', 'true');
