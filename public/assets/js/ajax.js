@@ -199,7 +199,7 @@ function change_account_password(form){
 //     });
 // }
 
-// /*----------Edit user---------*/
+// /*----------Edit user--------*/
 function get_user_edit(el) {
     event.preventDefault();
     id = el.getAttribute('data-user-id');
