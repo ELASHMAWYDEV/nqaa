@@ -344,8 +344,10 @@ function get_order_edit(el) {
 
             if (output.technical)
                 edit_order_box.querySelector('select[name="technical"] option[value="'+ output.technical +'"]').setAttribute('selected', 'true');
+
             edit_order_box.querySelector('textarea[name="details"]').innerText = output.details;
 
+            edit_order_box.querySelector('textarea[name="notes"]').innerText = output.notes;
             //date
             edit_order_box.querySelector('input[name="date"]').setAttribute('value', output.date);
             edit_order_box.querySelector('div[type="datepicker"] .placeholder').innerText = output.date;
