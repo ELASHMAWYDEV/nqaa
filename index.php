@@ -31,4 +31,3 @@ spl_autoload_register('class_loader');
 
 
 new Application;
-// var_dump($_SERVER['REQUEST_URI']);
