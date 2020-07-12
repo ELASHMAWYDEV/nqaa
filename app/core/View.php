@@ -16,7 +16,7 @@ class View extends Controller
 
     public function renderHeader()
     {
-        
+
         include VIEW . 'header.phtml';
 
     }

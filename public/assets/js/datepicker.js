@@ -210,7 +210,7 @@ function datepicker() {
         containerHead.appendChild(prevMonth);
 
         monthYearIndicator.classList.add('month-year-indicator');
-        monthYearIndicator.innerText = `${getMonth(month)} ${year}`;
+        monthYearIndicator.innerText = `${getMonth(month - 1)} ${year}`;
         containerHead.appendChild(monthYearIndicator);
 
         nextMonth.innerText = ">";
