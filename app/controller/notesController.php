@@ -162,7 +162,7 @@ class notesController extends Controller
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
 
-        if ($stmt->rowCount() != '0') {
+        if ($stmt->rowCount() == '1') {
             $this->success[] = "تم حذف الملاحظة رقم #$id بنجاح";
             $this->redirect('notes', '2');
         } else {

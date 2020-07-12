@@ -176,5 +176,6 @@
         id = el.getAttribute('data-note-id');
         var delete_note_box = document.querySelector('.delete-note-box');
         delete_note_box.querySelector('span.note_id').innerHTML = id;
+        delete_note_box.querySelector('input[name="id"]').setAttribute('value', id);
     }
 </script>
