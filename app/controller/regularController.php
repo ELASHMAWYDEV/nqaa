@@ -35,13 +35,33 @@ class regularController extends Controller
 
         $regulars = $stmt->fetchAll();
         
+
+        
+        
+
+
         if ($stmt->rowCount() == '0') {
             $this->errors[] = "لا يوجد طلبات صيانة دورية لعرضها";
         } else {
             
+
+            //get regions
+            $sql = "SELECT * FROM regions";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            $regions = $stmt->fetchAll();
+            
             foreach ($regulars as $regular) {
                 $regular->next_date = date("d/m/Y", strtotime($regular->next_date));
+
+
+                foreach ($regions as $region) {
+                    if ($region->id == $regular->region) $regular->region = $region->region;
+                }
             }
+
+            
+
             $this->view->regulars = $regulars;
         }
     }
