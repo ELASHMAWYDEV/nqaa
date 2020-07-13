@@ -220,7 +220,7 @@
                     <select name="technical" onclick="rotateSelect(this);">
                         <option value="">الفني المسؤول</option>
                         <?php foreach ($this->technicals as $techy):?>
-                            <option value="<?=$techy->name?>"><?=$techy->name?></option>
+                            <option value="<?=$techy->id?>"><?=$techy->name?></option>
                         <?php endforeach;?>
                     </select>
                     <span></span>
@@ -341,7 +341,7 @@
                     <select name="technical" onclick="rotateSelect(this);">
                         <option value="">الفني المسؤول</option>
                         <?php foreach ($this->technicals as $techy):?>
-                            <option value="<?=$techy->name?>"><?=$techy->name?></option>
+                            <option value="<?=$techy->id?>"><?=$techy->name?></option>
                         <?php endforeach;?>
                     </select>
                     <span></span>

@@ -55,7 +55,10 @@ class ordersController extends Controller
                 $order->create_date = date("d/m/Y h:ia", strtotime($order->create_date));
                 
                 foreach ($technicals as $techy) {
-                    if ($techy->name == $order->technical) $order->technical_phone = $techy->phone;
+                    if ($techy->id == $order->technical) {
+                        $order->technical_phone = $techy->phone;
+                        $order->technical = $techy->name;
+                    }
                 }
 
                 foreach ($regions as $region) {
