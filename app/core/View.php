@@ -18,7 +18,7 @@ class View extends Controller
     {
 
         include VIEW . 'header.phtml';
-
+        
     }
 
     public function renderFile()

@@ -44,6 +44,13 @@ class ordersController extends Controller
             $stmt->execute();
             $technicals = $stmt->fetchAll();
 
+            //get regions
+            $sql = "SELECT * FROM regions";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            $regions = $stmt->fetchAll();
+
+
             foreach ($this->view->orders as $order) {
                 $order->create_date = date("d/m/Y h:ia", strtotime($order->create_date));
                 
@@ -51,7 +58,11 @@ class ordersController extends Controller
                     if ($techy->name == $order->technical) $order->technical_phone = $techy->phone;
                 }
 
+                foreach ($regions as $region) {
+                    if ($region->id == $order->region) $order->region = $region->region;
+                }
             }
+
         }
     }
 

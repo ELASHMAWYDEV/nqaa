@@ -183,7 +183,7 @@
                     <select name="region" onclick="rotateSelect(this);" class="read-only">
                         <option value="">الحي / المنطقة</option>
                         <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->region?>"><?=$region->region?></option>
+                            <option value="<?=$region->id?>"><?=$region->region?></option>
                         <?php endforeach;?>
                     </select>
                     <span></span>
@@ -305,7 +305,7 @@
                     <select name="region" onclick="rotateSelect(this);">
                         <option value="">الحي / المنطقة</option>
                         <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->region?>"><?=$region->region?></option>
+                            <option value="<?=$region->id?>"><?=$region->region?></option>
                         <?php endforeach;?>
                     </select>
                     <span></span>
