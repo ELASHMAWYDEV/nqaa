@@ -40,10 +40,10 @@
                             <td><?=$region->id;?></td>
                             <td><?=$region->region;?></td>
                             <td class="action">
-                                <form method="POST">
+                                <!-- <form method="POST">
                                     <input type="hidden" name="region_id" value="<?=$region->id;?>">
                                     <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?=$region->id;?>" class="delete_region_btn">
-                                </form>
+                                </form> -->
                                 <button id="btn-edit" class="btn-edit" data-region-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
 
                             </td>
