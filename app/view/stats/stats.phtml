@@ -120,7 +120,7 @@
                                     <option value="<?=$techy->id?>"><?=$techy->name?></option>
                                 <?php endforeach;?>
                             <?php else:?>
-                                <option value="<?=$_SESSION['id']?>"><?=$_SESSION['name']?></option>
+                                <option value="<?=$_SESSION['id']?>" selected><?=$_SESSION['name']?></option>
                             <?php endif;?>
                         </select>
                         <span></span>
@@ -291,6 +291,5 @@
             document.querySelector(`select[name="technical"] option[value="<?=$this->technical?>"]`).setAttribute('selected', 'true');
 
     if (`<?=$this->period?>`) 
-            document.querySelector(`select[name="period"] option[value="<?=$this->period?>"]`).setAttribute('selected', 'true');
-
+            document.querySelector(`select[name="period"] option[value="<?=$this->period?>"]`).setAttribute('selected', 'true'); 
 </script>

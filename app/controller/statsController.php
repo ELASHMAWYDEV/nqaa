@@ -14,7 +14,7 @@ class statsController extends Controller
 
         //احصائيات الفني
         if($this->role('فني')) {
-            $this->getTechnicalStats($_SESSION['name']);
+            $this->getTechnicalStats($_SESSION['id']);
         } else {
             isset($_POST['technical_stats']) ? $this->getTechnicalStats($_POST['technical']) : $this->getTechnicalStats();
         }
