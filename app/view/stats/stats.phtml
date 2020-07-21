@@ -117,7 +117,7 @@
                             <?php if(!$this->role('فني')):?>
                                 <option value="">اختر الفني</option>
                                 <?php foreach($this->technicals as $techy):?>
-                                    <option value="<?=$techy->name?>"><?=$techy->name?></option>
+                                    <option value="<?=$techy->id?>"><?=$techy->name?></option>
                                 <?php endforeach;?>
                             <?php else:?>
                                 <option value="<?=$_SESSION['name']?>"><?=$_SESSION['name']?></option>
