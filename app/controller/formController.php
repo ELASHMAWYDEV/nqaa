@@ -15,7 +15,6 @@ class formController extends Controller
         $this->view->renderFile();
         $this->view->renderFooter();
         $this->view->viewMessages($this->errors, $this->success);
-
     }
 
 
@@ -32,18 +31,18 @@ class formController extends Controller
         $lat = $_POST['lat'];
         $lng = $_POST['lng'];
 
-        $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, `status`, map_lat, map_lng) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, 'Not Finish', :map_lat, :map_lng)";
+        $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, `status`, map_lat, map_lng, created_by) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, 'Not Finish', :map_lat, :map_lng, :created_by)";
         $stmt = $this->db->prepare($sql);
 
 
         //common errors
         if (empty($name)) $this->errors[] = 'الاسم مطلوب';
-        if (empty($phone)) $this->errors[] = 'رقم الجوال مطلوب'; 
-        if (empty($type)) $this->errors[] = 'يجب اختيار نوع الخدمة ، صيانة /تركيب'; 
-        if (empty($region)) $this->errors[] = 'يجب اختيار الحي / المنطقة';  
-        if (empty($date)) $this->errors[] = 'يجب اختيار تاريخ الطلب';  
-        if (empty($time)) $this->errors[] = 'يجب اختيار وقت الطلب';  
-        if (empty($address)) $this->errors[] = 'العنوان مطلوب';  
+        if (empty($phone)) $this->errors[] = 'رقم الجوال مطلوب';
+        if (empty($type)) $this->errors[] = 'يجب اختيار نوع الخدمة ، صيانة /تركيب';
+        if (empty($region)) $this->errors[] = 'يجب اختيار الحي / المنطقة';
+        if (empty($date)) $this->errors[] = 'يجب اختيار تاريخ الطلب';
+        if (empty($time)) $this->errors[] = 'يجب اختيار وقت الطلب';
+        if (empty($address)) $this->errors[] = 'العنوان مطلوب';
 
 
         if (count($this->errors) == 0) {
@@ -57,8 +56,9 @@ class formController extends Controller
                 'time' => $time,
                 'address' => $address,
                 'notes' => $notes,
-                'map_lat' => $lat, 
-                'map_lng' => $lng
+                'map_lat' => $lat,
+                'map_lng' => $lng,
+                'created_by' => "العميل",
             ]);
 
             if ($stmt->rowCount() != '0') {
@@ -94,7 +94,6 @@ class formController extends Controller
                 $this->errors[] = 'حدث خطأ ما ، يرجي التواصل مع الادارة';
             }
         }
-
     }
 
 
@@ -142,5 +141,4 @@ class formController extends Controller
 
         $this->view->regions = $stmt->fetchAll();
     }
-
 }

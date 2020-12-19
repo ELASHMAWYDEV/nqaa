@@ -4,7 +4,7 @@
         <p>/</p>
         <h6>الصيانة الدورية</h6>
     </div>
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container regular">
         <div class="search-container">
             <h3>البحث المتقدم</h3>
@@ -15,9 +15,9 @@
                 <div class="select-item">
                     <select id="region-search" onclick="rotateSelect(this)">
                         <option value="">الحي / المنطقة</option>
-                        <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->region?>"><?=$region->region?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->regions as $region) : ?>
+                            <option value="<?= $region->region ?>"><?= $region->region ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -36,36 +36,40 @@
                             <th>العنوان بالتفصيل</th>
                             <th>تاريخ الصيانة القادم</th>
                             <th>رقم الطلب القديم</th>
+                            <th>نوع الطلب القديم</th>
+                            <th>حالة الطلب القديم</th>
                             <th>الاجراء</th>
                             <th>واتساب</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php foreach($this->regulars as $regular):?>
-                        <tr>
-                            <td><?=$regular->id?></td>
-                            <td><?=$regular->name?></td>
-                            <td><?=$regular->phone?></td>
-                            <td><?=$regular->region?></td>
-                            <td><?=$regular->address?></td>
-                            <td><?=$regular->next_date?></td>
-                            <td><?=$regular->old_order_id?></td>
-                            <td class="action">
-                                <?php if(empty($regular->action)):?>
-                                <form method="POST" onsubmit="return confirm('هل أنت متأكد أنك أنشأت طلب جديد باسم العميل: <?=$regular->name?> \n في صفحة الطلبات ؟');">
-                                    <input type="hidden" name="id" value="<?=$regular->id?>">
-                                    <button class="btn-done" type="submit">تم انشاء طلب جديد للعميل</button>
-                                </form>
-                                <?php else:?>
-                                <?=$regular->action?>
-                                <?php endif;?>
-                                <img onclick="popupBox('.delete-regular-box'); get_regular_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف الطلب" title="حذف الطلب" data-regular-id="<?=$regular->id;?>" class="delete_regular_btn">
-                            </td>
-                            <td><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966<?=$regular->phone?>&text=مرحبا <?=$regular->name?>%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?=ROOT_URL . 'form'?>%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
 
-                        </tr>
-                        <?php endforeach;?>
+                        <?php foreach ($this->regulars as $regular) : ?>
+                            <tr>
+                                <td><?= $regular->id ?></td>
+                                <td><?= $regular->name ?></td>
+                                <td><?= $regular->phone ?></td>
+                                <td><?= $regular->region ?></td>
+                                <td><?= $regular->address ?></td>
+                                <td><?= $regular->next_date ?></td>
+                                <td><?= $regular->old_order_id ?></td>
+                                <td><?= $regular->type ?></td>
+                                <td><?= $regular->status ?></td>
+                                <td class="action">
+                                    <?php if (empty($regular->action)) : ?>
+                                        <form method="POST" onsubmit="return confirm('هل أنت متأكد أنك أنشأت طلب جديد باسم العميل: <?= $regular->name ?> \n في صفحة الطلبات ؟');">
+                                            <input type="hidden" name="id" value="<?= $regular->id ?>">
+                                            <button class="btn-done" type="submit">تم انشاء طلب جديد للعميل</button>
+                                        </form>
+                                    <?php else : ?>
+                                        <?= $regular->action ?>
+                                    <?php endif; ?>
+                                    <img onclick="popupBox('.delete-regular-box'); get_regular_delete(this);" src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف الطلب" title="حذف الطلب" data-regular-id="<?= $regular->id; ?>" class="delete_regular_btn">
+                                </td>
+                                <td><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966<?= $regular->phone ?>&text=مرحبا <?= $regular->name ?>%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?= ROOT_URL . 'form' ?>%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
+
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -98,7 +102,7 @@
                 <div class="input-item"><button class="abort-btn" type="" onclick="abort('.delete-regular-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete regular Box END-->
@@ -106,9 +110,8 @@
 
 
 <script>
-
-     //search with old_id
-     let old_id_search = document.querySelector('#old-id-search');
+    //search with old_id
+    let old_id_search = document.querySelector('#old-id-search');
     old_id_search.oninput = e => searchInput(old_id_search, 7);
 
 
@@ -123,7 +126,7 @@
     //search with region
     let region_search = document.querySelector('#region-search');
     region_search.oninput = e => searchInput(region_search, 4);
-    
+
     //search with date
     document.querySelector('div[type="datepicker"]').onclick = e => {
         let date_search = document.querySelector('input[name="date-search"]');
@@ -132,12 +135,11 @@
     }
 
 
-    function get_regular_delete(el){
-    id = el.getAttribute('data-regular-id');
-    var delete_regular_box = document.querySelector('.delete-regular-box');
-    delete_regular_box.querySelector('span.regular_id').innerHTML = id;
-    document.forms['delete_regular_form']['id'].setAttribute('value', id);
+    function get_regular_delete(el) {
+        id = el.getAttribute('data-regular-id');
+        var delete_regular_box = document.querySelector('.delete-regular-box');
+        delete_regular_box.querySelector('span.regular_id').innerHTML = id;
+        document.forms['delete_regular_form']['id'].setAttribute('value', id);
 
-}
-
+    }
 </script>

@@ -22,7 +22,6 @@ class ordersController extends Controller
         $this->view->viewMessages($this->errors, $this->success);
         $this->view->renderFooter();
         $this->view->pagination();
-
     }
 
 
@@ -53,7 +52,7 @@ class ordersController extends Controller
 
             foreach ($this->view->orders as $order) {
                 $order->create_date = date("d/m/Y h:ia", strtotime($order->create_date));
-                
+
                 foreach ($technicals as $techy) {
                     if ($techy->id == $order->technical) {
                         $order->technical_phone = $techy->phone;
@@ -65,7 +64,6 @@ class ordersController extends Controller
                     if ($region->id == $order->region) $order->region = $region->region;
                 }
             }
-
         }
     }
 
@@ -100,31 +98,26 @@ class ordersController extends Controller
         $technical = $stmt->fetch();
 
         //start
-        if(empty($technical->technical) && empty($_POST['technical'])) {
+        if (empty($technical->technical) && empty($_POST['technical'])) {
             $sql = "UPDATE orders SET name = :name, phone = :phone, type = :type, region = :region, address = :address, date = :date, time = :time,
                     notes = :notes, money = :money, technical = :technical, details = :details, status = :status, invoice_num = :invoice_num, appointment_status = :appointment_status WHERE id = '$id'";
             $stmt = $this->db->prepare($sql);
-
         } else if (empty($technical->technical) && !empty($_POST['technical'])) {
             $sql = "UPDATE orders SET name = :name, phone = :phone, type = :type, region = :region, address = :address, date = :date, time = :time,
                     notes = :notes, money = :money, technical = :technical, details = :details, status = :status, invoice_num = :invoice_num, appointment_status = :appointment_status, technical_start = NOW() WHERE id = '$id'";
             $stmt = $this->db->prepare($sql);
-
         } else if (!empty($technical->technical) && !empty($_POST['status']) && $_POST['status'] == 'Finsih') {
             $sql = "UPDATE orders SET name = :name, phone = :phone, type = :type, region = :region, address = :address, date = :date, time = :time,
                     notes = :notes, money = :money, technical = :technical, details = :details, status = :status, invoice_num = :invoice_num, appointment_status = :appointment_status, technical_finish = NOW() WHERE id = '$id'";
             $stmt = $this->db->prepare($sql);
-
         } else if (!empty($technical->technical) && !empty($_POST['status']) && $_POST['status'] == 'Not Finish') {
             $sql = "UPDATE orders SET name = :name, phone = :phone, type = :type, region = :region, address = :address, date = :date, time = :time,
                     notes = :notes, money = :money, technical = :technical, details = :details, status = :status, invoice_num = :invoice_num, appointment_status = :appointment_status, technical_finish = NULL WHERE id = '$id'";
             $stmt = $this->db->prepare($sql);
-
         } else {
             $sql = "UPDATE orders SET name = :name, phone = :phone, type = :type, region = :region, address = :address, date = :date, time = :time,
                     notes = :notes, money = :money, technical = :technical, details = :details, status = :status, invoice_num = :invoice_num, appointment_status = :appointment_status WHERE id = '$id'";
             $stmt = $this->db->prepare($sql);
-            
         }
 
         $stmt->execute([
@@ -147,8 +140,7 @@ class ordersController extends Controller
         if ($stmt->rowCount() == '1') {
             $this->success[] = "تم تعديل الطلب رقم $id بنجاح";
             $this->redirect('orders', '3');
-        }
-        else $this->errors[] = "حدث خطأ ما أو انك لم تقم بأي تعديلات";
+        } else $this->errors[] = "حدث خطأ ما أو انك لم تقم بأي تعديلات";
     }
 
 
@@ -211,26 +203,26 @@ class ordersController extends Controller
         $technical = $_POST['technical'];
         $details = $_POST['details'];
         $status = $_POST['status'];
-        
-        
+        $created_by = $_SESSION['name'];
 
-        if(empty($technical)) {
-            $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, money, technical, details, status) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, :money, :technical, :details, :status)";
+
+        if (empty($technical)) {
+            $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, money, technical, details, status, created_by) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, :money, :technical, :details, :status, :created_by)";
             $stmt = $this->db->prepare($sql);
         } else {
-            $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, money, technical, details, status, technical_start) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, :money, :technical, :details, :status, NOW())";
+            $sql = "INSERT INTO orders (name, phone, type, region, date, time, address, notes, money, technical, details, status, created_by,technical_start) VALUES (:name, :phone, :type, :region, :date, :time, :address, :notes, :money, :technical, :details, :status, :created_by, NOW())";
             $stmt = $this->db->prepare($sql);
         }
 
 
         //common errors
         if (empty($name)) $this->errors[] = 'الاسم مطلوب';
-        if (empty($phone)) $this->errors[] = 'رقم الجوال مطلوب'; 
-        if (empty($type)) $this->errors[] = 'يجب اختيار نوع الخدمة ، صيانة /تركيب'; 
+        if (empty($phone)) $this->errors[] = 'رقم الجوال مطلوب';
+        if (empty($type)) $this->errors[] = 'يجب اختيار نوع الخدمة ، صيانة /تركيب';
         // if (empty($region)) $this->errors[] = 'يجب اختيار الحي / المنطقة';  
-        if (empty($date)) $this->errors[] = 'يجب اختيار تاريخ الطلب';  
-        if (empty($time)) $this->errors[] = 'يجب اختيار وقت الطلب';  
-        if (empty($address)) $this->errors[] = 'العنوان مطلوب';  
+        if (empty($date)) $this->errors[] = 'يجب اختيار تاريخ الطلب';
+        if (empty($time)) $this->errors[] = 'يجب اختيار وقت الطلب';
+        if (empty($address)) $this->errors[] = 'العنوان مطلوب';
 
 
         if (count($this->errors) == 0) {
@@ -248,12 +240,13 @@ class ordersController extends Controller
                 'technical' => $technical,
                 'details' => $details,
                 'status' => $status,
+                'created_by' => $created_by,
             ]);
 
             if ($stmt->rowCount() != '0') {
-                
+
                 $order_id = $this->db->lastInsertId();
-                
+
                 //add to regular orders
 
                 //get the months
@@ -281,7 +274,6 @@ class ordersController extends Controller
                 $this->errors[] = 'حدث خطأ ما ، يرجي التواصل مع الادارة';
             }
         }
-
     }
 
 
@@ -294,11 +286,11 @@ class ordersController extends Controller
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$order_id]);
 
-        if($stmt->rowCount() != '0') {
+        if ($stmt->rowCount() != '0') {
             $this->success[] = "تم حذف الطلب بنجاح";
         } else {
             $this->errors[] = "حدث خطأ ما";
-        } 
+        }
         $this->redirect('orders', '2');
     }
 }

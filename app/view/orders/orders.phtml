@@ -71,6 +71,7 @@
                             <th>التاريخ</th>
                             <th>الوقت</th>
                             <th>ملاحظات العميل</th>
+                            <th>تم انشائه بواسطة</th>
                             <th>تاريخ تقديم الطلب</th>
                             <th>حالة الموعد</th>
                             <th>المبلغ</th>
@@ -104,6 +105,7 @@
                             <td><?=$order->date?></td>
                             <td dir="ltr"><?=$order->time?></td>
                             <td><?=$order->notes?></td>
+                            <td><?=$order->created_by?></td>
                             <td><?=$order->create_date?></td>
                             <td><?=$order->appointment_status?></td>
                             <td><?=$order->money?></td>

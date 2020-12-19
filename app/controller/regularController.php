@@ -29,28 +29,24 @@ class regularController extends Controller
     public function getRegular()
     {
 
-        $sql = "SELECT * FROM regular ORDER BY id DESC";
+        $sql = "SELECT regular.*, orders.type, orders.status FROM regular LEFT JOIN orders ON regular.old_order_id = orders.id ORDER BY id DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
         $regulars = $stmt->fetchAll();
-        
-
-        
-        
 
 
         if ($stmt->rowCount() == '0') {
             $this->errors[] = "لا يوجد طلبات صيانة دورية لعرضها";
         } else {
-            
+
 
             //get regions
             $sql = "SELECT * FROM regions";
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
             $regions = $stmt->fetchAll();
-            
+
             foreach ($regulars as $regular) {
                 $regular->next_date = date("d/m/Y", strtotime($regular->next_date));
 
@@ -60,7 +56,7 @@ class regularController extends Controller
                 }
             }
 
-            
+
 
             $this->view->regulars = $regulars;
         }
@@ -99,12 +95,11 @@ class regularController extends Controller
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$regular_id]);
 
-        if($stmt->rowCount() != '0') {
+        if ($stmt->rowCount() != '0') {
             $this->success[] = "تم حذف طلب الصيانة الدورية بنجاح";
         } else {
             $this->errors[] = "حدث خطأ ما";
-        } 
+        }
         $this->redirect('regular', '1');
     }
-
 }
