@@ -95,7 +95,7 @@
 }
 
 .closing:hover span {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
 }
 
 /******************************/
@@ -166,7 +166,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -208,7 +208,7 @@
 
 .stats .boxs .stats-box:nth-child(odd) {
   border-radius: 10px;
-  background: linear-gradient(200deg, #27AE60 0%, #2ECC71 100%);
+  background: linear-gradient(200deg, #27ae60 0%, #2ecc71 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,7 +266,7 @@
 
 .stats .boxs .stats-box:nth-child(even) {
   border-radius: 10px;
-  background: linear-gradient(-160deg, #C0392B 0%, #E74C3C 100%);
+  background: linear-gradient(-160deg, #c0392b 0%, #e74c3c 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,7 +326,7 @@
   display: block;
   width: 80%;
   height: 3px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 5px;
   margin: auto;
 }
@@ -334,7 +334,7 @@
 .payments .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -349,7 +349,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -358,7 +358,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -404,7 +404,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -467,8 +467,8 @@
 
 .payments .add-new .btn-add-new-payment {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -482,7 +482,7 @@
 }
 
 .payments .add-new .btn-add-new-payment:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .payments .add-new .btn-add-new-payment:active {
@@ -511,7 +511,7 @@
 }
 
 .payments .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -555,7 +555,7 @@
 }
 
 .payments .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .payments .table-container tr:nth-child(even) {
@@ -598,7 +598,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -618,16 +618,16 @@
 }
 
 .payments .table-container .pagination button:hover, .payments .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .payments .table-container .pagination .next-btn, .payments .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -650,7 +650,7 @@
 
 .payments .table-container .pagination .next-btn:hover, .payments .table-container .pagination .next-btn.active-page, .payments .table-container .pagination .prev-btn:hover, .payments .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .payments .table-container .pagination .next-btn::before {
@@ -686,8 +686,8 @@
 
 .payments .table-container .btn-confirm {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -702,7 +702,7 @@
 }
 
 .payments .table-container .btn-confirm:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .payments .table-container .btn-confirm:active {
@@ -714,8 +714,8 @@
 
 .payments .table-container .btn-unvalid {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -730,7 +730,7 @@
 }
 
 .payments .table-container .btn-unvalid:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .payments .table-container .btn-unvalid:active {
@@ -742,8 +742,8 @@
 
 .payments .table-container .btn-edit {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -758,7 +758,7 @@
 }
 
 .payments .table-container .btn-edit:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .payments .table-container .btn-edit:active {
@@ -801,7 +801,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -826,7 +826,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -903,7 +903,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -950,8 +950,8 @@
 
 .add-payment-box .add-btn, .edit-payment-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -965,7 +965,7 @@
 }
 
 .add-payment-box .add-btn:hover, .edit-payment-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-payment-box .add-btn:active, .edit-payment-box .add-btn:active {
@@ -977,8 +977,8 @@
 
 .add-payment-box .edit-btn, .edit-payment-box .edit-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -992,7 +992,7 @@
 }
 
 .add-payment-box .edit-btn:hover, .edit-payment-box .edit-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-payment-box .edit-btn:active, .edit-payment-box .edit-btn:active {
@@ -1035,7 +1035,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -1060,7 +1060,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -1137,7 +1137,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -1184,8 +1184,8 @@
 
 .delete-payment-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1200,7 +1200,7 @@
 }
 
 .delete-payment-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .delete-payment-box .delete-btn:active {
@@ -1212,8 +1212,8 @@
 
 .delete-payment-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1227,7 +1227,7 @@
 }
 
 .delete-payment-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .delete-payment-box .abort-btn:active {
@@ -1247,7 +1247,7 @@
 .notes .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -1262,7 +1262,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -1271,7 +1271,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -1317,7 +1317,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -1400,8 +1400,8 @@
 
 .notes .add-new .btn-add-new-note {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1415,7 +1415,7 @@
 }
 
 .notes .add-new .btn-add-new-note:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .notes .add-new .btn-add-new-note:active {
@@ -1444,7 +1444,7 @@
 }
 
 .notes .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -1488,7 +1488,7 @@
 }
 
 .notes .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .notes .table-container tr:nth-child(even) {
@@ -1531,7 +1531,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -1551,16 +1551,16 @@
 }
 
 .notes .table-container .pagination button:hover, .notes .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .notes .table-container .pagination .next-btn, .notes .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -1583,7 +1583,7 @@
 
 .notes .table-container .pagination .next-btn:hover, .notes .table-container .pagination .next-btn.active-page, .notes .table-container .pagination .prev-btn:hover, .notes .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .notes .table-container .pagination .next-btn::before {
@@ -1619,8 +1619,8 @@
 
 .notes .table-container .btn-done {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1635,7 +1635,7 @@
 }
 
 .notes .table-container .btn-done:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .notes .table-container .btn-done:active {
@@ -1647,8 +1647,8 @@
 
 .notes .table-container .btn-edit {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1663,7 +1663,7 @@
 }
 
 .notes .table-container .btn-edit:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .notes .table-container .btn-edit:active {
@@ -1706,7 +1706,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -1731,7 +1731,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -1808,7 +1808,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -1855,8 +1855,8 @@
 
 .add-note-box .add-btn, .edit-note-box .add-btn, .delete-note-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1870,7 +1870,7 @@
 }
 
 .add-note-box .add-btn:hover, .edit-note-box .add-btn:hover, .delete-note-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-note-box .add-btn:active, .edit-note-box .add-btn:active, .delete-note-box .add-btn:active {
@@ -1882,8 +1882,8 @@
 
 .add-note-box .delete-btn, .edit-note-box .delete-btn, .delete-note-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1898,7 +1898,7 @@
 }
 
 .add-note-box .delete-btn:hover, .edit-note-box .delete-btn:hover, .delete-note-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .add-note-box .delete-btn:active, .edit-note-box .delete-btn:active, .delete-note-box .delete-btn:active {
@@ -1910,8 +1910,8 @@
 
 .add-note-box .abort-btn, .edit-note-box .abort-btn, .delete-note-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1925,7 +1925,7 @@
 }
 
 .add-note-box .abort-btn:hover, .edit-note-box .abort-btn:hover, .delete-note-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .add-note-box .abort-btn:active, .edit-note-box .abort-btn:active, .delete-note-box .abort-btn:active {
@@ -1937,8 +1937,8 @@
 
 .add-note-box .edit-btn, .edit-note-box .edit-btn, .delete-note-box .edit-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1952,7 +1952,7 @@
 }
 
 .add-note-box .edit-btn:hover, .edit-note-box .edit-btn:hover, .delete-note-box .edit-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-note-box .edit-btn:active, .edit-note-box .edit-btn:active, .delete-note-box .edit-btn:active {
@@ -1984,8 +1984,8 @@
 
 .news .add-new .btn-add-new-news {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -1999,7 +1999,7 @@
 }
 
 .news .add-new .btn-add-new-news:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .news .add-new .btn-add-new-news:active {
@@ -2028,7 +2028,7 @@
 }
 
 .news .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -2072,7 +2072,7 @@
 }
 
 .news .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .news .table-container tr:nth-child(even) {
@@ -2115,7 +2115,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -2135,16 +2135,16 @@
 }
 
 .news .table-container .pagination button:hover, .news .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .news .table-container .pagination .next-btn, .news .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -2167,7 +2167,7 @@
 
 .news .table-container .pagination .next-btn:hover, .news .table-container .pagination .next-btn.active-page, .news .table-container .pagination .prev-btn:hover, .news .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .news .table-container .pagination .next-btn::before {
@@ -2203,8 +2203,8 @@
 
 .news .table-container .btn-delete {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2219,7 +2219,7 @@
 }
 
 .news .table-container .btn-delete:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .news .table-container .btn-delete:active {
@@ -2262,7 +2262,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -2287,7 +2287,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -2364,7 +2364,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -2411,8 +2411,8 @@
 
 .add-news-box .add-btn, .delete-news-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2426,7 +2426,7 @@
 }
 
 .add-news-box .add-btn:hover, .delete-news-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-news-box .add-btn:active, .delete-news-box .add-btn:active {
@@ -2438,8 +2438,8 @@
 
 .add-news-box .delete-btn, .delete-news-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2454,7 +2454,7 @@
 }
 
 .add-news-box .delete-btn:hover, .delete-news-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .add-news-box .delete-btn:active, .delete-news-box .delete-btn:active {
@@ -2466,8 +2466,8 @@
 
 .add-news-box .abort-btn, .delete-news-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2481,7 +2481,7 @@
 }
 
 .add-news-box .abort-btn:hover, .delete-news-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .add-news-box .abort-btn:active, .delete-news-box .abort-btn:active {
@@ -2505,12 +2505,12 @@
   font-size: 18px;
   width: 100%;
   margin-bottom: 15px;
-  background-color: #E74C3C;
+  background-color: #e74c3c;
   width: 500px;
   max-width: 80%;
   margin: auto;
   margin-top: 20px;
-  border: 2px solid #C0392B;
+  border: 2px solid #c0392b;
   -webkit-animation: newsbox 1s ease infinite;
           animation: newsbox 1s ease infinite;
 }
@@ -2591,7 +2591,7 @@
 .users .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -2606,7 +2606,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -2615,7 +2615,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -2661,7 +2661,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -2724,8 +2724,8 @@
 
 .users .add-new .btn-add-new-user {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2739,7 +2739,7 @@
 }
 
 .users .add-new .btn-add-new-user:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .users .add-new .btn-add-new-user:active {
@@ -2768,7 +2768,7 @@
 }
 
 .users .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -2812,7 +2812,7 @@
 }
 
 .users .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .users .table-container tr:nth-child(even) {
@@ -2855,7 +2855,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -2875,16 +2875,16 @@
 }
 
 .users .table-container .pagination button:hover, .users .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .users .table-container .pagination .next-btn, .users .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -2907,7 +2907,7 @@
 
 .users .table-container .pagination .next-btn:hover, .users .table-container .pagination .next-btn.active-page, .users .table-container .pagination .prev-btn:hover, .users .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .users .table-container .pagination .next-btn::before {
@@ -2943,8 +2943,8 @@
 
 .users .table-container .btn-edit {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -2959,7 +2959,7 @@
 }
 
 .users .table-container .btn-edit:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .users .table-container .btn-edit:active {
@@ -3007,7 +3007,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3032,7 +3032,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3109,7 +3109,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -3156,8 +3156,8 @@
 
 .add-user-box .save-btn, .edit-user-box .save-btn, .delete-user-box .save-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -3171,7 +3171,7 @@
 }
 
 .add-user-box .save-btn:hover, .edit-user-box .save-btn:hover, .delete-user-box .save-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-user-box .save-btn:active, .edit-user-box .save-btn:active, .delete-user-box .save-btn:active {
@@ -3183,8 +3183,8 @@
 
 .add-user-box .delete-btn, .edit-user-box .delete-btn, .delete-user-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -3199,7 +3199,7 @@
 }
 
 .add-user-box .delete-btn:hover, .edit-user-box .delete-btn:hover, .delete-user-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .add-user-box .delete-btn:active, .edit-user-box .delete-btn:active, .delete-user-box .delete-btn:active {
@@ -3211,8 +3211,8 @@
 
 .add-user-box .abort-btn, .edit-user-box .abort-btn, .delete-user-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -3226,7 +3226,7 @@
 }
 
 .add-user-box .abort-btn:hover, .edit-user-box .abort-btn:hover, .delete-user-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .add-user-box .abort-btn:active, .edit-user-box .abort-btn:active, .delete-user-box .abort-btn:active {
@@ -3244,7 +3244,7 @@
 }
 
 .login-container {
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -3279,7 +3279,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   padding: 10px 20px;
 }
 
@@ -3336,7 +3336,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3361,8 +3361,8 @@
 
 .login-container .login-box .input-items button {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 25px;
   padding: 4px 15px;
@@ -3373,7 +3373,7 @@
 }
 
 .login-container .login-box .input-items button:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .login-container .login-box .input-items button:active {
@@ -3391,7 +3391,7 @@
   width: 480px;
   max-width: 95%;
   margin: 30px auto 150px;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .form-container .separator {
@@ -3485,7 +3485,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3552,7 +3552,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -3638,7 +3638,7 @@
 
 .form-container .form-box .order-date .working-hours-box {
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   width: 100%;
   padding: 10px 20px 20px;
   border-radius: 10px;
@@ -3760,7 +3760,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3778,8 +3778,8 @@
 
 .form-container .form-box .submit-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 25px;
   padding: 4px 15px;
@@ -3796,7 +3796,7 @@
 }
 
 .form-container .form-box .submit-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .form-container .form-box .submit-btn:active {
@@ -3818,7 +3818,7 @@
 
 .form-container .phone-item .phone-ext {
   position: absolute;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
@@ -3861,7 +3861,7 @@
   width: 35px !important;
   padding: 4px 7px !important;
   text-align-last: center;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
 }
 
@@ -3901,7 +3901,7 @@
 .orders .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -3916,7 +3916,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -3925,7 +3925,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -3971,7 +3971,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -4034,8 +4034,8 @@
 
 .orders .add-new .btn-add-new-order {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4049,7 +4049,7 @@
 }
 
 .orders .add-new .btn-add-new-order:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .orders .add-new .btn-add-new-order:active {
@@ -4078,7 +4078,7 @@
 }
 
 .orders .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -4122,7 +4122,7 @@
 }
 
 .orders .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .orders .table-container tr:nth-child(even) {
@@ -4165,7 +4165,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -4185,16 +4185,16 @@
 }
 
 .orders .table-container .pagination button:hover, .orders .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .orders .table-container .pagination .next-btn, .orders .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -4217,7 +4217,7 @@
 
 .orders .table-container .pagination .next-btn:hover, .orders .table-container .pagination .next-btn.active-page, .orders .table-container .pagination .prev-btn:hover, .orders .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .orders .table-container .pagination .next-btn::before {
@@ -4253,8 +4253,8 @@
 
 .orders .table-container .btn-edit {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4269,7 +4269,7 @@
 }
 
 .orders .table-container .btn-edit:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .orders .table-container .btn-edit:active {
@@ -4281,8 +4281,8 @@
 
 .orders .table-container .whatsapp-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4297,7 +4297,7 @@
 }
 
 .orders .table-container .whatsapp-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .orders .table-container .whatsapp-btn:active {
@@ -4309,8 +4309,8 @@
 
 .orders .table-container .whatsapp-techy-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4325,7 +4325,7 @@
 }
 
 .orders .table-container .whatsapp-techy-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .orders .table-container .whatsapp-techy-btn:active {
@@ -4338,7 +4338,7 @@
 .orders .table-container .maps-btn {
   cursor: pointer;
   background-color: #0984e3;
-  border: 1.5px solid #D1E1F0;
+  border: 1.5px solid #d1e1f0;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4353,7 +4353,7 @@
 }
 
 .orders .table-container .maps-btn:hover {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .orders .table-container .maps-btn:active {
@@ -4364,7 +4364,7 @@
 }
 
 .orders .table-container .maps-btn:hover {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
 }
 
 .edit-order-box, .add-order-box, .show-map-box {
@@ -4400,7 +4400,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -4425,7 +4425,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -4502,7 +4502,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -4563,8 +4563,8 @@
 
 .edit-order-box .edit-btn, .edit-order-box .add-btn, .add-order-box .edit-btn, .add-order-box .add-btn, .show-map-box .edit-btn, .show-map-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4578,7 +4578,7 @@
 }
 
 .edit-order-box .edit-btn:hover, .edit-order-box .add-btn:hover, .add-order-box .edit-btn:hover, .add-order-box .add-btn:hover, .show-map-box .edit-btn:hover, .show-map-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .edit-order-box .edit-btn:active, .edit-order-box .add-btn:active, .add-order-box .edit-btn:active, .add-order-box .add-btn:active, .show-map-box .edit-btn:active, .show-map-box .add-btn:active {
@@ -4603,7 +4603,7 @@
 
 .edit-order-box .phone-item .phone-ext, .add-order-box .phone-item .phone-ext, .show-map-box .phone-item .phone-ext {
   position: absolute;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
@@ -4690,7 +4690,7 @@
 .regions .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -4705,7 +4705,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -4714,7 +4714,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -4760,7 +4760,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -4823,8 +4823,8 @@
 
 .regions .add-new .btn-add-new-region {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -4838,7 +4838,7 @@
 }
 
 .regions .add-new .btn-add-new-region:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .regions .add-new .btn-add-new-region:active {
@@ -4867,7 +4867,7 @@
 }
 
 .regions .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -4911,7 +4911,7 @@
 }
 
 .regions .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .regions .table-container tr:nth-child(even) {
@@ -4954,7 +4954,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -4974,16 +4974,16 @@
 }
 
 .regions .table-container .pagination button:hover, .regions .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .regions .table-container .pagination .next-btn, .regions .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -5006,7 +5006,7 @@
 
 .regions .table-container .pagination .next-btn:hover, .regions .table-container .pagination .next-btn.active-page, .regions .table-container .pagination .prev-btn:hover, .regions .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .regions .table-container .pagination .next-btn::before {
@@ -5042,8 +5042,8 @@
 
 .regions .table-container .btn-delete {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5058,7 +5058,7 @@
 }
 
 .regions .table-container .btn-delete:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .regions .table-container .btn-delete:active {
@@ -5070,8 +5070,8 @@
 
 .regions .table-container .btn-edit {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5086,7 +5086,7 @@
 }
 
 .regions .table-container .btn-edit:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .regions .table-container .btn-edit:active {
@@ -5129,7 +5129,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -5154,7 +5154,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -5231,7 +5231,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -5278,8 +5278,8 @@
 
 .add-region-box .add-btn, .delete-region-box .add-btn, .edit-region-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5293,7 +5293,7 @@
 }
 
 .add-region-box .add-btn:hover, .delete-region-box .add-btn:hover, .edit-region-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-region-box .add-btn:active, .delete-region-box .add-btn:active, .edit-region-box .add-btn:active {
@@ -5305,8 +5305,8 @@
 
 .add-region-box .delete-btn, .delete-region-box .delete-btn, .edit-region-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5321,7 +5321,7 @@
 }
 
 .add-region-box .delete-btn:hover, .delete-region-box .delete-btn:hover, .edit-region-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .add-region-box .delete-btn:active, .delete-region-box .delete-btn:active, .edit-region-box .delete-btn:active {
@@ -5333,8 +5333,8 @@
 
 .add-region-box .abort-btn, .delete-region-box .abort-btn, .edit-region-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5348,7 +5348,7 @@
 }
 
 .add-region-box .abort-btn:hover, .delete-region-box .abort-btn:hover, .edit-region-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .add-region-box .abort-btn:active, .delete-region-box .abort-btn:active, .edit-region-box .abort-btn:active {
@@ -5360,8 +5360,8 @@
 
 .add-region-box .edit-btn, .delete-region-box .edit-btn, .edit-region-box .edit-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5375,7 +5375,7 @@
 }
 
 .add-region-box .edit-btn:hover, .delete-region-box .edit-btn:hover, .edit-region-box .edit-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-region-box .edit-btn:active, .delete-region-box .edit-btn:active, .edit-region-box .edit-btn:active {
@@ -5393,7 +5393,7 @@
 }
 
 .options .options-box {
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -5405,7 +5405,7 @@
 .options .option > h4 {
   text-align: center;
   padding: 10px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
 }
 
@@ -5474,7 +5474,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -5487,8 +5487,8 @@
 
 .options .save-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5502,7 +5502,7 @@
 }
 
 .options .save-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .options .save-btn:active {
@@ -5515,7 +5515,7 @@
 .regular .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -5530,7 +5530,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -5539,7 +5539,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -5585,7 +5585,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -5652,7 +5652,7 @@
 }
 
 .regular .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -5696,7 +5696,7 @@
 }
 
 .regular .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .regular .table-container tr:nth-child(even) {
@@ -5739,7 +5739,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -5759,16 +5759,16 @@
 }
 
 .regular .table-container .pagination button:hover, .regular .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .regular .table-container .pagination .next-btn, .regular .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -5791,7 +5791,7 @@
 
 .regular .table-container .pagination .next-btn:hover, .regular .table-container .pagination .next-btn.active-page, .regular .table-container .pagination .prev-btn:hover, .regular .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .regular .table-container .pagination .next-btn::before {
@@ -5827,8 +5827,8 @@
 
 .regular .table-container .btn-done {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5843,7 +5843,7 @@
 }
 
 .regular .table-container .btn-done:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .regular .table-container .btn-done:active {
@@ -5855,8 +5855,8 @@
 
 .regular .table-container .whatsapp-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -5871,7 +5871,7 @@
 }
 
 .regular .table-container .whatsapp-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .regular .table-container .whatsapp-btn:active {
@@ -5914,7 +5914,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -5939,7 +5939,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -6016,7 +6016,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -6070,8 +6070,8 @@
 
 .delete-regular-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6086,7 +6086,7 @@
 }
 
 .delete-regular-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .delete-regular-box .delete-btn:active {
@@ -6098,8 +6098,8 @@
 
 .delete-regular-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6113,7 +6113,7 @@
 }
 
 .delete-regular-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .delete-regular-box .abort-btn:active {
@@ -6126,7 +6126,7 @@
 .products .search-container > h3 {
   text-align: center;
   padding: 10px;
-  color: #2C3E50;
+  color: #2c3e50;
   font-size: 20px;
 }
 
@@ -6141,7 +6141,7 @@
   row-gap: 12px;
   -webkit-column-gap: 25px;
           column-gap: 25px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 8px;
   padding: 18px;
 }
@@ -6150,7 +6150,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -6196,7 +6196,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -6259,8 +6259,8 @@
 
 .products .add-new .btn-add-new-products {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6274,7 +6274,7 @@
 }
 
 .products .add-new .btn-add-new-products:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .products .add-new .btn-add-new-products:active {
@@ -6303,7 +6303,7 @@
 }
 
 .products .table-container th {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   color: #fff;
   padding: 8px 0 8px 30px;
   font-weight: 500;
@@ -6347,7 +6347,7 @@
 }
 
 .products .table-container tr:nth-child(odd) {
-  background-color: #D1E1F0;
+  background-color: #d1e1f0;
 }
 
 .products .table-container tr:nth-child(even) {
@@ -6390,7 +6390,7 @@
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -6410,16 +6410,16 @@
 }
 
 .products .table-container .pagination button:hover, .products .table-container .pagination button.active-page {
-  background-color: #ECF0F1;
-  color: #2C3E50;
-  border: 1px solid #2C3E50;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
 }
 
 .products .table-container .pagination .next-btn, .products .table-container .pagination .prev-btn {
   border: 1px solid transparent;
   outline: none;
   color: #fff;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
   width: 30px;
@@ -6442,7 +6442,7 @@
 
 .products .table-container .pagination .next-btn:hover, .products .table-container .pagination .next-btn.active-page, .products .table-container .pagination .prev-btn:hover, .products .table-container .pagination .prev-btn.active-page {
   background-color: #0984e3;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .products .table-container .pagination .next-btn::before {
@@ -6478,8 +6478,8 @@
 
 .products .table-container .btn-delete {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6494,7 +6494,7 @@
 }
 
 .products .table-container .btn-delete:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .products .table-container .btn-delete:active {
@@ -6506,8 +6506,8 @@
 
 .products .table-container .btn-edit {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6522,7 +6522,7 @@
 }
 
 .products .table-container .btn-edit:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .products .table-container .btn-edit:active {
@@ -6565,7 +6565,7 @@
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -6590,7 +6590,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -6667,7 +6667,7 @@
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -6714,8 +6714,8 @@
 
 .add-products-box .add-btn, .delete-products-box .add-btn, .edit-product-box .add-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6729,7 +6729,7 @@
 }
 
 .add-products-box .add-btn:hover, .delete-products-box .add-btn:hover, .edit-product-box .add-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-products-box .add-btn:active, .delete-products-box .add-btn:active, .edit-product-box .add-btn:active {
@@ -6741,8 +6741,8 @@
 
 .add-products-box .delete-btn, .delete-products-box .delete-btn, .edit-product-box .delete-btn {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6757,7 +6757,7 @@
 }
 
 .add-products-box .delete-btn:hover, .delete-products-box .delete-btn:hover, .edit-product-box .delete-btn:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .add-products-box .delete-btn:active, .delete-products-box .delete-btn:active, .edit-product-box .delete-btn:active {
@@ -6769,8 +6769,8 @@
 
 .add-products-box .abort-btn, .delete-products-box .abort-btn, .edit-product-box .abort-btn {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6784,7 +6784,7 @@
 }
 
 .add-products-box .abort-btn:hover, .delete-products-box .abort-btn:hover, .edit-product-box .abort-btn:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .add-products-box .abort-btn:active, .delete-products-box .abort-btn:active, .edit-product-box .abort-btn:active {
@@ -6796,8 +6796,8 @@
 
 .add-products-box .edit-btn, .delete-products-box .edit-btn, .edit-product-box .edit-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -6811,7 +6811,7 @@
 }
 
 .add-products-box .edit-btn:hover, .delete-products-box .edit-btn:hover, .edit-product-box .edit-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .add-products-box .edit-btn:active, .delete-products-box .edit-btn:active, .edit-product-box .edit-btn:active {
@@ -6835,12 +6835,12 @@
   font-size: 18px;
   width: 100%;
   margin-bottom: 15px;
-  background-color: #E74C3C;
+  background-color: #e74c3c;
   width: 500px;
   max-width: 80%;
   margin: auto;
   margin-top: 20px;
-  border: 2px solid #C0392B;
+  border: 2px solid #c0392b;
   -webkit-animation: productsbox 1s ease infinite;
           animation: productsbox 1s ease infinite;
 }
@@ -6918,6 +6918,921 @@
   }
 }
 
+.salary .search-container > h3 {
+  text-align: center;
+  padding: 10px;
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.salary .search-container .search-box {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  row-gap: 12px;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
+  background-color: #2c3e50;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.salary .search-container .search-box input {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 14px;
+  width: 180px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.salary .search-container .search-box input:focus {
+  border: 1.5px solid #0984e3;
+}
+
+.salary .search-container .search-box .select-item {
+  width: 100%;
+  position: relative;
+}
+
+.salary .search-container .search-box .select-item select {
+  cursor: pointer;
+  width: 180px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-align-last: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+}
+
+.salary .search-container .search-box .select-item select + span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: block;
+  -webkit-transform: translateY(-5px) rotate(0deg);
+          transform: translateY(-5px) rotate(0deg);
+  border: 6px solid transparent;
+  border-top: 8px solid #2c3e50;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform-origin: 6px 4px;
+          transform-origin: 6px 4px;
+}
+
+.salary .search-container .search-box .select-item select option {
+  text-align: center;
+}
+
+.salary .search-container .search-box div[type="datepicker"] {
+  width: 100%;
+}
+
+.salary .search-container .search-box div[type="datepicker"] .placeholder {
+  width: 100%;
+  padding: 2.5px;
+  font-size: 18px;
+  background-color: #fff;
+}
+
+.salary .search-container .search-box div[type="datepicker"] .placeholder:active {
+  background-color: #eee;
+}
+
+@media only screen and (max-width: 768px) {
+  .salary .search-container .search-box {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .salary .search-container .search-box {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .salary .search-container .search-box {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    row-gap: 20px;
+  }
+}
+
+.salary .add-new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 30px auto;
+}
+
+.salary .add-new .btn-add-new-salary {
+  cursor: pointer;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 18px;
+}
+
+.salary .add-new .btn-add-new-salary:hover {
+  background-color: #8e44ad;
+}
+
+.salary .add-new .btn-add-new-salary:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.salary .table-container {
+  margin: 40px auto;
+}
+
+.salary .table-container .table {
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
+}
+
+.salary .table-container table {
+  border-collapse: collapse;
+  text-align: right;
+  width: 100%;
+}
+
+.salary .table-container th {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 8px 0 8px 30px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.salary .table-container th:nth-child(1) {
+  padding-right: 20px;
+}
+
+.salary .table-container th:nth-last-child {
+  padding-left: 20px;
+}
+
+.salary .table-container td {
+  white-space: nowrap;
+  padding: 6px 0px 6px 35px;
+}
+
+.salary .table-container td:nth-child(1) {
+  padding-right: 20px;
+}
+
+.salary .table-container td:nth-last-child {
+  padding-left: 20px;
+}
+
+.salary .table-container td.action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.salary .table-container tr:nth-child(odd) {
+  background-color: #d1e1f0;
+}
+
+.salary .table-container tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.salary .table-container img {
+  width: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.salary .table-container img:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.salary .table-container button {
+  margin-left: 10px;
+}
+
+.salary .table-container .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin: 20px 0;
+}
+
+.salary .table-container .pagination button {
+  display: inline-block;
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2c3e50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.salary .table-container .pagination button:hover, .salary .table-container .pagination button.active-page {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+}
+
+.salary .table-container .pagination .next-btn, .salary .table-container .pagination .prev-btn {
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #2c3e50;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.salary .table-container .pagination .next-btn:hover, .salary .table-container .pagination .next-btn.active-page, .salary .table-container .pagination .prev-btn:hover, .salary .table-container .pagination .prev-btn.active-page {
+  background-color: #0984e3;
+  color: #2c3e50;
+}
+
+.salary .table-container .pagination .next-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: none;
+  border-right: none;
+  left: 12px;
+}
+
+.salary .table-container .pagination .prev-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-left: none;
+}
+
+.salary .table-container .pagination .prev-btn {
+  margin-left: 10px;
+}
+
+.salary .table-container .btn-confirm {
+  cursor: pointer;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.salary .table-container .btn-confirm:hover {
+  background-color: #27ae60;
+}
+
+.salary .table-container .btn-confirm:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.salary .table-container .btn-unvalid {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.salary .table-container .btn-unvalid:hover {
+  background-color: #c0392b;
+}
+
+.salary .table-container .btn-unvalid:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.salary .table-container .btn-edit {
+  cursor: pointer;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.salary .table-container .btn-edit:hover {
+  background-color: #27ae60;
+}
+
+.salary .table-container .btn-edit:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.add-salary-box, .edit-salary-box {
+  display: none;
+  margin: auto;
+  position: absolute;
+  z-index: 19;
+  padding: 45px 20px 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 98%;
+  top: 0;
+  -webkit-animation: box 0.3s ease 1;
+          animation: box 0.3s ease 1;
+}
+
+.add-salary-box label, .edit-salary-box label {
+  display: inline-block;
+  width: 130px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.add-salary-box input, .edit-salary-box input {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 14px;
+  width: 180px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.add-salary-box input:focus, .edit-salary-box input:focus {
+  border: 1.5px solid #0984e3;
+}
+
+@media only screen and (max-width: 480px) {
+  .add-salary-box input, .edit-salary-box input {
+    width: 100% !important;
+  }
+}
+
+.add-salary-box textarea, .edit-salary-box textarea {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 18px;
+  min-width: 250px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.add-salary-box textarea:focus, .edit-salary-box textarea:focus {
+  border: 1.5px solid #0984e3;
+}
+
+.add-salary-box .input-items, .edit-salary-box .input-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add-salary-box .input-items .input-item, .edit-salary-box .input-items .input-item {
+  margin: 12px auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-salary-box .input-items .select-item, .edit-salary-box .input-items .select-item {
+  width: 70%;
+  position: relative;
+  margin: 15px 0;
+}
+
+.add-salary-box .input-items .select-item select, .edit-salary-box .input-items .select-item select {
+  cursor: pointer;
+  width: 180px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-align-last: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+  font-weight: 600;
+}
+
+.add-salary-box .input-items .select-item select + span, .edit-salary-box .input-items .select-item select + span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: block;
+  -webkit-transform: translateY(-5px) rotate(0deg);
+          transform: translateY(-5px) rotate(0deg);
+  border: 6px solid transparent;
+  border-top: 8px solid #2c3e50;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform-origin: 6px 4px;
+          transform-origin: 6px 4px;
+}
+
+.add-salary-box .input-items .select-item select option, .edit-salary-box .input-items .select-item select option {
+  text-align: center;
+}
+
+.add-salary-box > span, .edit-salary-box > span {
+  display: block;
+  width: 70%;
+  height: 1.5px;
+  background-color: #707070;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .add-salary-box, .edit-salary-box {
+    width: 98%;
+  }
+  .add-salary-box .input-item, .edit-salary-box .input-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .add-salary-box label, .edit-salary-box label {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  .add-salary-box input, .edit-salary-box input {
+    width: 100%;
+  }
+}
+
+.add-salary-box h3, .edit-salary-box h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.add-salary-box .add-btn, .edit-salary-box .add-btn {
+  cursor: pointer;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.add-salary-box .add-btn:hover, .edit-salary-box .add-btn:hover {
+  background-color: #27ae60;
+}
+
+.add-salary-box .add-btn:active, .edit-salary-box .add-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.add-salary-box .edit-btn, .edit-salary-box .edit-btn {
+  cursor: pointer;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.add-salary-box .edit-btn:hover, .edit-salary-box .edit-btn:hover {
+  background-color: #27ae60;
+}
+
+.add-salary-box .edit-btn:active, .edit-salary-box .edit-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-salary-box {
+  display: none;
+  margin: auto;
+  position: absolute;
+  z-index: 19;
+  padding: 45px 20px 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 98%;
+  top: 0;
+  -webkit-animation: box 0.3s ease 1;
+          animation: box 0.3s ease 1;
+}
+
+.delete-salary-box label {
+  display: inline-block;
+  width: 130px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.delete-salary-box input {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 14px;
+  width: 180px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.delete-salary-box input:focus {
+  border: 1.5px solid #0984e3;
+}
+
+@media only screen and (max-width: 480px) {
+  .delete-salary-box input {
+    width: 100% !important;
+  }
+}
+
+.delete-salary-box textarea {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  color: #707070;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 18px;
+  min-width: 250px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.delete-salary-box textarea:focus {
+  border: 1.5px solid #0984e3;
+}
+
+.delete-salary-box .input-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.delete-salary-box .input-items .input-item {
+  margin: 12px auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delete-salary-box .input-items .select-item {
+  width: 70%;
+  position: relative;
+  margin: 15px 0;
+}
+
+.delete-salary-box .input-items .select-item select {
+  cursor: pointer;
+  width: 180px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-align-last: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+  font-weight: 600;
+}
+
+.delete-salary-box .input-items .select-item select + span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: block;
+  -webkit-transform: translateY(-5px) rotate(0deg);
+          transform: translateY(-5px) rotate(0deg);
+  border: 6px solid transparent;
+  border-top: 8px solid #2c3e50;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform-origin: 6px 4px;
+          transform-origin: 6px 4px;
+}
+
+.delete-salary-box .input-items .select-item select option {
+  text-align: center;
+}
+
+.delete-salary-box > span {
+  display: block;
+  width: 70%;
+  height: 1.5px;
+  background-color: #707070;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .delete-salary-box {
+    width: 98%;
+  }
+  .delete-salary-box .input-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .delete-salary-box label {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  .delete-salary-box input {
+    width: 100%;
+  }
+}
+
+.delete-salary-box h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.delete-salary-box .delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+  margin-left: 40px;
+}
+
+.delete-salary-box .delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.delete-salary-box .delete-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-salary-box .abort-btn {
+  cursor: pointer;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
+  color: #fff;
+  border-radius: 9px 0 9px 0;
+  padding: 5px 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  outline: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 16px;
+}
+
+.delete-salary-box .abort-btn:hover {
+  background-color: #8e44ad;
+}
+
+.delete-salary-box .abort-btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: 0s ease;
+  transition: 0s ease;
+}
+
+.delete-salary-box .input-items {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6951,13 +7866,13 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   border-radius: 10px;
 }
 
 header {
   height: 50px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   position: fixed;
   top: 0;
   left: 0;
@@ -7070,7 +7985,7 @@ header .settings-icon img:active {
   height: 5px;
   width: 40px;
   border-radius: 10px;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   margin: 3px 0;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -7103,7 +8018,7 @@ header .settings-icon img:active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   border-radius: 8px;
   padding: 25px 10px;
   -webkit-box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
@@ -7112,8 +8027,8 @@ header .settings-icon img:active {
 
 .floating-box .btn-settings {
   cursor: pointer;
-  background-color: #9B59B6;
-  border: 1.5px solid #8E44AD;
+  background-color: #9b59b6;
+  border: 1.5px solid #8e44ad;
   color: #fff;
   border-radius: 25px;
   padding: 4px 15px;
@@ -7125,7 +8040,7 @@ header .settings-icon img:active {
 }
 
 .floating-box .btn-settings:hover {
-  background-color: #8E44AD;
+  background-color: #8e44ad;
 }
 
 .floating-box .btn-settings:active {
@@ -7137,8 +8052,8 @@ header .settings-icon img:active {
 
 .floating-box .btn-logout {
   cursor: pointer;
-  background-color: #E74C3C;
-  border: 1.5px solid #C0392B;
+  background-color: #e74c3c;
+  border: 1.5px solid #c0392b;
   color: #fff;
   border-radius: 25px;
   padding: 4px 15px;
@@ -7150,7 +8065,7 @@ header .settings-icon img:active {
 }
 
 .floating-box .btn-logout:hover {
-  background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 .floating-box .btn-logout:active {
@@ -7166,7 +8081,7 @@ header .settings-icon img:active {
   top: -25px;
   left: 5px;
   border: 10px solid transparent;
-  border-bottom: 25px solid #ECF0F1;
+  border-bottom: 25px solid #ecf0f1;
 }
 
 .settings-box {
@@ -7202,7 +8117,7 @@ header .settings-icon img:active {
   display: inline-block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -7227,7 +8142,7 @@ header .settings-icon img:active {
   display: block;
   padding: 6px 10px;
   border-radius: 8px;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   color: #707070;
   border: 1.5px solid transparent;
   outline: none;
@@ -7304,7 +8219,7 @@ header .settings-icon img:active {
   -webkit-transform: translateY(-5px) rotate(0deg);
           transform: translateY(-5px) rotate(0deg);
   border: 6px solid transparent;
-  border-top: 8px solid #2C3E50;
+  border-top: 8px solid #2c3e50;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   -webkit-transform-origin: 6px 4px;
@@ -7351,8 +8266,8 @@ header .settings-icon img:active {
 
 .settings-box .save-btn {
   cursor: pointer;
-  background-color: #2ECC71;
-  border: 1.5px solid #27AE60;
+  background-color: #2ecc71;
+  border: 1.5px solid #27ae60;
   color: #fff;
   border-radius: 9px 0 9px 0;
   padding: 5px 20px;
@@ -7365,7 +8280,7 @@ header .settings-icon img:active {
 }
 
 .settings-box .save-btn:hover {
-  background-color: #27AE60;
+  background-color: #27ae60;
 }
 
 .settings-box .save-btn:active {
@@ -7384,14 +8299,14 @@ header .settings-icon img:active {
   top: 50px;
   right: -300px;
   position: fixed;
-  background-color: #9B59B6;
+  background-color: #9b59b6;
   padding: 10px 0 30px;
   overflow-y: auto;
   z-index: 16;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: #2ECC71;
+  background-color: #2ecc71;
 }
 
 .sidebar .logo-container {
@@ -7421,7 +8336,7 @@ header .settings-icon img:active {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #E74C3C;
+  background-color: #e74c3c;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   text-align: center;
@@ -7488,8 +8403,8 @@ header .settings-icon img:active {
 }
 
 .sidebar .side-links .active-link, .sidebar .side-links .link:hover {
-  background-color: #8E44AD;
-  border-right: 8px solid #2ECC71;
+  background-color: #8e44ad;
+  border-right: 8px solid #2ecc71;
 }
 
 .sidebar .side-links .active-link h2, .sidebar .side-links .link:hover h2 {
@@ -7637,7 +8552,7 @@ footer {
 
 .alarms .alarm-success {
   background-color: #4cd137dc;
-  color: #2C3E50;
+  color: #2c3e50;
 }
 
 .alarms .alarm-errors {

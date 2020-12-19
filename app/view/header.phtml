@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=PUBLIC_URL;?>assets/css/style.css">
-    <link rel="icon" href="<?=PUBLIC_URL?>assets/img/logo.png">
-    <title><?=$this->title;?></title>
+    <link rel="stylesheet" href="<?= PUBLIC_URL; ?>assets/css/style.css">
+    <link rel="icon" href="<?= PUBLIC_URL ?>assets/img/logo.png">
+    <title><?= $this->title; ?></title>
 </head>
+
 <body>
 
 
-    
+
     <header>
         <div class="burger-menu" onclick="burgerMenu(this)">
             <span></span>
@@ -20,19 +22,19 @@
 
         <div class="left-items">
             <div class="user-info">
-                <div class="user-img"><img src="<?=PUBLIC_URL;?>assets/img/user.svg" alt=""></div> 
-                <div class="user-name"><?=$_SESSION['name']?></div>
+                <div class="user-img"><img src="<?= PUBLIC_URL; ?>assets/img/user.svg" alt=""></div>
+                <div class="user-name"><?= $_SESSION['name'] ?></div>
             </div>
             <span></span>
-            <div class="settings-icon" onclick="popupBox('.floating-box', false)"><img src="<?=PUBLIC_URL;?>assets/img/settings.png" alt=""></div>
-            
+            <div class="settings-icon" onclick="popupBox('.floating-box', false)"><img src="<?= PUBLIC_URL; ?>assets/img/settings.png" alt=""></div>
+
         </div>
 
         <!--Floating box BEGIN-->
         <div class="floating-box">
             <div>
                 <button class="btn-settings" onclick="popupBox('.settings-box')">اعدادت الحساب</button>
-                <a href="<?=ROOT_URL . 'logout'?>" class="btn-logout">تسجيل الخروج</a>
+                <a href="<?= ROOT_URL . 'logout' ?>" class="btn-logout">تسجيل الخروج</a>
             </div>
         </div>
         <!--Floating box BEGIN-->
@@ -43,67 +45,71 @@
     <!--Sidebar BEGIN-->
     <aside class="sidebar">
         <div class="logo-container">
-            <div class="logo"><img src="<?=PUBLIC_URL;?>assets/img/logo.png" alt=""></div>
+            <div class="logo"><img src="<?= PUBLIC_URL; ?>assets/img/logo.png" alt=""></div>
         </div>
         <div class="side-links">
-            
 
-            <a href="<?=ROOT_URL;?>stats" class="link <?=$this->getActive('stats') ? "active-link" : '';?>">
-                <img src="<?=PUBLIC_URL;?>assets/img/graphic.svg" alt="" class="link-icon">
+
+            <a href="<?= ROOT_URL; ?>stats" class="link <?= $this->getActive('stats') ? "active-link" : ''; ?>">
+                <img src="<?= PUBLIC_URL; ?>assets/img/graphic.svg" alt="" class="link-icon">
                 <h2>الإحصائيات</h2>
             </a>
 
-            <a href="<?=ROOT_URL;?>orders" class="link <?=$this->getActive('orders') ? "active-link" : '';?>">
-                <img src="<?=PUBLIC_URL;?>assets/img/graphic.svg" alt="" class="link-icon">
+            <a href="<?= ROOT_URL; ?>orders" class="link <?= $this->getActive('orders') ? "active-link" : ''; ?>">
+                <img src="<?= PUBLIC_URL; ?>assets/img/graphic.svg" alt="" class="link-icon">
                 <h2>الطلبات</h2>
             </a>
 
-            <?php if(!$this->role('فني')):?>
-                <a href="<?=ROOT_URL;?>regular" class="link <?=$this->getActive('regular') ? "active-link" : '';?>">
-                    <img src="<?=PUBLIC_URL;?>assets/img/graphic.svg" alt="" class="link-icon">
+            <?php if (!$this->role('فني')) : ?>
+                <a href="<?= ROOT_URL; ?>regular" class="link <?= $this->getActive('regular') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/graphic.svg" alt="" class="link-icon">
                     <h2>الصيانة الدورية</h2>
                 </a>
 
-                <a href="<?=ROOT_URL;?>notes" class="link <?=$this->getActive('notes') ? "active-link" : '';?>">     
-                    <img src="<?=PUBLIC_URL;?>assets/img/dog.svg" alt="" class="link-icon">
+                <a href="<?= ROOT_URL; ?>notes" class="link <?= $this->getActive('notes') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/dog.svg" alt="" class="link-icon">
                     <h2>الملاحظات</h2>
                 </a>
             <?php endif; ?>
- 
-            <?php if(!$this->role('فني')):?>
-                <a href="<?=ROOT_URL;?>payments" class="link <?=$this->getActive('payments') ? "active-link" : '';?>">
-                    <img src="<?=PUBLIC_URL;?>assets/img/invest.svg" alt="" class="link-icon">
+
+            <?php if (!$this->role('فني')) : ?>
+                <a href="<?= ROOT_URL; ?>payments" class="link <?= $this->getActive('payments') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/invest.svg" alt="" class="link-icon">
                     <h2>المبلغ اليومي</h2>
                 </a>
 
-                <a href="<?=ROOT_URL;?>products" class="link <?=$this->getActive('products') ? "active-link" : '';?>">
-                    <img src="<?=PUBLIC_URL;?>assets/img/invest.svg" alt="" class="link-icon">
+                <a href="<?= ROOT_URL; ?>products" class="link <?= $this->getActive('products') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/invest.svg" alt="" class="link-icon">
                     <h2>المنتجات</h2>
                 </a>
             <?php endif; ?>
 
-            <?php if($this->role('مدير')):?>   
+            <?php if ($this->role('مدير')) : ?>
+                <a href="<?= ROOT_URL; ?>salary" class="link <?= $this->getActive('salary') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/invest.svg" alt="" class="link-icon">
+                    <h2>الرواتب</h2>
+                </a>
 
-                <a href="<?=ROOT_URL;?>news" class="link <?=$this->getActive('news') ? "active-link" : '';?>">          
-                    <img src="<?=PUBLIC_URL;?>assets/img/customer-service.svg" alt="" class="link-icon">
+                <a href="<?= ROOT_URL; ?>news" class="link <?= $this->getActive('news') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/customer-service.svg" alt="" class="link-icon">
                     <h2>الأخبار</h2>
                 </a>
-                
-                <a href="<?=ROOT_URL;?>regions" class="link <?=$this->getActive('regions') ? "active-link" : '';?>">          
-                    <img src="<?=PUBLIC_URL;?>assets/img/customer-service.svg" alt="" class="link-icon">
+
+                <a href="<?= ROOT_URL; ?>regions" class="link <?= $this->getActive('regions') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/customer-service.svg" alt="" class="link-icon">
                     <h2>الأحياء</h2>
                 </a>
 
-                <a href="<?=ROOT_URL;?>users" class="link <?=$this->getActive('users') ? "active-link" : '';?>">      
-                    <img src="<?=PUBLIC_URL;?>assets/img/boss.svg" alt="" class="link-icon">
+                <a href="<?= ROOT_URL; ?>users" class="link <?= $this->getActive('users') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/boss.svg" alt="" class="link-icon">
                     <h2>المستخدمين</h2>
                 </a>
 
-                <a href="<?=ROOT_URL;?>options" class="link <?=$this->getActive('options') ? "active-link" : '';?>">          
-                    <img src="<?=PUBLIC_URL;?>assets/img/customer-service.svg" alt="" class="link-icon">
+                <a href="<?= ROOT_URL; ?>options" class="link <?= $this->getActive('options') ? "active-link" : ''; ?>">
+                    <img src="<?= PUBLIC_URL; ?>assets/img/customer-service.svg" alt="" class="link-icon">
                     <h2>الإعدادات</h2>
                 </a>
-            <?php endif; ?>    
+            <?php endif; ?>
 
         </div>
     </aside>
@@ -112,7 +118,7 @@
 
     <!--User Settings Box BEGIN-->
     <div class="float-box-container">
-    
+
         <div class="settings-box">
             <!--Closing Tag Start-->
             <div class="closing" onclick="closeBox(this)">
@@ -120,18 +126,18 @@
                 <span></span>
             </div>
             <!--Closing Tag END-->
-            <h3 style="text-align: center;">المستوي: <?=$_SESSION['lvl']?></h3>
+            <h3 style="text-align: center;">المستوي: <?= $_SESSION['lvl'] ?></h3>
             <form method="POST" id="update_account_settings_form" onsubmit="update_account_settings(this)">
                 <div class="input-items">
-                    <div class="input-item"><label>اسم المستخدم</label><input type="text" name="username" placeholder="اسم المستخدم" value="<?=$_SESSION['username']; ?>"></div>
-                    <div class="input-item"><label>البريد الالكتروني</label><input type="text" name="email" placeholder="البريد الالكتروني" value="<?=$_SESSION['email']; ?>"></div>
-                    <div class="input-item"><label>الاسم</label><input type="text" name="name" placeholder="الاسم" value="<?=$_SESSION['name']; ?>"></div>
-                    <div class="input-item"><label>رقم الهاتف</label><input type="text" name="phone" placeholder="رقم الهاتف" value="<?=$_SESSION['phone']; ?>"></div>
+                    <div class="input-item"><label>اسم المستخدم</label><input type="text" name="username" placeholder="اسم المستخدم" value="<?= $_SESSION['username']; ?>"></div>
+                    <div class="input-item"><label>البريد الالكتروني</label><input type="text" name="email" placeholder="البريد الالكتروني" value="<?= $_SESSION['email']; ?>"></div>
+                    <div class="input-item"><label>الاسم</label><input type="text" name="name" placeholder="الاسم" value="<?= $_SESSION['name']; ?>"></div>
+                    <div class="input-item"><label>رقم الهاتف</label><input type="text" name="phone" placeholder="رقم الهاتف" value="<?= $_SESSION['phone']; ?>"></div>
                     <div class="input-item"><button class="save-btn" type="submit">حفظ البيانات</button></div>
                 </div>
             </form>
-                <span></span>
-                <h3>تغيير كلمة المرور</h3>
+            <span></span>
+            <h3>تغيير كلمة المرور</h3>
             <form method="POST" id="change_account_password_form" onsubmit="change_account_password(this)">
                 <div class="input-items">
                     <div class="input-item"><label>كلمة المرور الجديدة</label><input type="password" name="pass1" placeholder="كلمة المرور الجديدة"></div>
@@ -139,7 +145,7 @@
                     <div class="input-item"><button class="save-btn" type="submit">تحديث كلمة المرور</button></div>
                 </div>
             </form>
-            
+
         </div>
     </div>
     <!--User Settings Box END-->

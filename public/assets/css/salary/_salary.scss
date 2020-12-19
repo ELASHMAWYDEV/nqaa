@@ -1,0 +1,79 @@
+.salary {
+  .search-container {
+      @include search-container;
+  }
+  .add-new {
+      @include flex;
+      margin: 30px auto;
+      .btn-add-new-salary {
+          @include btn-adv($light-purple, $dark-purple);
+          font-size: 18px;
+      }
+  }
+  .table-container {
+      @include table-container;
+      .btn-confirm {
+          @include btn-adv($light-green,$dark-green);
+          padding: 2px 10px;
+          font-size: 12px;
+      }
+      .btn-unvalid {
+          @include btn-adv($light-red,$dark-red);
+          padding: 2px 10px;
+          font-size: 12px;
+      }
+      .btn-edit {
+          @include btn-adv($light-green,$dark-green);
+          padding: 2px 10px;
+          font-size: 12px;
+      }
+  }
+}
+
+
+.add-salary-box, .edit-salary-box {
+  display: none;
+  @include box;
+  @include box-animate;
+
+  h3 {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  .add-btn {
+      @include btn-adv($light-green,$dark-green);
+      font-size: 16px;
+      margin-top: 30px;
+  }
+  .edit-btn {
+      @include btn-adv($light-green,$dark-green);
+      font-size: 16px;
+      margin-top: 30px;
+  }
+
+
+}
+
+
+.delete-salary-box {
+  display: none;
+  @include box;
+  @include box-animate;
+
+  h3 {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  .delete-btn {
+      @include btn-adv($light-red,$dark-red);
+      font-size: 16px;
+      margin-left: 40px;
+  }
+  .abort-btn {
+      @include btn-adv($light-purple,$dark-purple);
+      font-size: 16px;
+  }
+  .input-items {
+      flex-direction: row !important;
+  }
+}

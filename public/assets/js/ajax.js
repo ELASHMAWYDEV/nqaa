@@ -446,6 +446,43 @@ function get_payment_edit(el) {
 
 
 
+function get_salary_delete(el){
+    let id = el.getAttribute('data-salary-id');
+    console.log(id);
+    let delete_salary_box = document.querySelector('.delete-salary-box');
+    delete_salary_box.querySelector('span.salary_id').innerHTML = id;
+    delete_salary_box.querySelector('input[name="id"]').setAttribute('value', id);
+}
+
+
+function get_salary_edit(el) {
+    let id = el.getAttribute('data-salary-id');
+    let edit_salary_box = document.querySelector('.edit-salary-box');
+    edit_salary_box.querySelector('span.salary_id').innerHTML = id;
+    edit_salary_box.querySelector('input[name="id"]').setAttribute('value', id);
+    const data = {get_salary_by_id : 'get_salary_by_id', id : id};
+    ajax('post', ajaxUrl + 'salary', data, (output) => {
+        output = JSON.parse(output);
+        messages(output.errors, output.success);
+        if(output.reload == 'true')
+        {
+            setTimeout(function(){
+                window.location.reload();
+            },1000);
+        }
+        else
+        {
+            outputToInput(edit_salary_box, output.output); 
+            edit_salary_box.querySelector('div[name="salary_date"]').setAttribute('value', output.output.salary_date);
+            edit_salary_box.querySelector('div[name="salary_date"] .placeholder').innerText = output.output.salary_date;
+            if (output.employee_id)
+                edit_salary_box.querySelector('select[name="employee_id"] option[value="'+ output.employee_id +'"]').setAttribute('selected', 'true');
+
+            popupBox('.edit-salary-box');  
+        }
+    });
+}
+
 
 
 function get_note_edit(el) {

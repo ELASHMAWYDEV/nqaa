@@ -1,0 +1,229 @@
+<div class="main-container">
+  <div class="page-position">
+    <h2>لوحة التحكم</h2>
+    <p>/</p>
+    <h6>الرواتب</h6>
+  </div>
+  <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
+  <div class="container salary">
+    <div class="search-container">
+      <h3>البحث المتقدم</h3>
+      <div class="search-box">
+        <div type="datepicker" placeholder="تاريخ الدفع" id="date-search" name="date-search"></div>
+        <div type="datepicker" placeholder="تاريخ الإضافة" id="salary-date-search" name="salary-date-search"></div>
+
+        <div class="select-item">
+          <select id="employee-search" onclick="rotateSelect(this)">
+            <option value="">اسم الموظف</option>
+
+            <?php foreach ($this->users as $user) : ?>
+              <option value="<?= $user->name ?>"><?= $user->name ?></option>
+            <?php endforeach; ?>
+
+          </select>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="add-new">
+      <button class="btn-add-new-salary" onclick="popupBox('.add-salary-box')">أضف راتب جديد</button>
+    </div>
+    <div class="table-container">
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>التاريخ</th>
+              <th>تاريخ الدفع</th>
+              <th>اسم الموظف</th>
+              <th>الراتب</th>
+              <th>عمل اضافي</th>
+              <th>الإجمالي قبل الخصم</th>
+              <th>السلفة</th>
+              <th>الخصومات</th>
+              <th>الإجمالي بعد الخصم</th>
+              <?php if ($this->role('مدير')) : ?>
+                <th>الإجراء</th>
+              <?php endif; ?>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($this->salary as $oneSalary) : ?>
+              <tr>
+                <td><?= $oneSalary->id ?></td>
+                <td><?= $oneSalary->create_date ?></td>
+                <td><?= $oneSalary->salary_date ?></td>
+                <td><?= $oneSalary->name ?></td>
+                <td><?= $oneSalary->salary_value ?></td>
+                <td><?= $oneSalary->extra_work ?></td>
+                <td><?= $oneSalary->totalBeforeDiscounts ?></td>
+                <td><?= $oneSalary->advance ?></td>
+                <td><?= $oneSalary->discounts ?></td>
+                <td><?= $oneSalary->totalAfterDiscounts ?></td>
+                <?php if ($this->role('مدير')) : ?>
+                  <td>
+                    <img onclick="popupBox('.delete-salary-box'); get_salary_delete(this);" src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف الراتب" title="حذف المستخدم" data-salary-id="<?= $oneSalary->id; ?>">
+                    <button id="btn-edit" class="btn-edit" data-salary-id="<?= $oneSalary->id ?>" onclick="get_salary_edit(this);">تعديل</button>
+
+                  </td>
+                <?php endif; ?>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--Add New salary Box BEGIN-->
+<div class="float-box-container">
+
+  <div class="add-salary-box">
+    <!--Closing Tag Start-->
+    <div class="closing" onclick="closeBox(this)">
+      <span></span>
+      <span></span>
+    </div>
+    <!--Closing Tag END-->
+    <form method="POST" name="salary_form">
+      <h3>إضافة راتب جديد</h3>
+      <div class="input-items">
+        <div class="select-item" id="employee_id">
+          <select name="employee_id">
+            <option value="">اسم الموظف</option>
+            <?php foreach ($this->users as $user) : ?>
+              <option value="<?= $user->id ?>"><?= $user->name ?></option>
+            <?php endforeach; ?>
+          </select>
+          <span></span>
+        </div>
+        <div class="input-item">
+          <label>الراتب</label><input type="number" name="salary_value" min="0" placeholder="الراتب" value="0">
+        </div>
+        <div class="input-item">
+          <label>عمل اضافي</label><input type="number" name="extra_work" min="0" placeholder="عمل اضافي" value="0">
+        </div>
+        <div class="input-item">
+          <label>السلفة</label><input type="number" name="advance" min="0" placeholder="السلفة" value="0">
+        </div>
+        <div class="input-item">
+          <label>الخصومات</label><input type="number" name="discounts" min="0" placeholder="الخصومات" value="0">
+        </div>
+        <div type="datepicker" placeholder="تاريخ الدفع" name="salary_date"></div>
+        <div class="input-item">
+          <button type="submit" name="add_salary" class="add-btn">حفظ</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+<!--Add New salary Box END-->
+
+
+
+
+
+<!--Delete salary Box BEGIN-->
+<div class="float-box-container">
+
+  <div class="delete-salary-box">
+    <!--Closing Tag Start-->
+    <div class="closing" onclick="closeBox(this)">
+      <span></span>
+      <span></span>
+    </div>
+    <!--Closing Tag END-->
+    <form method="POST">
+      <input type="hidden" name="id">
+      <h3>حذف الراتب رقم #<span class="salary_id"></span></h3>
+      <div class="input-items">
+        <div class="input-item"><button class="delete-btn" type="submit" name="delete_salary">حذف</button></div>
+        <div class="input-item"><button class="abort-btn" onclick="abort('.delete-salary-box')">الغاء</button></div>
+      </div>
+    </form>
+
+  </div>
+</div>
+<!--Delete salary Box END-->
+
+
+
+
+<!--edit salary Box BEGIN-->
+<div class="float-box-container">
+
+  <div class="edit-salary-box">
+    <!--Closing Tag Start-->
+    <div class="closing" onclick="closeBox(this)">
+      <span></span>
+      <span></span>
+    </div>
+    <!--Closing Tag END-->
+    <form method="POST" name="salary_form_edit" onsubmit="return confirm('هل أنت متأكد من هذه التعديلات ؟');">
+      <input type="hidden" name="id">
+      <h3>تعديل الراتب رقم #<span class="salary_id"></span></h3>
+      <div class="input-items">
+        <div class="select-item" id="employee_id">
+          <select name="employee_id">
+            <option value="">اسم الموظف</option>
+            <?php foreach ($this->users as $user) : ?>
+              <option value="<?= $user->id ?>"><?= $user->name ?></option>
+            <?php endforeach; ?>
+          </select>
+          <span></span>
+        </div>
+        <div class="input-item">
+          <label>الراتب</label><input type="number" name="salary_value" min="0" placeholder="الراتب" value="0">
+        </div>
+        <div class="input-item">
+          <label>عمل اضافي</label><input type="number" name="extra_work" min="0" placeholder="عمل اضافي" value="0">
+        </div>
+        <div class="input-item">
+          <label>السلفة</label><input type="number" name="advance" min="0" placeholder="السلفة" value="0">
+        </div>
+        <div class="input-item">
+          <label>الخصومات</label><input type="number" name="discounts" min="0" placeholder="الخصومات" value="0">
+        </div>
+        <div type="datepicker" placeholder="تاريخ الدفع" name="salary_date"></div>
+
+        <div class="input-item">
+          <button type="submit" name="edit_salary" class="edit-btn">حفظ</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+<script>
+  //////////////////////////////////////////
+
+  var salary_form = document.forms['salary_form'];
+
+
+  //////////////////////////////////////////
+
+  var salary_form_edit = document.forms['salary_form_edit'];
+
+
+  //search with date
+  document.querySelector('div[type="datepicker"]').onclick = e => {
+    let date_search = document.querySelector('input[name="date-search"]');
+    searchInput(date_search, 2);
+    document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 2);
+  }
+
+  //search with employee
+  let employee_search = document.querySelector('#employee-search');
+  employee_search.oninput = e => searchInput(employee_search, 4);
+</script>

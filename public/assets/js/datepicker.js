@@ -188,6 +188,7 @@ function datepicker() {
         inputTag.setAttribute('type', 'hidden');
         inputTag.setAttribute('name' , input.getAttribute('name'));
         inputTag.setAttribute('id', input.getAttribute('id'));
+        inputTag.setAttribute('value', input.getAttribute('value'));
         input.appendChild(inputTag);
 
 

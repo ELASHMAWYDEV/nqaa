@@ -30,4 +30,4 @@ function class_loader($class_name) {
 spl_autoload_register('class_loader');
 
 
-new Application;
+new Application; //To run the entire application
