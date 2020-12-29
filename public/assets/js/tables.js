@@ -5,9 +5,6 @@ function updateOrdersTable({ page = 1 }) {
   //Get all data for search
   ajax("post", ajaxUrl + "orders", { get_orders: true, page }, (output) => {
     output = JSON.parse(output);
-
-    page_count = output.page_count;
-
     messages(output.errors, output.success);
     let tbody = document.querySelector(".table-container table tbody");
     let tbodyContent = "";
@@ -88,6 +85,60 @@ function updateOrdersTable({ page = 1 }) {
         `;
       }
 
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+    SetupPagination(page_count);
+  });
+}
+
+function updateRegularTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "regular", { get_regular: true, page }, (output) => {
+    output = JSON.parse(output);
+    console.log(output)
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.regular.length != 0)
+      for (let order of output.regular) {
+        tbodyContent += `
+        <tr>
+        <td>${order.id}</td>
+        <td>${order.name}</td>
+        <td>${order.phone}</td>
+        <td>${order.region}</td>
+        <td>${order.address}</td>
+        <td>${order.next_date}</td>
+        <td>${order.old_order_id}</td>
+        <td>${order.type}</td>
+        <td>${order.status}</td>
+        <td class="action">
+            ${
+              !order.action
+                ? `
+                <form method="POST" onsubmit="return confirm('هل أنت متأكد أنك أنشأت طلب جديد باسم العميل: ${order.name} \n في صفحة الطلبات ؟');">
+                    <input type="hidden" name="id" value="${order.id}">
+                    <button class="btn-done" type="submit">تم انشاء طلب جديد للعميل</button>
+                </form>`
+                : order.action
+            }
+            <img onclick="popupBox('.delete-regular-box'); get_regular_delete(this);" src="${
+              window.location.origin
+            }/public/assets/img/trash.svg" alt="حذف الطلب" title="حذف الطلب" data-regular-id="${
+          order.id
+        }" class="delete_regular_btn">
+        </td>
+        <td><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966${
+          order.phone
+        }&text=مرحبا ${
+          order.name
+        }%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?= ROOT_URL . 'form'}%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
+
+    </tr>
+        `;
+      }
+
+    page_count = output.page_count;
     tbody.innerHTML = tbodyContent;
     SetupPagination(page_count);
   });

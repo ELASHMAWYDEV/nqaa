@@ -84,7 +84,7 @@ class View extends Controller
     {
         echo "
         <script>
-            let current_page = " . $this->page . ";
+            let current_page = 1;
             let page_count = " . ceil($this->numOfResults / $num_of_rows) . "
             let rows_per_page = " . $num_of_rows . "; ///number of rows shown on all tables
             SetupPagination(page_count);

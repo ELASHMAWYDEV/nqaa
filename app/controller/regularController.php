@@ -29,7 +29,9 @@ class regularController extends Controller
     public function getRegular()
     {
 
-        $sql = "SELECT regular.*, orders.type, orders.status FROM regular LEFT JOIN orders ON regular.old_order_id = orders.id ORDER BY id DESC";
+        $sql = "SELECT regular.*, orders.type, orders.status, regions.region FROM regular 
+                LEFT JOIN orders ON regular.old_order_id = orders.id 
+                LEFT JOIN regions ON regular.region = regions.id ORDER BY id DESC LIMIT 0, 10";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
@@ -40,26 +42,18 @@ class regularController extends Controller
             $this->errors[] = "لا يوجد طلبات صيانة دورية لعرضها";
         } else {
 
-
-            //get regions
-            $sql = "SELECT * FROM regions";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute();
-            $regions = $stmt->fetchAll();
-
             foreach ($regulars as $regular) {
                 $regular->next_date = date("d/m/Y", strtotime($regular->next_date));
-
-
-                foreach ($regions as $region) {
-                    if ($region->id == $regular->region) $regular->region = $region->region;
-                }
             }
-
-
 
             $this->view->regulars = $regulars;
         }
+
+        //Get the total count
+        $sql = "SELECT COUNT(*) AS numOfResults FROM regular";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
     }
 
 

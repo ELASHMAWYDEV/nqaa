@@ -90,7 +90,7 @@ function SetupPagination(page_count) {
   let table_items = document.querySelectorAll("table tbody tr");
   let pagination_container = document.querySelector(".pagination");
 
-  document.querySelector(".table-container").scrollIntoView();
+  // document.querySelector(".table-container").scrollIntoView();
   pagination_container.innerHTML = "";
 
   //Set the function

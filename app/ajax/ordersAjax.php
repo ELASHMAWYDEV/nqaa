@@ -57,9 +57,10 @@ class ordersAjax extends Ajax
         $status = isset($_POST['status']) ? $_POST['status'] : "";
         $date = isset($_POST['date']) ? $_POST['date'] : "";
 
+
         $start = ($page - 1) * 10;
 
-
+        $this->data->start = $start;
         $sql = "SELECT orders.*, users.phone AS technical_phone, users.name AS technical, regions.region AS region
                 FROM orders
                 LEFT JOIN users ON orders.technical = users.id 
