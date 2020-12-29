@@ -8,10 +8,7 @@ class Controller extends Database
 
     public function __construct()
     {
-        parent::__construct();
-
-        $this->backEndPagination();
-        
+        parent::__construct();        
         
     }
 
@@ -73,23 +70,6 @@ class Controller extends Database
     {
         if ($lvl == $_SESSION['lvl']) return true;
         else return false;
-    }
-
-
-    public function backEndPagination()
-    {
-        $this->currentPage = 0;
-
-        $request = trim($_SERVER['REQUEST_URI'], '/');
-        if(!empty($request))
-        {
-            $url = explode('/', $request);
-            if(is_numeric(end($url)))
-                $this->currentPage = (ceil(end($url)) - 1) * 10;
-  
-        }
-
-        return $this->currentPage;
     }
 
 

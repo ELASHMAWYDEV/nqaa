@@ -9,6 +9,7 @@ class ordersController extends Controller
         isset($_POST['edit_order']) ? $this->editOrder($_POST['id']) : null;
         isset($_POST['add_order']) ? $this->addOrder() : null;
         isset($_POST['delete_order']) ? $this->deleteOrder($_POST['id']) : null;
+        isset($_POST['get_orders']) ? $this->getOrders() : null;
 
         $this->loggedIn();
         $this->view('orders');
@@ -28,7 +29,15 @@ class ordersController extends Controller
 
     public function getOrders()
     {
-        $sql = "SELECT * FROM orders ORDER BY id DESC";
+        $this->view->page = 1;
+
+        $sql = "SELECT orders.*, users.phone AS technical_phone, users.name AS technical, regions.region AS region
+                FROM orders
+                LEFT JOIN users ON orders.technical = users.id 
+                LEFT JOIN regions ON orders.region = regions.id
+                ORDER BY id DESC
+                LIMIT 0, 10";
+
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
@@ -37,34 +46,16 @@ class ordersController extends Controller
         } else {
             $this->view->orders = $stmt->fetchAll();
 
-            //get technical phone
-            $sql = "SELECT * FROM users WHERE lvl = 'فني'";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute();
-            $technicals = $stmt->fetchAll();
-
-            //get regions
-            $sql = "SELECT * FROM regions";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute();
-            $regions = $stmt->fetchAll();
-
-
             foreach ($this->view->orders as $order) {
                 $order->create_date = date("d/m/Y h:ia", strtotime($order->create_date));
-
-                foreach ($technicals as $techy) {
-                    if ($techy->id == $order->technical) {
-                        $order->technical_phone = $techy->phone;
-                        $order->technical = $techy->name;
-                    }
-                }
-
-                foreach ($regions as $region) {
-                    if ($region->id == $order->region) $order->region = $region->region;
-                }
             }
         }
+
+        //Get the total count
+        $sql = "SELECT COUNT(*) AS numOfResults FROM orders";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
     }
 
 

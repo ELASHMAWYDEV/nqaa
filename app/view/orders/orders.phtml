@@ -1,11 +1,10 @@
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
         <p>/</p>
         <h6>الطلبات</h6>
     </div>
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container orders">
         <div class="search-container">
             <h3>البحث المتقدم</h3>
@@ -16,9 +15,9 @@
                 <div class="select-item">
                     <select id="region-search" onclick="rotateSelect(this)">
                         <option value="">الحي / المنطقة</option>
-                        <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->region?>"><?=$region->region?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->regions as $region) : ?>
+                            <option value="<?= $region->region ?>"><?= $region->region ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -33,9 +32,9 @@
                 <div class="select-item">
                     <select id="technical-search" onclick="rotateSelect(this)">
                         <option value="">الفني المسؤول</option>
-                        <?php foreach ($this->technicals as $techy):?>
-                            <option value="<?=$techy->name?>"><?=$techy->name?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->technicals as $techy) : ?>
+                            <option value="<?= $techy->name ?>"><?= $techy->name ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -51,11 +50,11 @@
                 <input type="text" id="invoice_num-search" placeholder="رقم الفاتورة">
             </div>
         </div>
-        <?php if(!$this->role('فني')):?>
+        <?php if (!$this->role('فني')) : ?>
             <div class="add-new">
                 <button id="btn-add" class="btn-add-new-order" onclick="popupBox('.add-order-box')">أضف طلب جديد</button>
             </div>
-        <?php endif;?>
+        <?php endif; ?>
         <div class="table-container">
             <div class="table">
                 <table>
@@ -80,66 +79,66 @@
                             <th>الحالة</th>
                             <th>رقم الفاتورة</th>
                             <th>الاجراء</th>
-                            <?php if(!$this->role('فني')):?>
+                            <?php if (!$this->role('فني')) : ?>
                                 <th>واتساب</th>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php foreach($this->orders as $order):?>
-                        <tr>
-                            <td><?=$order->id?></td>
-                            <td><?=$order->name?></td>
-                            <td><?=$order->phone?></td>
-                            <td><?=$order->type?></td>
-                            <td><?=$order->region?></td>
-                            <td><?=$order->address?></td>
-                            <td>
-                                <?php if(!empty($order->map_lng) && !empty($order->map_lat)):?>
-                                <button class="maps-btn" onclick="show_map_box(this);showMap();" data-address="<?=$order->address?>" data-name="<?=$order->name?>" data-lng="<?=$order->map_lng?>" data-lat="<?=$order->map_lat?>" data-phone="<?=$order->phone?>">عرض الخريطة</button>
-                                <?php else:?>
-                                لا يوجد
-                                <?php endif;?>
-                            </td>
-                            <td><?=$order->date?></td>
-                            <td dir="ltr"><?=$order->time?></td>
-                            <td><?=$order->notes?></td>
-                            <td><?=$order->created_by?></td>
-                            <td><?=$order->create_date?></td>
-                            <td><?=$order->appointment_status?></td>
-                            <td><?=$order->money?></td>
-                            <td><?=$order->technical?></td>
-                            <td><?=$order->details?></td>
-                            <td><?=$order->status?></td>
-                            <td><?=$order->invoice_num?></td>
-                            <td class="action">
-                                <button id="btn-edit" class="btn-edit" data-order-id="<?=$order->id?>" onclick="get_order_edit(this);readOnly()">تعديل</button>
-                                <?php if($this->role('مدير')):?>
-                                <form method="POST" name="delete_order_form" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف الطلب ؟\nلن يمكنك الرجوع عن هذا القرار !');">
-                                    <input type="hidden" name="id" value="<?=$order->id?>">
-                                    <button type="submit" name="delete_order" style="border: none;background: transparent;outline: none;">
-                                    <img src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف الطلب" title="حذف الطلب" class="delete_order_btn">
-                                </button>
-                                </form>
-                                <?php endif;?>
-                            </td>
-                            
-                            <?php if(!$this->role('فني')):?>           
-                                <td>
-                                    <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966<?=$order->phone?>&text=مرحبا استاذ <?=$order->name?>%0D%0Aشكرا لتقديمك طلب <?=$order->type?> من خلال موقع شركة نقاء%0D%0Aهذه هي بياناتك...%0D%0Aالاسم: <?=$order->name?>%0D%0Aالحي/المنطقة: <?=$order->region?>%0D%0Aالعنوان: <?=$order->address?>%0D%0Aالموعد: <?=$order->date . ' ' . $order->time?>%0D%0Aسوف يتواصل معك أحد موظفينا قريبا" target="_blank">تنبيه العميل</a>
-                                    <?php if(!empty($order->technical)):?>
-                                        <a class="whatsapp-techy-btn" href="https://api.whatsapp.com/send?phone=+966<?=$order->technical_phone?>&text=مرحبا <?=$order->technical?>%0D%0Aهناك طلب <?=$order->type?> جديد اضافه لك <?=$_SESSION['name']?>%0D%0Aوهذه هي البيانات%0D%0Aاسم العميل: <?=$order->name?>%0D%0Aالجوال: <?=$order->phone?>%0D%0Aنوع الطلب: <?=$order->type?>%0D%0Aالحي: <?=$order->region?>%0D%0Aالعنوان: <?=$order->address?>%0D%0Aالتاريخ: <?=$order->date?>%0D%0Aالوقت: <?=$order->time?>%0D%0Aملاحظات العميل: <?=$order->notes?>" target="_blank">ارسال البيانات الي الفني</a>
-                                    <?php endif;?>
-                                </td>
-                            <?php endif;?>        
 
-                        </tr>
-                        <?php endforeach;?>
+                        <?php foreach ($this->orders as $order) : ?>
+                            <tr>
+                                <td><?= $order->id ?></td>
+                                <td><?= $order->name ?></td>
+                                <td><?= $order->phone ?></td>
+                                <td><?= $order->type ?></td>
+                                <td><?= $order->region ?></td>
+                                <td><?= $order->address ?></td>
+                                <td>
+                                    <?php if (!empty($order->map_lng) && !empty($order->map_lat)) : ?>
+                                        <button class="maps-btn" onclick="show_map_box(this);showMap();" data-address="<?= $order->address ?>" data-name="<?= $order->name ?>" data-lng="<?= $order->map_lng ?>" data-lat="<?= $order->map_lat ?>" data-phone="<?= $order->phone ?>">عرض الخريطة</button>
+                                    <?php else : ?>
+                                        لا يوجد
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= $order->date ?></td>
+                                <td dir="ltr"><?= $order->time ?></td>
+                                <td><?= $order->notes ?></td>
+                                <td><?= $order->created_by ?></td>
+                                <td><?= $order->create_date ?></td>
+                                <td><?= $order->appointment_status ?></td>
+                                <td><?= $order->money ?></td>
+                                <td><?= $order->technical ?></td>
+                                <td><?= $order->details ?></td>
+                                <td><?= $order->status ?></td>
+                                <td><?= $order->invoice_num ?></td>
+                                <td class="action">
+                                    <button id="btn-edit" class="btn-edit" data-order-id="<?= $order->id ?>" onclick="get_order_edit(this);readOnly()">تعديل</button>
+                                    <?php if ($this->role('مدير')) : ?>
+                                        <form method="POST" name="delete_order_form" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف الطلب ؟\nلن يمكنك الرجوع عن هذا القرار !');">
+                                            <input type="hidden" name="id" value="<?= $order->id ?>">
+                                            <button type="submit" name="delete_order" style="border: none;background: transparent;outline: none;">
+                                                <img src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف الطلب" title="حذف الطلب" class="delete_order_btn">
+                                            </button>
+                                        </form>
+                                    <?php endif; ?>
+                                </td>
+
+                                <?php if (!$this->role('فني')) : ?>
+                                    <td>
+                                        <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=+966<?= $order->phone ?>&text=مرحبا استاذ <?= $order->name ?>%0D%0Aشكرا لتقديمك طلب <?= $order->type ?> من خلال موقع شركة نقاء%0D%0Aهذه هي بياناتك...%0D%0Aالاسم: <?= $order->name ?>%0D%0Aالحي/المنطقة: <?= $order->region ?>%0D%0Aالعنوان: <?= $order->address ?>%0D%0Aالموعد: <?= $order->date . ' ' . $order->time ?>%0D%0Aسوف يتواصل معك أحد موظفينا قريبا" target="_blank">تنبيه العميل</a>
+                                        <?php if (!empty($order->technical)) : ?>
+                                            <a class="whatsapp-techy-btn" href="https://api.whatsapp.com/send?phone=+966<?= $order->technical_phone ?>&text=مرحبا <?= $order->technical ?>%0D%0Aهناك طلب <?= $order->type ?> جديد اضافه لك <?= $_SESSION['name'] ?>%0D%0Aوهذه هي البيانات%0D%0Aاسم العميل: <?= $order->name ?>%0D%0Aالجوال: <?= $order->phone ?>%0D%0Aنوع الطلب: <?= $order->type ?>%0D%0Aالحي: <?= $order->region ?>%0D%0Aالعنوان: <?= $order->address ?>%0D%0Aالتاريخ: <?= $order->date ?>%0D%0Aالوقت: <?= $order->time ?>%0D%0Aملاحظات العميل: <?= $order->notes ?>" target="_blank">ارسال البيانات الي الفني</a>
+                                        <?php endif; ?>
+                                    </td>
+                                <?php endif; ?>
+
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="pagination">
+            <div class="pagination" data-update-function="updateOrdersTable">
             </div>
         </div>
     </div>
@@ -159,11 +158,11 @@
         <form method="POST" name="edit_order_form">
             <input type="hidden" name="id">
             <h3>تعديل الطلب رقم #<span class="order_id"></span></h3>
-            <h5 <?=$this->role('فني') ? 'style="display:none;"' : null?>>بيانات العميل</h5>
-            <h6 style="text-align: center;" <?=$this->role('فني') ? 'style="display:none;"' : null?>>يجب النقر مرتين للتعديل</h6>
-            <div class="input-items" <?=$this->role('فني') ? 'style="display:none;"' : null?>>
+            <h5 <?= $this->role('فني') ? 'style="display:none;"' : null ?>>بيانات العميل</h5>
+            <h6 style="text-align: center;" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>يجب النقر مرتين للتعديل</h6>
+            <div class="input-items" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>
                 <div class="input-item">
-                    <label>اسم العميل</label>        
+                    <label>اسم العميل</label>
                     <input type="text" name="name" placeholder="اسم العميل" class="read-only">
                 </div>
                 <div class="input-item phone-item">
@@ -174,7 +173,8 @@
                 <div class="select-item">
                     <label>نوع الطلب</label>
                     <select name="type" onclick="rotateSelect(this);" class="read-only">
-                        <option value="">نوع الطلب</option></option>
+                        <option value="">نوع الطلب</option>
+                        </option>
                         <option value="صيانة">صيانة</option>
                         <option value="تركيب">تركيب</option>
                     </select>
@@ -184,9 +184,9 @@
                     <label>الحي / المنطقة</label>
                     <select name="region" onclick="rotateSelect(this);" class="read-only">
                         <option value="">الحي / المنطقة</option>
-                        <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->id?>"><?=$region->region?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->regions as $region) : ?>
+                            <option value="<?= $region->id ?>"><?= $region->region ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -203,35 +203,35 @@
                     <select name="time" type="timepicker" onclick="rotateSelect(this);" title="لا يمكنك تعديل الوقت" class="read-only"></select>
                     <span></span>
                 </div>
-                
+
                 <div class="input-item">
                     <label>ملاحظات العميل</label>
                     <textarea type="text" name="notes" placeholder="ملاحظات العميل" readonly style="cursor: not-allowed;" title="لا يمكن تعديل ملاحظات العميل"></textarea>
                 </div>
             </div>
-            
-            <span class="separator" <?=$this->role('فني') ? 'style="display:none;"' : null?>></span>
-            <h5 <?=$this->role('فني') ? 'style="display:none;"' : null?>>بيانات يدخلها المشرف</h5>
+
+            <span class="separator" <?= $this->role('فني') ? 'style="display:none;"' : null ?>></span>
+            <h5 <?= $this->role('فني') ? 'style="display:none;"' : null ?>>بيانات يدخلها المشرف</h5>
             <div class="input-items">
-                <div class="input-item" <?=$this->role('فني') ? 'style="display:none;"' : null?>>
+                <div class="input-item" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>
                     <label>المبلغ</label>
                     <input type="number" name="money" placeholder="المبلغ">
                 </div>
-                <div class="select-item" <?=$this->role('فني') ? 'style="display:none;"' : null?>>
+                <div class="select-item" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>
                     <label>الفني المسؤول</label>
                     <select name="technical" onclick="rotateSelect(this);">
                         <option value="">الفني المسؤول</option>
-                        <?php foreach ($this->technicals as $techy):?>
-                            <option value="<?=$techy->id?>"><?=$techy->name?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->technicals as $techy) : ?>
+                            <option value="<?= $techy->id ?>"><?= $techy->name ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
-                <div class="input-item" <?=$this->role('فني') ? 'style="display:none;"' : null?>>
+                <div class="input-item" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>
                     <label>تفاصيل الطلب</label>
                     <textarea name="details" placeholder="تفاصيل الطلب"></textarea>
                 </div>
-                <div class="select-item" <?=$this->role('فني') ? 'style="display:none;"' : null?>>
+                <div class="select-item" <?= $this->role('فني') ? 'style="display:none;"' : null ?>>
                     <label>حالة الموعد</label>
                     <select name="appointment_status" onclick="rotateSelect(this);">
                         <option value="تحت الإجراء في الموعد المحدد">تحت الإجراء في الموعد المحدد</option>
@@ -259,7 +259,7 @@
                 <div class="input-item"><button class="edit-btn" type="submit" name="edit_order">تعديل</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--edit order Box END-->
@@ -285,7 +285,7 @@
             <h5>بيانات خاصة بالعميل</h5>
             <div class="input-items">
                 <div class="input-item">
-                    <label>اسم العميل</label>        
+                    <label>اسم العميل</label>
                     <input type="text" name="name" placeholder="اسم العميل" required>
                 </div>
                 <div class="input-item phone-item">
@@ -296,7 +296,8 @@
                 <div class="select-item">
                     <label>نوع الطلب</label>
                     <select name="type" onclick="rotateSelect(this);">
-                        <option value="">نوع الطلب</option></option>
+                        <option value="">نوع الطلب</option>
+                        </option>
                         <option value="صيانة">صيانة</option>
                         <option value="تركيب">تركيب</option>
                     </select>
@@ -306,9 +307,9 @@
                     <label>الحي / المنطقة</label>
                     <select name="region" onclick="rotateSelect(this);">
                         <option value="">الحي / المنطقة</option>
-                        <?php foreach ($this->regions as $region):?>
-                            <option value="<?=$region->id?>"><?=$region->region?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->regions as $region) : ?>
+                            <option value="<?= $region->id ?>"><?= $region->region ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -325,14 +326,14 @@
                     <select name="time" type="timepicker" onclick="rotateSelect(this);"></select>
                     <span></span>
                 </div>
-                
+
                 <div class="input-item">
                     <label>ملاحظات العميل</label>
                     <textarea type="text" name="notes" placeholder="ملاحظات العميل"></textarea>
                 </div>
             </div>
             <span class="separator"></span>
-            <h5>بيانات يدخلها المشرف  (ممكن لاحقا)</h5>
+            <h5>بيانات يدخلها المشرف (ممكن لاحقا)</h5>
             <div class="input-items">
                 <div class="input-item">
                     <label>المبلغ</label>
@@ -342,9 +343,9 @@
                     <label>الفني المسؤول</label>
                     <select name="technical" onclick="rotateSelect(this);">
                         <option value="">الفني المسؤول</option>
-                        <?php foreach ($this->technicals as $techy):?>
-                            <option value="<?=$techy->id?>"><?=$techy->name?></option>
-                        <?php endforeach;?>
+                        <?php foreach ($this->technicals as $techy) : ?>
+                            <option value="<?= $techy->id ?>"><?= $techy->name ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
@@ -366,7 +367,7 @@
                 <div class="input-item"><button class="add-btn" type="submit" name="add_order">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--add order Box END-->
@@ -411,7 +412,7 @@
         }
     }
 
-    
+
     //form validation
     let add_order_form = document.forms['add_order_form'];
     add_order_form.onsubmit = e => {
@@ -478,7 +479,7 @@
         document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 8);
     }
 
-    
+
     //Allow editing on dbclick
     function readOnly() {
 
@@ -500,58 +501,58 @@
                 parent.title = '';
                 item.style.pointerEvents = 'auto';
             }
-    
+
         });
-    }  
-
-setTimeout(e => {
-    timepicker(`<?=$this->start_hour_1?>`, `<?=$this->finish_hour_1?>`);
-    timepicker(`<?=$this->start_hour_2?>`, `<?=$this->finish_hour_2?>`, true);
-}, 1000);
-
-
-
-//show invoice_num on status finish
-let invoice_num_1 = document.querySelector("#invoice_num_1");
-let status_select_1 = document.querySelector('#status_select_1');
-let btn_edit = document.querySelector('#btn-edit');
-
-setInterval( e => {
-    if (status_select_1.value == "Finish") {
-        invoice_num_1.style.display = "";
-    } else {
-        invoice_num_1.style.display = "none";
-        invoice_num_1.querySelector('input[name="invoice_num"]').setAttribute('value', '');
-    }
-}, 500);
-    
-
-
-status_select_1.onchange = e => {
-    
-    if (status_select_1.value == "Finish") {
-        invoice_num_1.style.display = "";
-    } else {
-        invoice_num_1.style.display = "none";
-        invoice_num_1.querySelector('input[name="invoice_num"]').setAttribute('value', '');
     }
 
-}
+    setTimeout(e => {
+        timepicker(`<?= $this->start_hour_1 ?>`, `<?= $this->finish_hour_1 ?>`);
+        timepicker(`<?= $this->start_hour_2 ?>`, `<?= $this->finish_hour_2 ?>`, true);
+    }, 1000);
 
-//show invoice_num on status finish
-let invoice_num_2 = document.querySelector("#invoice_num_2");
-let status_select_2 = document.querySelector('#status_select_2');
 
-status_select_2.onchange = e => {
-    if (status_select_2.value == "Finish") {
-        invoice_num_2.style.display = "";
-    } else {
-        invoice_num_2.style.display = "none";
-        invoice_num_2.querySelector('input[name="invoice_num"]').setAttribute('value', '');
+
+    //show invoice_num on status finish
+    let invoice_num_1 = document.querySelector("#invoice_num_1");
+    let status_select_1 = document.querySelector('#status_select_1');
+    let btn_edit = document.querySelector('#btn-edit');
+
+    setInterval(e => {
+        if (status_select_1.value == "Finish") {
+            invoice_num_1.style.display = "";
+        } else {
+            invoice_num_1.style.display = "none";
+            invoice_num_1.querySelector('input[name="invoice_num"]').setAttribute('value', '');
+        }
+    }, 500);
+
+
+
+    status_select_1.onchange = e => {
+
+        if (status_select_1.value == "Finish") {
+            invoice_num_1.style.display = "";
+        } else {
+            invoice_num_1.style.display = "none";
+            invoice_num_1.querySelector('input[name="invoice_num"]').setAttribute('value', '');
+        }
 
     }
 
-}
+    //show invoice_num on status finish
+    let invoice_num_2 = document.querySelector("#invoice_num_2");
+    let status_select_2 = document.querySelector('#status_select_2');
+
+    status_select_2.onchange = e => {
+        if (status_select_2.value == "Finish") {
+            invoice_num_2.style.display = "";
+        } else {
+            invoice_num_2.style.display = "none";
+            invoice_num_2.querySelector('input[name="invoice_num"]').setAttribute('value', '');
+
+        }
+
+    }
 
 
 
@@ -559,22 +560,22 @@ status_select_2.onchange = e => {
 
 
 
-//show map & details
-function show_map_box(el){
-    let name = el.getAttribute('data-name');
-    let address = el.getAttribute('data-address');
-    let lng = el.getAttribute('data-lng');
-    let lat = el.getAttribute('data-lat');
-    let phone = el.getAttribute('data-phone');
+    //show map & details
+    function show_map_box(el) {
+        let name = el.getAttribute('data-name');
+        let address = el.getAttribute('data-address');
+        let lng = el.getAttribute('data-lng');
+        let lat = el.getAttribute('data-lat');
+        let phone = el.getAttribute('data-phone');
 
-    let map_box = document.querySelector('.show-map-box #map-order');
-    map_box.setAttribute('data-name', name);
-    map_box.setAttribute('data-address', address);
-    map_box.setAttribute('data-lng', lng);
-    map_box.setAttribute('data-lat', lat);
-    map_box.setAttribute('data-phone', phone);
+        let map_box = document.querySelector('.show-map-box #map-order');
+        map_box.setAttribute('data-name', name);
+        map_box.setAttribute('data-address', address);
+        map_box.setAttribute('data-lng', lng);
+        map_box.setAttribute('data-lat', lat);
+        map_box.setAttribute('data-phone', phone);
 
-    popupBox('.show-map-box');
+        popupBox('.show-map-box');
 
-}
+    }
 </script>

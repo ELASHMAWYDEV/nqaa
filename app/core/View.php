@@ -9,7 +9,7 @@ class View extends Controller
     {
         parent::__construct();
         $this->view_file = $view_file;
-        
+
         $this->showNews = $this->showNews();
     }
 
@@ -18,24 +18,17 @@ class View extends Controller
     {
 
         include VIEW . 'header.phtml';
-        
     }
 
     public function renderFile()
     {
-        
-        if(file_exists(VIEW . $this->view_file . DS . $this->view_file . '.phtml'))
-        {
-            
+
+        if (file_exists(VIEW . $this->view_file . DS . $this->view_file . '.phtml')) {
+
             include VIEW . $this->view_file . DS . $this->view_file . '.phtml';
-            
-            
-        }
-        else
-        {
+        } else {
             exit("No such directory");
         }
-        
     }
 
     public function renderFooter()
@@ -52,12 +45,9 @@ class View extends Controller
     //If there is an active link style => use this function
     public function getActive($url)
     {
-        if(basename($_SERVER['REQUEST_URI']) == $this->view_file && $this->view_file== $url)
-        {
+        if (basename($_SERVER['REQUEST_URI']) == $this->view_file && $this->view_file == $url) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -67,13 +57,11 @@ class View extends Controller
     {
         echo "<div class='alarms' id='alarms-php' style='display: block;'>";
 
-        foreach($errors as $err)
-        {
+        foreach ($errors as $err) {
             echo "<div class='alarm alarm-errors'>" . $err . "</div>";
         }
 
-        foreach($success as $succ)
-        {
+        foreach ($success as $succ) {
             echo "<div class='alarm alarm-success'>" . $succ . "</div>";
         }
 
@@ -90,22 +78,17 @@ class View extends Controller
                 }
             </script>";
     }
-   
+
     //store the page data in an object called $this->data
     public function pagination($num_of_rows = 10)
     {
         echo "
         <script>
-            let table_items = document.querySelectorAll('table tbody tr');
-            let pagintation_container = document.querySelector('.pagination');
-            let current_page = 1;
-            let rows_per_page = " . $num_of_rows ."; ///number of rows shown on all tables
-            SetupPagination(table_items, rows_per_page, pagintation_container);
-            DisplayTable(table_items, rows_per_page, current_page); 
+            let current_page = " . $this->page . ";
+            let page_count = " . ceil($this->numOfResults / $num_of_rows) . "
+            let rows_per_page = " . $num_of_rows . "; ///number of rows shown on all tables
+            SetupPagination(page_count);
         </script>
         ";
     }
-
 }
-
-
