@@ -113,8 +113,11 @@ function SetupPagination(page_count) {
     prev_btn.style.display = "none";
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i, table_items);
+      let button = PaginationBtn(i);
       pagination_container.appendChild(button);
+      button.onclick = (e) => {
+        eval(`${updateFunctionName}({page: ${current_page}})`);
+      }
     }
   } else {
     next_btn.style.display = "flex";
@@ -123,7 +126,7 @@ function SetupPagination(page_count) {
 
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i, table_items);
+      let button = PaginationBtn(i);
 
       //save all buttons in a list
       btn_list.push(button);
@@ -138,8 +141,6 @@ function SetupPagination(page_count) {
           pagination_container.insertBefore(button, next_btn);
         }
         current_page = btn_list.indexOf(button) + 1;
-
-        eval(`${updateFunctionName}({page: ${current_page}})`);
 
         checkButtons(current_page, page_count, next_btn, prev_btn, btn_list);
       };
@@ -188,9 +189,8 @@ function SetupPagination(page_count) {
   }
 }
 
-function PaginationBtn(page, table_items) {
+function PaginationBtn(page) {
   let button = document.createElement("button");
-  let i = page;
   button.innerText = page;
   if (current_page == page) button.classList.add("active-page");
   button.addEventListener("click", function (e) {

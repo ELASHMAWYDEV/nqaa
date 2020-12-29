@@ -95,7 +95,7 @@ function updateRegularTable({ page = 1 }) {
   //Get all data for search
   ajax("post", ajaxUrl + "regular", { get_regular: true, page }, (output) => {
     output = JSON.parse(output);
-    console.log(output)
+    console.log(output);
     messages(output.errors, output.success);
     let tbody = document.querySelector(".table-container table tbody");
     let tbodyContent = "";
@@ -133,6 +133,53 @@ function updateRegularTable({ page = 1 }) {
         }&text=مرحبا ${
           order.name
         }%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?= ROOT_URL . 'form'}%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
+
+    </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+    SetupPagination(page_count);
+  });
+}
+
+function updateNotesTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "notes", { get_notes: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.notes.length != 0)
+      for (let note of output.notes) {
+        tbodyContent += `
+        <tr>
+        <td>${note.id}</td>
+        <td colspan="3">${note.note}</td>
+        <td>${note.note_taker_name}</td>
+        <td>${note.create_date}</td>
+
+        ${
+          !note.status
+            ? output.role == "مدير"
+              ? `
+          <td class="action">
+                    <form method="POST">
+                        <input type="hidden" name="note_id" value="${note.id}">
+                        <button class="btn-done" type="submit" name="update_note">تم الاطلاع</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="note_id" value="${note.id}">
+                        <img onclick="popupBox('.delete-note-box'); get_note_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-note-id="${note.id}" class="delete_note_btn">
+                    </form>
+                    <button id="btn-edit" class="btn-edit" data-note-id="${note.id}" onclick="get_note_edit(this);">تعديل</button>
+
+                </td>`
+              : ""
+            : `
+                <td>${note.status}</td>`
+        }
 
     </tr>
         `;
