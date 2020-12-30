@@ -72,7 +72,7 @@ function updateOrdersTable({ page = 1 }) {
             ${
               order.technical
                 ? `
-            <a class="whatsapp-techy-btn" href="https://api.whatsapp.com/send?phone=+966${order.technical_phone}&text=مرحبا ${order.technical}%0D%0Aهناك طلب ${order.type} جديد اضافه لك <?= $_SESSION['name']}%0D%0Aوهذه هي البيانات%0D%0Aاسم العميل: ${order.name}%0D%0Aالجوال: ${order.phone}%0D%0Aنوع الطلب: ${order.type}%0D%0Aالحي: ${order.region}%0D%0Aالعنوان: ${order.address}%0D%0Aالتاريخ: ${order.date}%0D%0Aالوقت: ${order.time}%0D%0Aملاحظات العميل: ${order.notes}" target="_blank">ارسال البيانات الي الفني</a>
+            <a class="whatsapp-techy-btn" href="https://api.whatsapp.com/send?phone=+966${order.technical_phone}&text=مرحبا ${order.technical}%0D%0Aهناك طلب ${order.type} جديد اضافه لك %0D%0Aوهذه هي البيانات%0D%0Aاسم العميل: ${order.name}%0D%0Aالجوال: ${order.phone}%0D%0Aنوع الطلب: ${order.type}%0D%0Aالحي: ${order.region}%0D%0Aالعنوان: ${order.address}%0D%0Aالتاريخ: ${order.date}%0D%0Aالوقت: ${order.time}%0D%0Aملاحظات العميل: ${order.notes}" target="_blank">ارسال البيانات الي الفني</a>
             `
                 : ""
             }
@@ -132,7 +132,9 @@ function updateRegularTable({ page = 1 }) {
           order.phone
         }&text=مرحبا ${
           order.name
-        }%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A<?= ROOT_URL . 'form'}%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
+        }%0D%0Aلقد حان موعد الصيانة الدورية %0D%0Aيرجي تعبئة نموذج الصيانة من هنا%0D%0A${
+          window.location.origin
+        }/form%0D%0Aأو الاتصال بنا علي 05429045700542904570وشكرا جزيلا" target="_blank">تنبيه العميل</a></td>
 
     </tr>
         `;
@@ -219,6 +221,81 @@ function updatePaymentsTable({ page = 1 }) {
                 </td>`
                 : ""
             }
+        </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+    SetupPagination(page_count);
+  });
+}
+
+function updateProductsTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "products", { get_products: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.products.length != 0)
+      for (let product of output.products) {
+        tbodyContent += `
+        <tr>
+          <td>${product.id}</td>
+          <td>${product.name}</td >
+          <td>${product.price}</td>
+        ${
+          output.role == "مدير"
+            ? `
+          <td class="action">
+          <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="${product.id}" class="delete_product_btn">
+          <button id="btn-edit" class="btn-edit" data-product-id="${product.id}" onclick="get_product_edit(this);">تعديل</button>
+          
+          </td>`
+            : ""
+        }   
+        </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+    SetupPagination(page_count);
+  });
+}
+
+function updateSalaryTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "salary", { get_salary: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.salary.length != 0)
+      for (let oneSalary of output.salary) {
+        tbodyContent += `
+        <tr>
+          <td>${oneSalary.id}</td>
+          <td>${oneSalary.create_date}</td>
+          <td>${oneSalary.salary_date}</td>
+          <td>${oneSalary.name}</td>
+          <td>${oneSalary.salary_value}</td>
+          <td>${oneSalary.extra_work}</td>
+          <td>${oneSalary.totalBeforeDiscounts}</td>
+          <td>${oneSalary.advance}</td>
+          <td>${oneSalary.discounts}</td>
+          <td>${oneSalary.totalAfterDiscounts}</td>
+          ${
+            output.role == "مدير"
+              ? `
+          <td>
+          <img onclick="popupBox('.delete-salary-box'); get_salary_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف الراتب" title="حذف المستخدم" data-salary-id="${oneSalary.id}">
+          <button id="btn-edit" class="btn-edit" data-salary-id="${oneSalary.id}" onclick="get_salary_edit(this);">تعديل</button>
+          
+          </td >`
+              : ""
+          }
         </tr>
         `;
       }

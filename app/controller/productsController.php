@@ -31,11 +31,17 @@ class productsController extends Controller
     public function getProducts()
     {
 
-        $sql = "SELECT * FROM products ORDER BY id DESC";
+        $sql = "SELECT * FROM products ORDER BY id DESC LIMIT 0,10";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
         $this->view->products = $stmt->fetchAll();
+
+        //Get the total count
+        $sql = "SELECT COUNT(*) AS numOfResults FROM payments";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
     }
 
 

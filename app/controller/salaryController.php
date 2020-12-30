@@ -34,7 +34,10 @@ class salaryController extends Controller
 
 
     //discounts
-    $sql = "SELECT salary.*, users.name FROM salary LEFT JOIN users ON salary.employee_id = users.id ORDER BY id DESC";
+    $sql = "SELECT salary.*, users.name FROM salary 
+            LEFT JOIN users ON salary.employee_id = users.id 
+            ORDER BY id DESC
+            LIMIT 0, 10";
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
 
@@ -54,6 +57,12 @@ class salaryController extends Controller
       $this->view->salary = [];
       $this->errors[] = 'لا يوجد رواتب لعرضها';
     }
+
+    //Get the total count
+    $sql = "SELECT COUNT(*) AS numOfResults FROM salary";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
   }
 
 
@@ -73,7 +82,7 @@ class salaryController extends Controller
   public function addSalary($salary_value, $extra_work, $discounts, $advance, $id, $salary_date)
   {
 
-    if(!$id) {
+    if (!$id) {
       return $this->errors[] = "يجب اختيار الموظف";
     }
 
