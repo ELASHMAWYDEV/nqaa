@@ -1,6 +1,6 @@
 <?php
 
-class usersAjax extends Ajax
+class statsAjax extends Ajax
 {
     public function __construct()
     {

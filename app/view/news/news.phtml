@@ -1,11 +1,10 @@
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
         <p>/</p>
         <h6>الأخبار</h6>
     </div>
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container news">
         <div class="add-new">
             <button class="btn-add-new-news" onclick="popupBox('.add-news-box')">أضف خبر جديد</button>
@@ -22,21 +21,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php foreach($this->news as $news):?>
-                        <tr>
-                            <td><?=$news->id;?></td>
-                            <td colspan="5"><?=$news->news;?></td>
-                            <td><?=$news->create_date;?></td>
-                            <td class="action">
-                            <img onclick="popupBox('.delete-news-box'); get_news_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف الخبر" title="حذف الخبر" data-news-id="<?php echo $news->id;?>" class="delete_user_btn">
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
+
+                        <?php foreach ($this->news as $news) : ?>
+                            <tr>
+                                <td><?= $news->id; ?></td>
+                                <td colspan="5"><?= $news->news; ?></td>
+                                <td><?= $news->create_date; ?></td>
+                                <td class="action">
+                                    <img onclick="popupBox('.delete-news-box'); get_news_delete(this);" src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف الخبر" title="حذف الخبر" data-news-id="<?php echo $news->id; ?>" class="delete_user_btn">
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="pagination">
+            <div class="pagination" data-update-function="updateNewsTable">
             </div>
         </div>
     </div>
@@ -60,7 +59,7 @@
                 <div class="input-item"><button class="add-btn" type="submit" name="add_news">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Add New news Box END-->
@@ -88,7 +87,7 @@
                 <div class="input-item"><button class="abort-btn" type="" onclick="abort('.delete-news-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete news Box END-->

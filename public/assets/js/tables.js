@@ -305,4 +305,65 @@ function updateSalaryTable({ page = 1 }) {
     SetupPagination(page_count);
   });
 }
+
+function updateNewsTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "news", { get_news: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.news.length != 0)
+      for (let oneNews of output.news) {
+        tbodyContent += `
+        <tr>
+          <td>${oneNews.id}</td>
+          <td colspan="5">${oneNews.news}</td>
+          <td>${oneNews.create_date}</td>
+          <td class="action">
+          <img onclick="popupBox('.delete-news-box'); get_news_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف الخبر" title="حذف الخبر" data-news-id="${oneNews.id}" class="delete_user_btn">
+          </td>
+      </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+
+    SetupPagination(page_count);
+  });
+}
+
+function updateRegionsTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "regions", { get_regions: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.regions.length != 0)
+      for (let region of output.regions) {
+        tbodyContent += `
+        <tr>
+            <td>${region.id}</td>
+            <td>${region.region}</td>
+            <td class="action">
+                <!-- <form method="POST">
+                    <input type="hidden" name="region_id" value="${region.id}">
+                    <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="${region.id}" class="delete_region_btn">
+                </form> -->
+                <button id="btn-edit" class="btn-edit" data-region-id="${region.id}" onclick="get_region_edit(this);">تعديل</button>
+
+            </td>
+
+        </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+
+    SetupPagination(page_count);
+  });
+}
 /*-------------------AJAX Table END---------------------*/

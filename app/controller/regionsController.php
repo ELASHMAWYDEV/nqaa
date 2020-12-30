@@ -7,7 +7,7 @@ class regionsController extends Controller
         parent::__construct();
 
         //role
-        !$this->role('مدير') ? header('location: stats') :null;
+        !$this->role('مدير') ? header('location: stats') : null;
 
         isset($_POST['add_region']) ? $this->addRegion($_POST['region']) : null;
         isset($_POST['delete_region']) ? $this->deleteRegion($_POST['id']) : null;
@@ -27,7 +27,7 @@ class regionsController extends Controller
 
     public function getRegions()
     {
-        $sql = "SELECT * FROM regions ORDER BY id DESC";
+        $sql = "SELECT * FROM regions ORDER BY id DESC LIMIT 0, 10";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
@@ -36,8 +36,14 @@ class regionsController extends Controller
         } else {
             $this->errors[] = 'لا يوجد أحياء لعرضها';
         }
+
+        //Get the total count
+        $sql = "SELECT COUNT(*) AS numOfResults FROM regions";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
     }
-    
+
 
     public function addRegion($region)
     {
@@ -47,7 +53,7 @@ class regionsController extends Controller
         $stmt->execute([$region]);
         if ($stmt->rowCount() != '0') {
             $this->errors[] = "هذا الحي تم ادخاله من قبل ولا يمكن ادخاله مرة أخري";
-            return; 
+            return;
         }
 
         $sql = "INSERT INTO regions (region) VALUES (?)";
@@ -92,8 +98,5 @@ class regionsController extends Controller
         } else {
             $this->errors[] = "حدث خطأ ما";
         }
-
     }
-
-
 }
