@@ -27,8 +27,8 @@ class notesController extends Controller
         $this->view->renderFooter();
         $this->view->pagination();
     }
-
-
+    
+    
     public function getNotes()
     {
         //notes
@@ -38,6 +38,10 @@ class notesController extends Controller
                 LIMIT 0, 10";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
+        $this->view->notes = [];
+
+
+
         if ($stmt->rowCount() != '0') {
             $this->notes = $stmt->fetchAll();
         } else {

@@ -8,7 +8,7 @@ class paymentsController extends Controller
         parent::__construct();
 
         //role
-        $this->role('فني') ? header('location: stats') :null;
+        $this->role('فني') ? header('location: stats') : null;
 
         isset($_POST['add_payment']) ? $this->addPayment($_POST['cash'], $_POST['net'], $_POST['payments'], $_POST['advance'], $_POST['advance_maker_id']) : null;
         isset($_POST['delete_payment']) ? $this->deletePayment($_POST['id']) : null;
@@ -25,20 +25,20 @@ class paymentsController extends Controller
         $this->view->viewMessages($this->errors, $this->success);
         $this->view->renderFooter();
         $this->view->pagination(10);
-
-
     }
 
 
-    
+
     public function getPayemnts()
     {
-     
+
 
         //payments
-        $sql = "SELECT * FROM payments ORDER BY id DESC";
+        $sql = "SELECT payments.*, users.name FROM payments
+                LEFT JOIN users ON payments.advance_maker_id = users.id ORDER BY id DESC LIMIT 0, 10";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
+        $this->view->payments = [];
 
         if ($stmt->rowCount() != '0') {
 
@@ -46,32 +46,23 @@ class paymentsController extends Controller
             foreach ($payments as $payment) {
 
                 $payment->create_date = date("d/m/Y h:ia", strtotime($payment->create_date));
-                $payment->total = ( $payment->cash + $payment->net ) - ( $payment->payments + $payment->advance );
+                $payment->total = ($payment->cash + $payment->net) - ($payment->payments + $payment->advance);
 
                 if ($payment->advance != 0 && !empty($payment->advance)) {
-
-                    foreach ( $this->getUsers() as $user ) {
-                        
-                        if ($payment->advance_maker_id == $user->id) {
-
-                            $payment->advance = $payment->advance . ' ← ' . $user->name;
-                        break;
-
-                        }
-                    }
-
+                    $payment->advance = $payment->advance . ' ← ' . $payment->name;
                 }
-
             }
-
             $this->view->payments = $payments;
-
         } else {
-            $this->view->payments = [];
             $this->errors[] = 'لا يوجد مبالغ يومية لعرضها';
         }
 
 
+        //Get the total count
+        $sql = "SELECT COUNT(*) AS numOfResults FROM payments";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
     }
 
 
@@ -91,29 +82,23 @@ class paymentsController extends Controller
     public function addPayment($cash, $net, $payments, $advance, $id)
     {
 
-        if ( is_numeric($cash) && is_numeric($net) && is_numeric($payments) && is_numeric($advance)) {
-        
+        if (is_numeric($cash) && is_numeric($net) && is_numeric($payments) && is_numeric($advance)) {
+
             $sql = "INSERT INTO payments (cash, net, payments, advance, advance_maker_id) VALUES ( ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($sql);
-            $stmt->execute([number_format($cash,0,'.',''), number_format($net,0,'.',''), number_format($payments,0,'.',''), number_format($advance,0,'.',''), $id]);
+            $stmt->execute([number_format($cash, 0, '.', ''), number_format($net, 0, '.', ''), number_format($payments, 0, '.', ''), number_format($advance, 0, '.', ''), $id]);
 
 
-            if ( $stmt->rowCount() == '1') {
+            if ($stmt->rowCount() == '1') {
                 $this->success[] = 'تم حفظ المبلغ بنجاح';
                 $this->redirect('payments', '2');
-
             } else {
                 $this->errors[] = 'حدث خطأ ما';
-
             }
-
-
         } else {
 
             $this->errors[] = 'يجب أن تكون جميع المدخلات أرقام انجليزية';
         }
-
-
     }
 
 
@@ -128,7 +113,7 @@ class paymentsController extends Controller
             $this->success[] = "تم حذف المبلغ رقم #$id بنجاح";
             $this->redirect('payments', '2');
         } else {
-            $this->errors[] = "حدث خطأ ما";   
+            $this->errors[] = "حدث خطأ ما";
         }
     }
 
@@ -145,7 +130,7 @@ class paymentsController extends Controller
             'payments' => $_POST['payments'],
             'advance' => $_POST['advance'],
             'advance_maker_id' => $_POST['advance_maker_id']
-            
+
         ]);
 
         if ($stmt->rowCount() == '1') {
@@ -155,5 +140,4 @@ class paymentsController extends Controller
             $this->errors[] = "حدث خطأ ما";
         }
     }
-
 }

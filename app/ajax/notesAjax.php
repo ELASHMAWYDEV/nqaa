@@ -42,7 +42,7 @@ class notesAjax extends Ajax
         $note_taker_id = isset($_POST['note_taker_id']) ? $_POST['note_taker_id'] : "";
         $create_date = isset($_POST['create_date']) ? date("d/m/Y", strtotime($_POST['create_date'])) : "";
         $note = isset($_POST['note']) ? $_POST['note'] : "";
-
+        
         $start = ($page - 1) * 10;
 
         //notes

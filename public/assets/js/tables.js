@@ -190,4 +190,42 @@ function updateNotesTable({ page = 1 }) {
     SetupPagination(page_count);
   });
 }
+
+function updatePaymentsTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "payments", { get_payments: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.payments.length != 0)
+      for (let payment of output.payments) {
+        tbodyContent += `
+        <tr>
+            <td>${payment.id}</td>
+            <td>${payment.create_date}</td>
+            <td>${payment.cash}</td>
+            <td>${payment.net}</td>
+            <td>${payment.payments}</td>
+            <td>${payment.advance}</td>
+            <td>${payment.total}</td>
+            ${
+              output.role == "مدير"
+                ? `
+            <td>
+                    <img onclick="popupBox('.delete-payment-box'); get_payment_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف المبلغ اليومي" title="حذف المستخدم" data-payment-id="${payment.id}">
+                    <button id="btn-edit" class="btn-edit" data-payment-id="${payment.id}" onclick="get_payment_edit(this);">تعديل</button>
+
+                </td>`
+                : ""
+            }
+        </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+    SetupPagination(page_count);
+  });
+}
 /*-------------------AJAX Table END---------------------*/
