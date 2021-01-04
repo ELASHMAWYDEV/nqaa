@@ -55,6 +55,9 @@
                 <button id="btn-add" class="btn-add-new-order" onclick="popupBox('.add-order-box')">أضف طلب جديد</button>
             </div>
         <?php endif; ?>
+        <div class="print-btn">
+            <button id="btn-add" class="btn-print" onclick="popupBox('.print-order-box')">طباعة</button>
+        </div>
         <div class="table-container">
             <div class="table">
                 <table>
@@ -377,7 +380,36 @@
 
 
 
+<!--print orders Box BEGIN-->
+<div class="float-box-container">
 
+    <div class="print-order-box">
+        <!--Closing Tag Start-->
+        <div class="closing" onclick="closeBox(this)">
+            <span></span>
+            <span></span>
+        </div>
+        <!--Closing Tag END-->
+        <form method="POST" name="print_orders_form" action="/ajax/orders">
+            <input type="hidden" name="id">
+            <h3>طباعة الطلبات</h3>
+            <div class="input-items">
+                <div class="input-item">
+                    <label>من</label>
+                    <div type="datepicker" placeholder="التاريخ" name="start_date"></div>
+                </div>
+                <div class="input-item">
+                    <label>الي</label>
+                    <div type="datepicker" placeholder="التاريخ" name="end_date"></div>
+                </div>
+                <div class="input-item"><button class="print-btn" type="submit" name="print_orders">طباعة</button></div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--print orders Box END-->
 
 <!--add order Box BEGIN-->
 <div class="float-box-container">
@@ -576,6 +608,12 @@
         map_box.setAttribute('data-phone', phone);
 
         popupBox('.show-map-box');
+
+    }
+
+
+    function print_orders(from) {
+        console.log("printing");
 
     }
 </script>

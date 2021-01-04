@@ -366,4 +366,44 @@ function updateRegionsTable({ page = 1 }) {
     SetupPagination(page_count);
   });
 }
+
+function updateUsersTable({ page = 1 }) {
+  //Get all data for search
+  ajax("post", ajaxUrl + "users", { get_users: true, page }, (output) => {
+    output = JSON.parse(output);
+    messages(output.errors, output.success);
+    let tbody = document.querySelector(".table-container table tbody");
+    let tbodyContent = "";
+    if (output.users.length != 0)
+      for (let user of output.users) {
+        tbodyContent += `
+        <tr>
+          <td>${user.id}</td>
+          <td>${user.username}</td>
+          <td>${user.email}</td>
+          <td>${user.name}</td>
+          <td>${user.phone}</td>
+          <td>${user.lvl}</td>                            
+          <td>${user.login_date}</td>
+          <!--Signed user => Don't show buttons-->
+          <td class="action">
+              ${
+                output.id != user.id
+                  ? `
+              <button onclick="get_user_edit(this)" class="btn-edit edit_user_btn" data-user-id="${user.id}">تعديل</button>
+              <img onclick="popupBox('.delete-user-box'); get_user_delete(this);" src="${window.location.origin}/public/assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-user-id="${user.id}" class="delete_user_btn">
+`
+                  : ""
+              } 
+          </td>
+      </tr>
+        `;
+      }
+
+    page_count = output.page_count;
+    tbody.innerHTML = tbodyContent;
+
+    SetupPagination(page_count);
+  });
+}
 /*-------------------AJAX Table END---------------------*/

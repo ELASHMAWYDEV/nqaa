@@ -1,4 +1,3 @@
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
@@ -6,7 +5,7 @@
         <h6>الأحياء</h6>
     </div>
 
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
 
     <div class="container regions">
 
@@ -34,22 +33,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php foreach($this->regions as $region):?>
-                        <tr>
-                            <td><?=$region->id;?></td>
-                            <td><?=$region->region;?></td>
-                            <td class="action">
-                                <!-- <form method="POST">
-                                    <input type="hidden" name="region_id" value="<?=$region->id;?>">
-                                    <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?=$region->id;?>" class="delete_region_btn">
+
+                        <?php foreach ($this->regions as $region) : ?>
+                            <tr>
+                                <td><?= $region->id; ?></td>
+                                <td><?= $region->region; ?></td>
+                                <td class="action">
+                                    <!-- <form method="POST">
+                                    <input type="hidden" name="region_id" value="<?= $region->id; ?>">
+                                    <img onclick="popupBox('.delete-region-box'); get_region_delete(this);" src="<?= PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-region-id="<?= $region->id; ?>" class="delete_region_btn">
                                 </form> -->
-                                <button id="btn-edit" class="btn-edit" data-region-id="<?=$region->id?>" onclick="get_region_edit(this);">تعديل</button>
+                                    <button id="btn-edit" class="btn-edit" data-region-id="<?= $region->id ?>" onclick="get_region_edit(this);">تعديل</button>
 
-                            </td>
+                                </td>
 
-                        </tr>
-                        <?php endforeach;?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -77,7 +76,7 @@
                 <div class="input-item"><button class="add-btn" type="submit" name="add_region">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Add New region Box END-->
@@ -104,7 +103,7 @@
                 <div class="input-item"><button class="abort-btn" type="button" onclick="abort('.delete-region-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete region Box END-->
@@ -143,8 +142,7 @@
 
 
 <script>
-
-    function get_region_delete(el){
+    function get_region_delete(el) {
         let id = el.getAttribute('data-region-id');
         let delete_region_box = document.querySelector('.delete-region-box');
         delete_region_box.querySelector('input[name="id"]').setAttribute('value', id);
@@ -155,6 +153,4 @@
     //search with name
     let search_region = document.querySelector('#region-search');
     search_region.oninput = e => searchInput(search_region, 2);
-    
-
 </script>

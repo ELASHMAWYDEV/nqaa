@@ -1,10 +1,20 @@
+// @ts-nocheck
 function datepicker() {
+  //get all div with type="datepicker"
+  let inputs = document.querySelectorAll('div[type="datepicker"]');
 
-    //get all div with type="datepicker"
-    let inputs = document.querySelectorAll('div[type="datepicker"]');
+  let finalInputs = [];
+  //Give each input a random id
+  for (input of inputs) {
+    const randomId =
+      "datepicker" + "_" + Math.random().toString(36).substr(2, 9);
+    input.setAttribute("id", randomId);
 
-    /*-------Styles BEGIN---------*/
-    let styles = `
+    finalInputs.push(document.getElementById(randomId));
+  }
+
+  /*-------Styles BEGIN---------*/
+  let styles = `
         div[type="datepicker"] {
             display: flex;
             justify-content: center;
@@ -154,228 +164,217 @@ function datepicker() {
         }
 
     `;
-    let styleSheet = document.createElement('style');
-    styleSheet.type = "text/css";
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-    /*---------Styles END-----------*/
+  let styleSheet = document.createElement("style");
+  styleSheet.type = "text/css";
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+  /*---------Styles END-----------*/
 
+  //get date
+  let now = new Date();
+  let day = now.getDate();
+  let month = now.getMonth() + 1;
+  let year = now.getFullYear();
 
+  let selectedDay = day;
+  let selectedMonth = month;
+  let selectedYear = year;
 
-    //get date
-    let now = new Date();
-    let day = now.getDate();
-    let month = now.getMonth() + 1;
-    let year = now.getFullYear();
+  //set to readonly & set date
+  finalInputs.forEach((input) => {
+    //placeholder to display the date
+    let placeholder = document.createElement("div");
+    placeholder.classList.add("placeholder");
+    placeholder.textContent = input.getAttribute("placeholder");
+    input.appendChild(placeholder);
 
+    //prepare the input tag & append it
+    let inputTag = document.createElement("input");
+    inputTag.setAttribute("type", "hidden");
+    inputTag.setAttribute("name", input.getAttribute("name"));
+    // inputTag.setAttribute("id", input.getAttribute("id"));
+    inputTag.setAttribute("value", input.getAttribute("value"));
+    input.appendChild(inputTag);
 
-    let selectedDay = day;
-    let selectedMonth = month;
-    let selectedYear = year;
+    /*-------Create the container & its elements BEGIN-------*/
+    //create all elements
+    let container = document.createElement("div");
+    let containerHead = document.createElement("div");
+    let prevMonth = document.createElement("div");
+    let nextMonth = document.createElement("div");
+    let monthYearIndicator = document.createElement("div");
+    let daysContainer = document.createElement("div");
 
-    //set to readonly & set date
-    inputs.forEach(input => {
+    //set class & text and append to the container
 
-        //placeholder to display the date
-        let placeholder = document.createElement('div');
-        placeholder.classList.add('placeholder');
-        placeholder.textContent = input.getAttribute('placeholder');
-        input.appendChild(placeholder);
+    containerHead.classList.add("head");
+    container.appendChild(containerHead);
 
+    prevMonth.innerText = "<";
+    prevMonth.classList.add("prev-month");
+    containerHead.appendChild(prevMonth);
 
-        //prepare the input tag & append it
-        let inputTag = document.createElement('input');
-        inputTag.setAttribute('type', 'hidden');
-        inputTag.setAttribute('name' , input.getAttribute('name'));
-        inputTag.setAttribute('id', input.getAttribute('id'));
-        inputTag.setAttribute('value', input.getAttribute('value'));
-        input.appendChild(inputTag);
+    monthYearIndicator.classList.add("month-year-indicator");
+    monthYearIndicator.innerText = `${getMonth(month - 1)} ${year}`;
+    containerHead.appendChild(monthYearIndicator);
 
+    nextMonth.innerText = ">";
+    nextMonth.classList.add("next-month");
+    containerHead.appendChild(nextMonth);
 
-        /*-------Create the container & its elements BEGIN-------*/
-        //create all elements
-        let container = document.createElement('div');
-        let containerHead = document.createElement('div');
-        let prevMonth = document.createElement('div');
-        let nextMonth = document.createElement('div');
-        let monthYearIndicator = document.createElement('div');
-        let daysContainer = document.createElement('div');
+    daysContainer.classList.add("days-container");
+    container.appendChild(daysContainer);
 
-        //set class & text and append to the container
+    container.classList.add("date-container");
+    input.appendChild(container);
+    /*-------Create the container & its elements END-------*/
 
-        containerHead.classList.add('head');
-        container.appendChild(containerHead);
-
-        prevMonth.innerText = "<";
-        prevMonth.classList.add('prev-month');
-        containerHead.appendChild(prevMonth);
-
-        monthYearIndicator.classList.add('month-year-indicator');
-        monthYearIndicator.innerText = `${getMonth(month - 1)} ${year}`;
-        containerHead.appendChild(monthYearIndicator);
-
-        nextMonth.innerText = ">";
-        nextMonth.classList.add('next-month');
-        containerHead.appendChild(nextMonth);
-
-        daysContainer.classList.add('days-container');
-        container.appendChild(daysContainer);
-
-
-
-        container.classList.add('date-container');
-        input.appendChild(container);
-        /*-------Create the container & its elements END-------*/
-
-
-
-        /*-----------Functions BEGIN-------------*/
-        function changeIndicator() {
-            monthYearIndicator.innerText = `${getMonth(month - 1)} ${year}`;
-            displayDays();
-        }
-
-        function goToPrevMonth() {
-            month--;
-            
-            if (month < 1) {
-                month = 12;
-                year--
-            }
-            changeIndicator()
-        }
-
-        function goToNextMonth() {
-            month++;
-            if (month > 12) {
-                month = 1;
-                year++;
-            }
-            changeIndicator()
-        }
-
-        function displayDays() {
-            daysContainer.innerHTML = "";
-            let maxDays = 31;
-
-            //custom months
-            if (month == 2) maxDays = 28;
-            else if (month == 4 || month == 6 || month == 9 || month == 11) maxDays = 30;
-            
-            for (let day = 0; day <= maxDays; day++) {
-                let dayBox = document.createElement('div');
-                dayBox.classList.add('day-box');
-                dayBox.innerText = day;
-                daysContainer.appendChild(dayBox);
-            }
-            document.getElementsByClassName('day-box')[0].style.display = 'none';
-            setDayBox();
-
-        }
-
-        function setDayBox() {
-            let dayBoxs = document.querySelectorAll('.day-box');
-            let dayElement = dayBoxs[day];
-            dayElement.classList.add('active-day'); 
-
-
-
-
-
-            dayBoxs.forEach(dayBox => {
-                
-                dayBox.onclick = e => {
-                    dayElement.classList.remove('active-day');
-                    dayElement = dayBox;
-                    dayElement.classList.add('active-day');
-                    selectedDay = Array.from(dayBoxs).indexOf(dayBox);
-
-                    day = selectedDay;
-                    selectedMonth = month;
-                    selectedYear = year;
-
-                    //set the placeholder and the input value
-                    
-                    input.setAttribute('value', selectedDate());
-                    placeholder.textContent = selectedDate();
-                    inputTag.setAttribute('value', selectedDate());
-
-                    container.style.display = "none";
-
-                }
-            });
-
-
-            if (selectedDay == day && selectedMonth == month && selectedYear == year) {
-                dayElement.classList.add('active-day');
-            } else {
-                dayElement.classList.remove('active-day');
-            }
-
-
-
-        }
-
-
-        /*-----------Functions END-------------*/
-
-
-
-        placeholder.onclick = e => {
-            e.preventDefault();
-
-            container.style.display = 'block';
-            //create all needed elements
-            displayDays();
-            
-            
-            //prev & next
-            prevMonth.onclick = e => goToPrevMonth();
-            nextMonth.onclick = e => goToNextMonth();
-
-
-
-            //set the placeholder and the input value
-            
-            
-            input.setAttribute('value', selectedDate());
-            placeholder.textContent = selectedDate();
-            inputTag.setAttribute('value', selectedDate());
-
-
-
-        }
-
-        //if clicked outside
-        window.addEventListener('mouseup', handler);
-
-        function handler(e) {
-
-            let container = document.querySelector('div[type="datepicker"] .date-container');
-            let placeholder = document.querySelector('div[type="datepicker"] .placeholder');
-
-            if (!container.contains(e.target) && !placeholder.contains(e.target)) {
-                container.style.display = 'none';
-            }
-        }
-    });
-    
-    
-
-
-
-    function selectedDate() {
-        let selectedDate = (selectedDay < 10) ? `0${selectedDay}` : selectedDay;
-        selectedDate += (selectedMonth < 10) ? `/0${selectedMonth}` : `/${selectedMonth}`;
-        selectedDate += `/${selectedYear}`;
-        return selectedDate;
+    /*-----------Functions BEGIN-------------*/
+    function changeIndicator() {
+      monthYearIndicator.innerText = `${getMonth(month - 1)} ${year}`;
+      displayDays();
     }
 
-    function getMonth(month) {
-        let monthList = ['يناير', 'فبراير', 'مارس', 'ابريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
-        return monthList[month];
+    function goToPrevMonth() {
+      month--;
+
+      if (month < 1) {
+        month = 12;
+        year--;
+      }
+      changeIndicator();
     }
 
+    function goToNextMonth() {
+      month++;
+      if (month > 12) {
+        month = 1;
+        year++;
+      }
+      changeIndicator();
+    }
 
+    function displayDays() {
+      daysContainer.innerHTML = "";
+      let maxDays = 31;
+
+      //custom months
+      if (month == 2) maxDays = 28;
+      else if (month == 4 || month == 6 || month == 9 || month == 11)
+        maxDays = 30;
+
+      for (let day = 0; day <= maxDays; day++) {
+        let dayBox = document.createElement("div");
+        dayBox.classList.add("day-box");
+        dayBox.innerText = day;
+        daysContainer.appendChild(dayBox);
+      }
+      document.querySelectorAll(
+        `#${input.getAttribute("id")} .day-box`
+      )[0].style.display = "none";
+      setDayBox();
+    }
+
+    function setDayBox() {
+      let dayBoxs = document.querySelectorAll(
+        `#${input.getAttribute("id")} .day-box`
+      );
+      let dayElement = dayBoxs[day];
+      dayElement.classList.add("active-day");
+
+      dayBoxs.forEach((dayBox) => {
+        dayBox.onclick = (e) => {
+          dayElement.classList.remove("active-day");
+          dayElement = dayBox;
+          dayElement.classList.add("active-day");
+          selectedDay = Array.from(dayBoxs).indexOf(dayBox);
+
+          day = selectedDay;
+          selectedMonth = month;
+          selectedYear = year;
+
+          //set the placeholder and the input value
+
+          input.setAttribute("value", selectedDate());
+          placeholder.textContent = selectedDate();
+          inputTag.setAttribute("value", selectedDate());
+
+          container.style.display = "none";
+        };
+      });
+
+      if (
+        selectedDay == day &&
+        selectedMonth == month &&
+        selectedYear == year
+      ) {
+        dayElement.classList.add("active-day");
+      } else {
+        dayElement.classList.remove("active-day");
+      }
+    }
+
+    /*-----------Functions END-------------*/
+
+    placeholder.onclick = (e) => {
+      e.preventDefault();
+
+      container.style.display = "block";
+      //create all needed elements
+      displayDays();
+
+      //prev & next
+      prevMonth.onclick = (e) => goToPrevMonth();
+      nextMonth.onclick = (e) => goToNextMonth();
+
+      //set the placeholder and the input value
+
+      input.setAttribute("value", selectedDate());
+      placeholder.textContent = selectedDate();
+      inputTag.setAttribute("value", selectedDate());
+    };
+
+    //if clicked outside
+    window.addEventListener("mouseup", handler);
+
+    function handler(e) {
+      let container = document.querySelector(
+        `#${input.getAttribute("id")} .date-container`
+      );
+      let placeholder = document.querySelector(
+        `#${input.getAttribute("id")} .placeholder`
+      );
+
+      if (!container.contains(e.target) && !placeholder.contains(e.target)) {
+        container.style.display = "none";
+      }
+    }
+  });
+
+  function selectedDate() {
+    let selectedDate = selectedDay < 10 ? `0${selectedDay}` : selectedDay;
+    selectedDate +=
+      selectedMonth < 10 ? `/0${selectedMonth}` : `/${selectedMonth}`;
+    selectedDate += `/${selectedYear}`;
+    return selectedDate;
+  }
+
+  function getMonth(month) {
+    let monthList = [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "ابريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر",
+    ];
+    return monthList[month];
+  }
 }
 datepicker();

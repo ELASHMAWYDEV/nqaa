@@ -9,6 +9,7 @@ class ordersAjax extends Ajax
 
         isset($_POST['get_order_by_id']) ? $this->get_order_by_id($_POST['id']) : null;
         isset($_POST['get_orders']) ? $this->getOrders() : null;
+        isset($_POST['print_orders']) ? $this->printOrders() : null;
 
         //prevent users from accessing this page manually
         if ($_SERVER['REQUEST_METHOD'] != 'POST') header('location: ' . ROOT_URL);
@@ -111,5 +112,67 @@ class ordersAjax extends Ajax
 
 
         echo json_encode($this->data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    }
+
+    public function printOrders()
+    {
+
+        //Get the start & end date
+        $start = isset($_POST['start_date']) && $_POST['start_date'] != "null" ? $_POST['start_date'] : date("d/m/Y");
+        $end = isset($_POST['end_date']) && $_POST['end_date'] != "null" ? $_POST['end_date'] : date("d/m/Y");
+
+        $sql = "SELECT orders.*, users.phone AS technical_phone, users.name AS technical, regions.region AS region
+                FROM orders
+                LEFT JOIN users ON orders.technical = users.id 
+                LEFT JOIN regions ON orders.region = regions.id
+                ORDER BY id DESC";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        if ($stmt->rowCount() == '0') {
+            $this->errors[] = 'لا يوجد طلبات لعرضها';
+        } else {
+            $orders = $stmt->fetchAll();
+
+            //Print Heading
+            echo implode("\t", [
+                "#", "الاسم", "الجوال", "نوع الطلب", "الحي / المنطقة", "العنوان بالتفصيل",
+                "التاريخ", "الوقت", "ملاحظات العميل", "حالة الموعد", "المبلغ", "الفني المسؤول",
+                "تفاصيل الطلب", "الحالة",
+            ]) . "\n";
+
+            $finalOrders = [];
+
+            foreach ($orders as $order) {
+                $order->create_date = date("d/m/Y h:ia", strtotime($order->create_date));
+
+                $dateArray = explode("/", $order->date);
+                $startDateArray = explode("/", $start);
+                $endDateArray = explode("/", $end);
+
+                if (
+                    mktime(0, 0, 0, $startDateArray[1], $startDateArray[0], $startDateArray[2])
+                    <= mktime(0, 0, 0, $dateArray[1], $dateArray[0], $dateArray[2])
+                    &&
+                    mktime(0, 0, 0, $endDateArray[1], $endDateArray[0], $endDateArray[2])
+                    >= mktime(0, 0, 0, $dateArray[1], $dateArray[0], $dateArray[2])
+                ) {
+                    $finalOrders[] = $order;
+                }
+            }
+
+            foreach ($finalOrders as $order) {
+                echo implode("\t", [
+                    $order->id, $order->name, $order->phone, $order->type, $order->region, $order->address,
+                    $order->date, $order->time, $order->notes, $order->appointment_status, $order->money, $order->technical,
+                    $order->details, $order->status
+                ]) . "\n";
+            }
+        }
+
+        //Set header information to export data in excel format
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename=orders_' . date("d_m_Y") . ".xls");
     }
 }

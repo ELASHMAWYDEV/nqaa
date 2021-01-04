@@ -1,139 +1,150 @@
 .orders {
-    .search-container {
-        @include search-container;
+  .search-container {
+    @include search-container;
+  }
+  .add-new,
+  .print-btn {
+    @include flex;
+    margin: 30px auto;
+    .btn-add-new-order,
+    .btn-print {
+      @include btn-adv($light-purple, $dark-purple);
+      font-size: 18px;
     }
-    .add-new {
-        @include flex;
-        margin: 30px auto;
-        .btn-add-new-order {
-            @include btn-adv($light-purple, $dark-purple);
-            font-size: 18px;
-        }
+  }
+  .table-container {
+    @include table-container;
+    .btn-edit {
+      @include btn-adv($light-purple, $dark-purple);
+      padding: 2px 10px;
+      font-size: 12px;
     }
-    .table-container {
-        @include table-container;
-        .btn-edit {
-            @include btn-adv($light-purple,$dark-purple);
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        .whatsapp-btn {
-            @include btn-adv($light-green,$dark-green);
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        .whatsapp-techy-btn {
-            @include btn-adv($light-red,$dark-red);
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        .maps-btn {
-            @include btn-adv($dark-blue,$light-blue);
-            padding: 2px 10px;
-            font-size: 12px;
-            &:hover {
-                background-color: $black;
-            }
-        }
+    .whatsapp-btn {
+      @include btn-adv($light-green, $dark-green);
+      padding: 2px 10px;
+      font-size: 12px;
     }
+    .whatsapp-techy-btn {
+      @include btn-adv($light-red, $dark-red);
+      padding: 2px 10px;
+      font-size: 12px;
+    }
+    .maps-btn {
+      @include btn-adv($dark-blue, $light-blue);
+      padding: 2px 10px;
+      font-size: 12px;
+      &:hover {
+        background-color: $black;
+      }
+    }
+  }
 }
 
+.edit-order-box,
+.add-order-box,
+.show-map-box,
+.print-order-box {
+  display: none;
+  @include box;
+  @include box-animate;
+  input {
+    width: 70%;
+  }
+  textarea {
+    width: 100%;
+    min-width: 0 !important;
+  }
+  h3 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  h5 {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .edit-btn,
+  .add-btn,
+  .print-btn {
+    @include btn-adv($light-green, $dark-green);
+    font-size: 16px;
+  }
+  .separator {
+    display: block;
+    width: 85%;
+    height: 4px;
+    border-radius: 10px;
+    background-color: $dark-gray;
+    margin: auto;
+  }
+  .phone-item {
+    position: relative;
 
-.edit-order-box, .add-order-box, .show-map-box {
-    display: none;
-    @include box;
-    @include box-animate;
-    input {
-        width: 70%;
+    .phone-ext {
+      position: absolute;
+      background-color: $black;
+      font-weight: 500;
+      font-size: 16px;
+      color: $white;
+      direction: ltr;
+      padding: 6px;
+      padding-right: 15px;
+      top: 0;
+      left: 0;
+      border-radius: 8px 0 0 8px;
+      @include media(phone-lg) {
+        top: 33px;
+      }
     }
-    textarea {
-        width: 100%;
-        min-width: 0 !important;
+  }
+  .select-item {
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    select {
+      margin-right: auto;
+      width: 70% !important;
     }
-    h3 {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    h5 {
-        text-align: center;
-        padding: 10px 0;
-    }
-    .edit-btn, .add-btn {
-        @include btn-adv($light-green,$dark-green);
-        font-size: 16px;
-    }
-    .separator {
-        display: block;
-        width: 85%;
-        height: 4px;
-        border-radius: 10px;
-        background-color: $dark-gray;
-        margin: auto;
-    }
-    .phone-item {
-        position: relative;
-
-        .phone-ext {
-            position: absolute;
-            background-color: $black;
-            font-weight: 500;
-            font-size: 16px;
-            color: $white;
-            direction: ltr;
-            padding: 6px;
-            padding-right: 15px;
-            top: 0;
-            left: 0;
-            border-radius: 8px 0 0 8px;
-            @include media(phone-lg) {
-                top: 33px;
-            }
-        }
-    }
-    .select-item {
-        display: flex;
-        align-items: center;
+    @include media(phone-lg) {
+      flex-direction: column;
+      align-items: flex-start;
+      select {
         width: 100% !important;
-        select {
-            margin-right: auto;
-            width: 70% !important;
-        }
-        @include media(phone-lg) {
-            flex-direction: column;
-            align-items: flex-start;
-            select {
-                width: 100% !important;
-            }
-            span {
-                top: 75% !important;
-            }
-        }
+      }
+      span {
+        top: 75% !important;
+      }
     }
-    div[type="datepicker"] {
-        width: 70%;
-        .placeholder {
-            padding: 3px 0;
-
-        }
+  }
+  div[type="datepicker"] {
+    width: 70%;
+    .placeholder {
+      padding: 3px 0;
     }
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    }
+  }
+}
+
+.print-order-box {
+  div[type="datepicker"] .placeholder {
+    width: 180px;
+  }
 }
 
 .show-map-box {
-    width: 600px;
-    height: 400px;
+  width: 600px;
+  height: 400px;
 }
 #map-order {
-    height: 100%;
-    width: 100%;
-    max-height: 400px;
-    max-width: 600px;
-    direction: rtl;
+  height: 100%;
+  width: 100%;
+  max-height: 400px;
+  max-width: 600px;
+  direction: rtl;
 }
 .gm-style-iw-d {
-    padding: 10px 20px 10px 0;
+  padding: 10px 20px 10px 0;
 }
