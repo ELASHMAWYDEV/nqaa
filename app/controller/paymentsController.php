@@ -63,6 +63,8 @@ class paymentsController extends Controller
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
+
+        $this->role('مشرف') && $this->view->numOfResults = 10;
     }
 
 

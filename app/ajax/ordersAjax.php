@@ -71,7 +71,7 @@ class ordersAjax extends Ajax
                 orders.id LIKE '%$id%' AND 
                 orders.name LIKE '%$name%' AND 
                 orders.phone LIKE '%$phone%' AND 
-                orders.region LIKE '$region' AND
+                regions.region LIKE '%$region%' AND
                 orders.type LIKE '%$type%' AND
                 orders.technical LIKE '%$technical%' AND
                 orders.status LIKE '$status%' AND

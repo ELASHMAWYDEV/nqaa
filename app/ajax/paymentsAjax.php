@@ -44,10 +44,9 @@ class paymentsAjax extends Ajax
 
         $page = isset($_POST['page']) ? $_POST['page'] : 1;
         $advance_maker_id = isset($_POST['advance_maker_id']) ? $_POST['advance_maker_id'] : "";
-        $create_date = isset($_POST['create_date']) ? date("Y-m-d", strtotime($_POST['create_date'])) : "";
+        $create_date = !empty($_POST['create_date']) ? date("Y-m-d", mktime(0, 0, 0, explode("/", $_POST['create_date'])[1], explode("/", $_POST['create_date'])[0], explode("/", $_POST['create_date'])[2])) : "";
 
         $start = ($page - 1) * 10;
-
 
         //payments
         $sql = "SELECT payments.*, users.name FROM payments

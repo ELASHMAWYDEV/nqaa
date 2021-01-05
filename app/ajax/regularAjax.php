@@ -22,7 +22,9 @@ class regularAjax extends Ajax
     $name = isset($_POST['name']) ? $_POST['name'] : "";
     $phone = isset($_POST['phone']) ? $_POST['phone'] : "";
     $region = isset($_POST['region']) ? $_POST['region'] : "";
-    $next_date = isset($_POST['next_date']) ? date("Y-m-d", strtotime($_POST['next_date'])) : "";
+    $next_date = !empty($_POST['next_date']) ? date("Y-m-d", mktime(0, 0, 0, explode("/", $_POST['next_date'])[1], explode("/", $_POST['next_date'])[0], explode("/", $_POST['next_date'])[2])) : "";
+    $old_order_type = isset($_POST['old_order_type']) ? $_POST['old_order_type'] : "";
+    $old_order_status = isset($_POST['old_order_status']) ? $_POST['old_order_status'] : "";
 
     $start = ($page - 1) * 10;
 
@@ -35,7 +37,9 @@ class regularAjax extends Ajax
         regular.name LIKE '%$name%' AND 
         regular.phone LIKE '%$phone%' AND 
         regular.region LIKE '%$region%' AND
-        regular.next_date LIKE '%$next_date%'
+        regular.next_date LIKE '%$next_date%' AND
+        orders.type LIKE '%$old_order_type%' AND
+        orders.status LIKE '$old_order_status%'
         ORDER BY id DESC LIMIT $start, 10";
 
     $stmt = $this->db->prepare($sql);

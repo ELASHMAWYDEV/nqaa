@@ -40,10 +40,12 @@ class notesAjax extends Ajax
 
         $page = isset($_POST['page']) ? $_POST['page'] : 1;
         $note_taker_id = isset($_POST['note_taker_id']) ? $_POST['note_taker_id'] : "";
-        $create_date = isset($_POST['create_date']) ? date("d/m/Y", strtotime($_POST['create_date'])) : "";
+        $create_date = !empty($_POST['create_date']) ? date("Y-m-d", mktime(0, 0, 0, explode("/", $_POST['create_date'])[1], explode("/", $_POST['create_date'])[0], explode("/", $_POST['create_date'])[2])) : "";
         $note = isset($_POST['note']) ? $_POST['note'] : "";
-        
+
         $start = ($page - 1) * 10;
+
+        $this->data->notes = [];
 
         //notes
         $sql = "SELECT notes.*, users.name AS note_taker_name FROM notes 
@@ -57,26 +59,18 @@ class notesAjax extends Ajax
                 ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
+        
         if ($stmt->rowCount() != '0') {
-            $this->notes = $stmt->fetchAll();
+            $notes = $stmt->fetchAll();
+
+            //send data to the data
+            $this->data->notes = $notes;
         } else {
-            array_push($this->errors, 'لا يوجد ملاحظات لعرضها');
+            $this->data->errors[] = 'لا يوجد ملاحظات لعرضها';
         }
 
-        if ($stmt->rowCount() != '0') {
-            $this->users = $stmt->fetchAll();
-        } else {
-            array_push($this->errors, 'لا يوجد مستخدمين مسجلين في الموقع لعرضهم');
-        }
 
-        //store data
-        foreach ($this->notes as $notes) {
-            !isset($notes->note_taker_name) ? $notes->note_taker_name = 'غير موجود' : null;
-            $notes->create_date = date("d/m/Y h:ia", strtotime($notes->create_date));
-        }
 
-        //send data to the data
-        $this->data->notes = $this->notes;
 
         //Get the total count
         $sql = "SELECT COUNT(*) AS numOfResults FROM notes                 

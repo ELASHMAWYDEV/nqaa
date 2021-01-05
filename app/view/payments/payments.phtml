@@ -1,12 +1,10 @@
-
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
         <p>/</p>
         <h6>المبلغ اليومي</h6>
     </div>
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container payments">
         <div class="search-container">
             <h3>البحث المتقدم</h3>
@@ -14,11 +12,11 @@
                 <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
 
                 <div class="select-item">
-                    <select id="technical-search" onclick="rotateSelect(this)">
+                    <select id="advance-maker-search" onclick="rotateSelect(this)">
                         <option value="">صاحب السلفة</option>
 
-                        <?php foreach( $this->users as $user):?>
-                        <option value="<?=$user->name?>"><?=$user->name?></option>
+                        <?php foreach ($this->users as $user) : ?>
+                            <option value="<?= $user->id ?>"><?= $user->name ?></option>
                         <?php endforeach; ?>
 
                     </select>
@@ -41,29 +39,29 @@
                             <th>المصروفات</th>
                             <th>السلفة</th>
                             <th>الصافي</th>
-                            <?php if($this->role('مدير')):?>
+                            <?php if ($this->role('مدير')) : ?>
                                 <th>الإجراء</th>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($this->payments as $payment):?>
-                        <tr>
-                            <td><?=$payment->id?></td>
-                            <td><?=$payment->create_date?></td>
-                            <td><?=$payment->cash?></td>
-                            <td><?=$payment->net?></td>
-                            <td><?=$payment->payments?></td>
-                            <td><?=$payment->advance?></td>
-                            <td><?=$payment->total?></td>
-                            <?php if($this->role('مدير')):?>
-                                <td>
-                                    <img onclick="popupBox('.delete-payment-box'); get_payment_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المبلغ اليومي" title="حذف المستخدم" data-payment-id="<?=$payment->id;?>">
-                                    <button id="btn-edit" class="btn-edit" data-payment-id="<?=$payment->id?>" onclick="get_payment_edit(this);">تعديل</button>
+                        <?php foreach ($this->payments as $payment) : ?>
+                            <tr>
+                                <td><?= $payment->id ?></td>
+                                <td><?= $payment->create_date ?></td>
+                                <td><?= $payment->cash ?></td>
+                                <td><?= $payment->net ?></td>
+                                <td><?= $payment->payments ?></td>
+                                <td><?= $payment->advance ?></td>
+                                <td><?= $payment->total ?></td>
+                                <?php if ($this->role('مدير')) : ?>
+                                    <td>
+                                        <img onclick="popupBox('.delete-payment-box'); get_payment_delete(this);" src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف المبلغ اليومي" title="حذف المستخدم" data-payment-id="<?= $payment->id; ?>">
+                                        <button id="btn-edit" class="btn-edit" data-payment-id="<?= $payment->id ?>" onclick="get_payment_edit(this);">تعديل</button>
 
-                                </td>
-                            <?php endif;?>
-                        </tr>
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -98,19 +96,19 @@
                     <label>الوارد شبكة</label>
                     <input type="number" name="net" min="0" placeholder="الوارد شبكة" value="0">
                 </div>
-                <div class="input-item">            
+                <div class="input-item">
                     <label>المصروفات</label>
                     <input type="number" name="payments" min="0" placeholder="المصروفات" value="0">
-                </div>            
+                </div>
                 <div class="input-item">
                     <label>السلفة</label>
                     <input type="number" name="advance" id="advance_input" min="0" placeholder="السلفة" value="0">
                 </div>
                 <div class="select-item" style="display: none;" id="advance_select">
-                    <select name="advance_maker_id" >
+                    <select name="advance_maker_id">
                         <option value="">صاحب السلفة</option>
-                        <?php foreach( $this->users as $user):?>
-                        <option value="<?=$user->id?>"><?=$user->name?></option>
+                        <?php foreach ($this->users as $user) : ?>
+                            <option value="<?= $user->id ?>"><?= $user->name ?></option>
                         <?php endforeach; ?>
                     </select>
                     <span></span>
@@ -118,7 +116,7 @@
                 <div class="input-item"><button class="add-btn" type="submit" name="add_payment">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Add New payment Box END-->
@@ -145,7 +143,7 @@
                 <div class="input-item"><button class="abort-btn" onclick="abort('.delete-payment-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete payment Box END-->
@@ -173,17 +171,17 @@
                 <div class="input-item">
                     <label>الوارد شبكة</label><input type="number" name="net" min="0" placeholder="الوارد شبكة" value="0">
                 </div>
-                <div class="input-item">            
+                <div class="input-item">
                     <label>المصروفات</label><input type="number" name="payments" min="0" placeholder="المصروفات" value="0">
-                </div>            
+                </div>
                 <div class="input-item">
                     <label>السلفة</label><input type="number" name="advance" id="advance_input_edit" min="0" placeholder="السلفة" value="0">
                 </div>
                 <div class="select-item" style="display: none;" id="advance_select_edit">
-                    <select name="advance_maker_id" >
+                    <select name="advance_maker_id">
                         <option value="">صاحب السلفة</option>
-                        <?php foreach( $this->users as $user):?>
-                        <option value="<?=$user->id?>"><?=$user->name?></option>
+                        <?php foreach ($this->users as $user) : ?>
+                            <option value="<?= $user->id ?>"><?= $user->name ?></option>
                         <?php endforeach; ?>
                     </select>
                     <span></span>
@@ -200,7 +198,6 @@
 
 
 <script>
-    
     //add payment box => show select tag on input change
     var advance_input = document.querySelector('#advance_input');
     var advance_select = document.querySelector('#advance_select');
@@ -223,12 +220,12 @@
 
     payment_form.onsubmit = e => {
         var advance_value = advance_input.value;
-        if ( advance_value > 0 && advance_select.querySelector('select').selectedIndex == '0') {
+        if (advance_value > 0 && advance_select.querySelector('select').selectedIndex == '0') {
             e.preventDefault();
             messages(['يجب اختيار صاحب السلفة اذا كان هناك سلفة']);
         }
-        
-        if ( payment_form['cash'].value == '' || payment_form['net'].value == '' || payment_form['payments'].value == '' ) {
+
+        if (payment_form['cash'].value == '' || payment_form['net'].value == '' || payment_form['payments'].value == '') {
             e.preventDefault();
             messages(['يجب ملئ جميع الخانات ، أو وضع صفر']);
         }
@@ -257,12 +254,12 @@
 
     payment_form_edit.onsubmit = e => {
         var advance_value = advance_input_edit.value;
-        if ( advance_value > 0 && advance_select_edit.querySelector('select').selectedIndex == '0') {
+        if (advance_value > 0 && advance_select_edit.querySelector('select').selectedIndex == '0') {
             e.preventDefault();
             messages(['يجب اختيار صاحب السلفة اذا كان هناك سلفة']);
         }
-        
-        if ( payment_form_edit['cash'].value == '' || payment_form_edit['net'].value == '' || payment_form_edit['payments'].value == '' ) {
+
+        if (payment_form_edit['cash'].value == '' || payment_form_edit['net'].value == '' || payment_form_edit['payments'].value == '') {
             e.preventDefault();
             messages(['يجب ملئ جميع الخانات ، أو وضع صفر']);
         }
@@ -271,13 +268,21 @@
 
 
     //search with date
-    document.querySelector('div[type="datepicker"]').onclick = e => {
-        let date_search = document.querySelector('input[name="date-search"]');
-        searchInput(date_search, 2);
-        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 2);
+    let date_search;
+    document.querySelector('div[name="date-search"]').onclick = e => {
+        date_search = document.querySelector('input[name="date-search"]');
+        searchForPayments();
+        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForPayments();
     }
 
-    //search with technical
-    let technical_search = document.querySelector('#technical-search');
-    technical_search.oninput = e => searchInput(technical_search, 6);
+    //search with advance_maker
+    let advance_maker_search = document.querySelector('#advance-maker-search');
+    advance_maker_search.oninput = e => searchForPayments();
+
+    const searchForPayments = () => {
+        updatePaymentsTable({
+            advance_maker_id: advance_maker_search.value,
+            create_date: date_search && date_search.value,
+        });
+    }
 </script>

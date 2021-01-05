@@ -13,7 +13,7 @@
                     <select id="note-taker-search" onclick="rotateSelect(this)">
                         <option value="">صاحب الملاحظة</option>
                         <?php foreach ($this->users as $user) : ?>
-                            <option value="<?= $user->name ?>"><?= $user->name ?></option>
+                            <option value="<?= $user->id ?>"><?= $user->name ?></option>
                         <?php endforeach; ?>
                     </select>
                     <span></span>
@@ -156,20 +156,29 @@
 
 <script>
     //search with date
+    let date_search;
     document.querySelector('div[type="datepicker"]').onclick = e => {
-        let date_search = document.querySelector('input[name="date-search"]');
-        searchInput(date_search, 4);
-        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 4);
+        date_search = document.querySelector('input[name="date-search"]');
+        searchForNotes();
+        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchForNotes();
     }
 
     //search with note
     let note_search = document.querySelector('#note-search');
-    note_search.oninput = e => searchInput(note_search, 2);
+    note_search.oninput = e => searchForNotes();
 
     //search with note-taker
     let note_taker_search = document.querySelector('#note-taker-search');
-    note_taker_search.oninput = e => searchInput(note_taker_search, 3);
+    note_taker_search.oninput = e => searchForNotes();
 
+
+    const searchForNotes = () => {
+        updateNotesTable({
+            note: note_search.value,
+            note_taker_id: note_taker_search.value,
+            create_date: date_search && date_search.value,
+        })
+    }
 
     function get_note_delete(el) {
         id = el.getAttribute('data-note-id');

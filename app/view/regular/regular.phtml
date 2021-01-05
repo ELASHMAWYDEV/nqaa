@@ -16,12 +16,28 @@
                     <select id="region-search" onclick="rotateSelect(this)">
                         <option value="">الحي / المنطقة</option>
                         <?php foreach ($this->regions as $region) : ?>
-                            <option value="<?= $region->region ?>"><?= $region->region ?></option>
+                            <option value="<?= $region->id ?>"><?= $region->region ?></option>
                         <?php endforeach; ?>
                     </select>
                     <span></span>
                 </div>
                 <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
+                <div class="select-item">
+                    <select id="type-search" onclick="rotateSelect(this)">
+                        <option value="">نوع الطلب القديم</option>
+                        <option value="صيانة">صيانة</option>
+                        <option value="تركيب">تركيب</option>
+                    </select>
+                    <span></span>
+                </div>
+                <div class="select-item">
+                    <select id="status-search" onclick="rotateSelect(this)">
+                        <option value="">حالة الطلب القديم</option>
+                        <option value="Finish">Finish</option>
+                        <option value="Not Finish">Not Finish</option>
+                    </select>
+                    <span></span>
+                </div>
             </div>
         </div>
         <div class="table-container">
@@ -112,26 +128,46 @@
 <script>
     //search with old_id
     let old_id_search = document.querySelector('#old-id-search');
-    old_id_search.oninput = e => searchInput(old_id_search, 7);
-
+    old_id_search.oninput = e => searchForRegular();
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchInput(name_search, 2);
+    name_search.oninput = e => searchForRegular();
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchInput(phone_search, 3);
+    phone_search.oninput = e => searchForRegular();
 
     //search with region
     let region_search = document.querySelector('#region-search');
-    region_search.oninput = e => searchInput(region_search, 4);
+    region_search.oninput = e => searchForRegular();
+
+    //search with type
+    let type_search = document.querySelector('#type-search');
+    type_search.oninput = e => searchForRegular();
+
+    //search with status
+    let status_search = document.querySelector('#status-search');
+    status_search.oninput = e => searchForRegular();
 
     //search with date
-    document.querySelector('div[type="datepicker"]').onclick = e => {
-        let date_search = document.querySelector('input[name="date-search"]');
-        searchInput(date_search, 6);
-        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 6);
+    let date_search;
+    document.querySelector('div[name="date-search"').onclick = e => {
+        date_search = document.querySelector('input[name="date-search"]');
+        searchForRegular();
+        document.querySelector('div[name="date-search"').querySelector('.day-box').onclick = e => searchForRegular();
+    }
+
+    const searchForRegular = () => {
+        updateRegularTable({
+            old_order_id: old_id_search.value,
+            name: name_search.value,
+            phone: phone_search.value,
+            region: region_search.value,
+            next_date: date_search && date_search.value,
+            old_order_type: type_search.value,
+            old_order_status: status_search.value
+        });
     }
 
 
