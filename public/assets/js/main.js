@@ -87,7 +87,6 @@ function popupBox(el, container = true) {
 /*------------Pagination BEGIN-----------*/
 
 function SetupPagination(page_count) {
-  let table_items = document.querySelectorAll("table tbody tr");
   let pagination_container = document.querySelector(".pagination");
 
   // document.querySelector(".table-container").scrollIntoView();
@@ -113,7 +112,7 @@ function SetupPagination(page_count) {
     prev_btn.style.display = "none";
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i);
+      let button = PaginationBtn(i, updateFunctionName);
       pagination_container.appendChild(button);
       button.onclick = (e) => {
         eval(`${updateFunctionName}({page: ${current_page}})`);
@@ -126,7 +125,7 @@ function SetupPagination(page_count) {
 
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i);
+      let button = PaginationBtn(i, updateFunctionName);
 
       //save all buttons in a list
       btn_list.push(button);
@@ -141,6 +140,7 @@ function SetupPagination(page_count) {
           pagination_container.insertBefore(button, next_btn);
         }
         current_page = btn_list.indexOf(button) + 1;
+
 
         checkButtons(current_page, page_count, next_btn, prev_btn, btn_list);
       };
@@ -189,16 +189,18 @@ function SetupPagination(page_count) {
   }
 }
 
-function PaginationBtn(page) {
+function PaginationBtn(page, updateFunctionName) {
   let button = document.createElement("button");
   button.innerText = page;
   if (current_page == page) button.classList.add("active-page");
   button.addEventListener("click", function (e) {
     current_page = page;
-
     let current_btn = document.querySelector(".pagination button.active-page");
     current_btn.classList.remove("active-page");
     this.classList.add("active-page");
+
+    eval(`${updateFunctionName}({page: ${current_page}})`); 
+
   });
   return button;
 }
