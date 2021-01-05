@@ -112,20 +112,19 @@ function SetupPagination(page_count) {
     prev_btn.style.display = "none";
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i, updateFunctionName);
+      let button = PaginationBtn(i);
       pagination_container.appendChild(button);
       button.onclick = (e) => {
-        eval(`${updateFunctionName}({page: ${current_page}})`);
-      }
+        eval(`${updateFunctionName}()`);
+      };
     }
   } else {
     next_btn.style.display = "flex";
 
     let btn_list = [];
 
-
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i, updateFunctionName);
+      let button = PaginationBtn(i);
 
       //save all buttons in a list
       btn_list.push(button);
@@ -140,7 +139,7 @@ function SetupPagination(page_count) {
           pagination_container.insertBefore(button, next_btn);
         }
         current_page = btn_list.indexOf(button) + 1;
-
+        eval(`${updateFunctionName}()`);
 
         checkButtons(current_page, page_count, next_btn, prev_btn, btn_list);
       };
@@ -160,7 +159,7 @@ function SetupPagination(page_count) {
         let new_btn = btn_list[btn_list.indexOf(old_btn) + 1];
         new_btn.classList.add("active-page");
 
-        eval(`${updateFunctionName}({page: ${current_page}})`);
+        eval(`${updateFunctionName}()`);
 
         checkButtons(current_page, page_count, next_btn, prev_btn, btn_list);
       };
@@ -181,7 +180,7 @@ function SetupPagination(page_count) {
         let new_btn = btn_list[btn_list.indexOf(old_btn) - 1];
         new_btn.classList.add("active-page");
 
-        eval(`${updateFunctionName}({page: ${current_page}})`);
+        eval(`${updateFunctionName}()`);
 
         checkButtons(current_page, page_count, next_btn, prev_btn, btn_list);
       };
@@ -189,7 +188,7 @@ function SetupPagination(page_count) {
   }
 }
 
-function PaginationBtn(page, updateFunctionName) {
+function PaginationBtn(page) {
   let button = document.createElement("button");
   button.innerText = page;
   if (current_page == page) button.classList.add("active-page");
@@ -198,9 +197,6 @@ function PaginationBtn(page, updateFunctionName) {
     let current_btn = document.querySelector(".pagination button.active-page");
     current_btn.classList.remove("active-page");
     this.classList.add("active-page");
-
-    eval(`${updateFunctionName}({page: ${current_page}})`); 
-
   });
   return button;
 }

@@ -82,7 +82,11 @@ class salaryAjax extends Ajax
         }
 
         //Get the total count
-        $sql = "SELECT COUNT(*) AS numOfResults FROM salary";
+        $sql = "SELECT COUNT(*) AS numOfResults FROM salary
+                WHERE
+                salary.salary_date LIKE '%$salary_date%' AND 
+                salary.create_date LIKE '%$create_date%' AND 
+                users.name LIKE '%$employee_name%'";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->data->numOfResults = $stmt->fetchAll()[0]->numOfResults;

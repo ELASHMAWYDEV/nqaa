@@ -69,7 +69,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateUsersTable">
+            <div class="pagination" data-update-function="searchForUsers">
 
             </div>
         </div>
@@ -188,31 +188,50 @@
 <script>
     //search with username
     let username_search = document.querySelector('#username-search');
-    username_search.oninput = e => searchForUsers();
+    username_search.oninput = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
     //search with email
     let email_search = document.querySelector('#email-search');
-    email_search.oninput = e => searchForUsers();
+    email_search.oninput = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchForUsers();
+    name_search.oninput = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchForUsers();
+    phone_search.oninput = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
     //search with id
     let id_search = document.querySelector('#id-search');
-    id_search.oninput = e => searchForUsers();
+    id_search.oninput = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
     //search with lvl
     let lvl_search = document.querySelector('#lvl-search');
-    lvl_search.onchange = e => searchForUsers();
+    lvl_search.onchange = e => {
+        current_page = 1;
+        searchForUsers()
+    };
 
 
     const searchForUsers = () => {
         updateUsersTable({
+            page: current_page,
             username: username_search.value,
             email: email_search.value,
             name: name_search.value,

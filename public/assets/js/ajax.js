@@ -387,7 +387,6 @@ function get_payment_edit(el) {
 
 function get_salary_delete(el) {
   let id = el.getAttribute("data-salary-id");
-  console.log(id);
   let delete_salary_box = document.querySelector(".delete-salary-box");
   delete_salary_box.querySelector("span.salary_id").innerHTML = id;
   delete_salary_box.querySelector('input[name="id"]').setAttribute("value", id);

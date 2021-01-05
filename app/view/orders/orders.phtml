@@ -153,7 +153,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateOrdersTable">
+            <div class="pagination" data-update-function="searchForOrders">
             </div>
         </div>
     </div>
@@ -485,52 +485,84 @@
 
     //search with id
     let id_search = document.querySelector('#id-search');
-    id_search.oninput = e => searchForOrders();
+    id_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchForOrders();
+    name_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchForOrders();
+    phone_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with type
     let type_search = document.querySelector('#type-search');
-    type_search.oninput = e => searchForOrders();
+    type_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with region
     let region_search = document.querySelector('#region-search');
-    region_search.oninput = e => {searchForOrders();     console.log(region_search.value);
-};
-    
+    region_search.oninput = e => {
+        current_page = 1;
+        searchForOrders();
+    };
+
     //search with technical
     let technical_search = document.querySelector('#technical-search');
-    technical_search.oninput = e => searchForOrders();
+    technical_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with status
     let status_search = document.querySelector('#status-search');
-    status_search.oninput = e => searchForOrders();
+    status_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with invoice_num
     let invoice_num_search = document.querySelector('#invoice_num-search');
-    invoice_num_search.oninput = e => searchForOrders();
+    invoice_num_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with invoice_num
     let appointment_status_search = document.querySelector('#appointment-status-search');
-    appointment_status_search.oninput = e => searchForOrders();
+    appointment_status_search.oninput = e => {
+        current_page = 1;
+        searchForOrders()
+    };
 
     //search with date
     let date_search;
     document.querySelector('div[name="date-search"]').onclick = e => {
         date_search = document.querySelector('input[name="date-search"]');
         searchForOrders();
-        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForOrders();
+        current_page = 1;
+        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => {
+            current_page = 1;
+            searchForOrders()
+        };
     }
+
 
     const searchForOrders = () => {
         updateOrdersTable({
+            page: current_page,
             id: id_search.value,
             name: name_search.value,
             phone: phone_search.value,

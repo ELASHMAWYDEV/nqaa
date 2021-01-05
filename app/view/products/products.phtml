@@ -150,9 +150,13 @@
 <script>
     //search with note-taker
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => updateProductsTable({
-        name: name_search.value
-    });
+    name_search.oninput = e => {
+        current_page = 1;
+        updateProductsTable({
+            page: current_page,
+            name: name_search.value
+        })
+    };
 
 
     function get_products_delete(el) {

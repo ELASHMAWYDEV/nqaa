@@ -71,7 +71,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateNotesTable">
+            <div class="pagination" data-update-function="searchForNotes">
             </div>
         </div>
     </div>
@@ -159,21 +159,32 @@
     let date_search;
     document.querySelector('div[type="datepicker"]').onclick = e => {
         date_search = document.querySelector('input[name="date-search"]');
+        current_page = 1;
         searchForNotes();
-        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchForNotes();
+        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => {
+            current_page = 1;
+            searchForNotes()
+        };
     }
 
     //search with note
     let note_search = document.querySelector('#note-search');
-    note_search.oninput = e => searchForNotes();
+    note_search.oninput = e => {
+        current_page = 1;
+        searchForNotes()
+    };
 
     //search with note-taker
     let note_taker_search = document.querySelector('#note-taker-search');
-    note_taker_search.oninput = e => searchForNotes();
+    note_taker_search.oninput = e => {
+        current_page = 1;
+        searchForNotes()
+    };
 
 
     const searchForNotes = () => {
         updateNotesTable({
+            page: current_page,
             note: note_search.value,
             note_taker_id: note_taker_search.value,
             create_date: date_search && date_search.value,

@@ -54,11 +54,18 @@ class usersAjax extends Ajax
 
             $this->data->users = $users;
         } else {
-            array_push($this->errors, 'لا يوجد مستخدمين لعرضهم');
+            $this->data->errors = 'لا يوجد مستخدمين لعرضهم';
         }
 
         //Get the total count
-        $sql = "SELECT COUNT(*) AS numOfResults FROM users";
+        $sql = "SELECT COUNT(*) AS numOfResults FROM users 
+                WHERE
+                users.username LIKE '%$username%' AND
+                users.name LIKE '%$name%' AND
+                users.email LIKE '%$email%' AND
+                users.phone LIKE '%$phone%' AND
+                users.id LIKE '%$id%' AND
+                users.lvl LIKE '%$lvl%'";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->data->numOfResults = $stmt->fetchAll()[0]->numOfResults;

@@ -43,6 +43,7 @@ class regionsAjax extends Ajax
         $region = isset($_POST['region']) ? $_POST['region'] : "";
 
         $start = ($page - 1) * 10;
+        $this->data->regions = [];
 
         $sql = "SELECT * FROM regions 
                 WHERE
@@ -54,11 +55,13 @@ class regionsAjax extends Ajax
         if ($stmt->rowCount() != '0') {
             $this->data->regions = $stmt->fetchAll();
         } else {
-            $this->errors[] = 'لا يوجد أحياء لعرضها';
+            $this->data->errors[] = 'لا يوجد أحياء لعرضها';
         }
 
         //Get the total count
-        $sql = "SELECT COUNT(*) AS numOfResults FROM regions";
+        $sql = "SELECT COUNT(*) AS numOfResults FROM regions 
+                WHERE
+                regions.region LIKE '%$region%'";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->data->numOfResults = $stmt->fetchAll()[0]->numOfResults;

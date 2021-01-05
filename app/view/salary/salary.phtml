@@ -73,7 +73,7 @@
           </tbody>
         </table>
       </div>
-      <div class="pagination" data-update-function="updateSalaryTable">
+      <div class="pagination" data-update-function="searchForSalary">
 
       </div>
     </div>
@@ -220,26 +220,38 @@
   let date_search;
   document.querySelector('div[name="date-search"]').onclick = e => {
     date_search = document.querySelector('input[name="date-search"]');
+    current_page = 1;
     searchForSalary();
-    document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForSalary();;
+    document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => {
+      current_page = 1;
+      searchForSalary()
+    };
   }
 
 
   let salary_date_search;
   document.querySelector('div[name="salary-date-search"]').onclick = e => {
     salary_date_search = document.querySelector('input[name="salary-date-search"]');
+    current_page = 1;
     searchForSalary();
-    document.querySelector('div[name="salary-date-search"]').querySelector('.day-box').onclick = e => searchForSalary();;
+    document.querySelector('div[name="salary-date-search"]').querySelector('.day-box').onclick = e => {
+      current_page = 1;
+      searchForSalary()
+    };
   }
 
   //search with employee
   let employee_search = document.querySelector('#employee-search');
-  employee_search.oninput = e => searchForSalary();;
+  employee_search.oninput = e => {
+    current_page = 1;
+    searchForSalary()
+  };
 
 
 
   const searchForSalary = () => {
     updateSalaryTable({
+      page: current_page,
       create_date: date_search && date_search.value,
       salary_date: salary_date_search && salary_date_search.value,
       employee_name: employee_search.value

@@ -215,7 +215,6 @@ function updateNotesTable({
       messages(output.errors, output.success);
       let tbody = document.querySelector(".table-container table tbody");
       let tbodyContent = "";
-      console.log(output);
       if (output.notes.length != 0)
         for (let note of output.notes) {
           tbodyContent += `
@@ -349,7 +348,8 @@ function updateSalaryTable({
   salary_date = "",
   employee_name = "",
 }) {
-  console.log(salary_date);
+
+  console.log(page);
   //Get all data for search
   ajax(
     "post",

@@ -35,7 +35,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateNewsTable">
+            <div class="pagination" data-update-function="searchForNews">
             </div>
         </div>
     </div>
@@ -91,3 +91,13 @@
     </div>
 </div>
 <!--Delete news Box END-->
+
+
+
+<script>
+    const searchForNews = () => {
+        updateNewsTable({
+            page: current_page
+        });
+    }
+</script>

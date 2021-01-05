@@ -89,7 +89,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateRegularTable">
+            <div class="pagination" data-update-function="searchForRegular">
             </div>
         </div>
     </div>
@@ -128,38 +128,58 @@
 <script>
     //search with old_id
     let old_id_search = document.querySelector('#old-id-search');
-    old_id_search.oninput = e => searchForRegular();
+    old_id_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchForRegular();
+    name_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchForRegular();
+    phone_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with region
     let region_search = document.querySelector('#region-search');
-    region_search.oninput = e => searchForRegular();
+    region_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with type
     let type_search = document.querySelector('#type-search');
-    type_search.oninput = e => searchForRegular();
+    type_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with status
     let status_search = document.querySelector('#status-search');
-    status_search.oninput = e => searchForRegular();
+    status_search.oninput = e => {
+        current_page = 1;
+        searchForRegular()
+    };
 
     //search with date
     let date_search;
     document.querySelector('div[name="date-search"').onclick = e => {
         date_search = document.querySelector('input[name="date-search"]');
+        current_page = 1;
         searchForRegular();
         document.querySelector('div[name="date-search"').querySelector('.day-box').onclick = e => searchForRegular();
     }
 
     const searchForRegular = () => {
         updateRegularTable({
+            page: current_page,
             old_order_id: old_id_search.value,
             name: name_search.value,
             phone: phone_search.value,

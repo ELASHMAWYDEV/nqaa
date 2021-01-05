@@ -52,7 +52,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updateRegionsTable">
+            <div class="pagination" data-update-function="searchForRegions">
             </div>
         </div>
     </div>
@@ -152,7 +152,15 @@
 
     //search with name
     let search_region = document.querySelector('#region-search');
-    search_region.oninput = e => updateRegionsTable({
-        region: search_region.value
-    });
+    search_region.oninput = e => {
+        current_page = 1;
+        searchForRegions();
+    };
+
+    const searchForRegions = () => {
+        updateRegionsTable({
+            page: current_page,
+            region: search_region.value
+        })
+    }
 </script>

@@ -66,7 +66,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination" data-update-function="updatePaymentsTable">
+            <div class="pagination" data-update-function="searchForPayments">
 
             </div>
         </div>
@@ -271,16 +271,24 @@
     let date_search;
     document.querySelector('div[name="date-search"]').onclick = e => {
         date_search = document.querySelector('input[name="date-search"]');
+        current_page = 1;
         searchForPayments();
-        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForPayments();
+        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => {
+            current_page = 1;
+            searchForPayments()
+        };
     }
 
     //search with advance_maker
     let advance_maker_search = document.querySelector('#advance-maker-search');
-    advance_maker_search.oninput = e => searchForPayments();
+    advance_maker_search.oninput = e => {
+        current_page = 1;
+        searchForPayments()
+    };
 
     const searchForPayments = () => {
         updatePaymentsTable({
+            page: current_page,
             advance_maker_id: advance_maker_search.value,
             create_date: date_search && date_search.value,
         });
