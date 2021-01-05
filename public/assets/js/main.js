@@ -112,11 +112,8 @@ function SetupPagination(page_count) {
     prev_btn.style.display = "none";
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i);
+      let button = PaginationBtn(i, updateFunctionName);
       pagination_container.appendChild(button);
-      button.onclick = (e) => {
-        eval(`${updateFunctionName}()`);
-      };
     }
   } else {
     next_btn.style.display = "flex";
@@ -124,7 +121,7 @@ function SetupPagination(page_count) {
     let btn_list = [];
 
     for (let i = 1; i < page_count + 1; i++) {
-      let button = PaginationBtn(i);
+      let button = PaginationBtn(i, updateFunctionName);
 
       //save all buttons in a list
       btn_list.push(button);
@@ -188,7 +185,7 @@ function SetupPagination(page_count) {
   }
 }
 
-function PaginationBtn(page) {
+function PaginationBtn(page, updateFunctionName) {
   let button = document.createElement("button");
   button.innerText = page;
   if (current_page == page) button.classList.add("active-page");
@@ -197,6 +194,8 @@ function PaginationBtn(page) {
     let current_btn = document.querySelector(".pagination button.active-page");
     current_btn.classList.remove("active-page");
     this.classList.add("active-page");
+    eval(`${updateFunctionName}()`);
+
   });
   return button;
 }

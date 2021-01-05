@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*--------Show Map BEGIN----------*/
 
 function showMap() {
