@@ -46,8 +46,8 @@ class salaryAjax extends Ajax
 
         $page = isset($_POST['page']) ? $_POST['page'] : 1;
         $salary_date = isset($_POST['salary_date']) ? $_POST['salary_date'] : "";
-        $create_date = isset($_POST['create_date']) ? date("Y-m-d", strtotime($_POST['create_date'])) : "";
-        $employee_id = isset($_POST['employee_id']) ? $_POST['employee_id'] : "";
+        $create_date = !empty($_POST['create_date']) ? date("Y-m-d", mktime(0, 0, 0, explode("/", $_POST['create_date'])[1], explode("/", $_POST['create_date'])[0], explode("/", $_POST['create_date'])[2])) : "";
+        $employee_name = isset($_POST['employee_name']) ? $_POST['employee_name'] : "";
 
         $start = ($page - 1) * 10;
 
@@ -58,7 +58,7 @@ class salaryAjax extends Ajax
                 WHERE
                 salary.salary_date LIKE '%$salary_date%' AND 
                 salary.create_date LIKE '%$create_date%' AND 
-                salary.employee_id LIKE '%$employee_id%'
+                users.name LIKE '%$employee_name%'
                 ORDER BY id DESC
                 LIMIT $start, 10";
         $stmt = $this->db->prepare($sql);

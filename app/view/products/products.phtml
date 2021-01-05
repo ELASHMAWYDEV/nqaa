@@ -1,11 +1,10 @@
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
         <p>/</p>
         <h6>المنتجات</h6>
     </div>
-    <?php echo !empty($this->showNews) ? $this->showNews : null;?>
+    <?php echo !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container products">
         <div class="search-container">
             <h3>البحث المتقدم</h3>
@@ -24,27 +23,27 @@
                             <th>#</th>
                             <th>المنتج</th>
                             <th>السعر</th>
-                            <?php if($this->role('مدير')):?>
-                            <th>الإجراء</th>
-                            <?php endif;?>
+                            <?php if ($this->role('مدير')) : ?>
+                                <th>الإجراء</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php foreach($this->products as $products):?>
-                        <tr>
-                            <td><?=$products->id;?></td>
-                            <td><?=$products->name?></td>
-                            <td><?=$products->price;?></td>
-                            <?php if($this->role('مدير')):?>    
-                            <td class="action">
-                                <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="<?php echo PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="<?php echo $products->id;?>" class="delete_product_btn">
-                                <button id="btn-edit" class="btn-edit" data-product-id="<?=$products->id?>" onclick="get_product_edit(this);">تعديل</button>
 
-                            </td>
-                            <?php endif;?>
-                        </tr>
-                        <?php endforeach;?>
+                        <?php foreach ($this->products as $products) : ?>
+                            <tr>
+                                <td><?= $products->id; ?></td>
+                                <td><?= $products->name ?></td>
+                                <td><?= $products->price; ?></td>
+                                <?php if ($this->role('مدير')) : ?>
+                                    <td class="action">
+                                        <img onclick="popupBox('.delete-products-box'); get_products_delete(this);" src="<?php echo PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف المنتج" title="حذف المنتج" data-product-id="<?php echo $products->id; ?>" class="delete_product_btn">
+                                        <button id="btn-edit" class="btn-edit" data-product-id="<?= $products->id ?>" onclick="get_product_edit(this);">تعديل</button>
+
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -79,7 +78,7 @@
                 <div class="input-item"><button class="add-btn" type="submit" name="add_products">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Add New products Box END-->
@@ -107,7 +106,7 @@
                 <div class="input-item"><button class="abort-btn" type="" onclick="abort('.delete-products-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete news Box END-->
@@ -151,14 +150,16 @@
 <script>
     //search with note-taker
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchInput(name_search, 2);
+    name_search.oninput = e => updateProductsTable({
+        name: name_search.value
+    });
 
 
-function get_products_delete(el){
-    id = el.getAttribute('data-product-id');
-    var delete_products_box = document.querySelector('.delete-products-box');
-    delete_products_box.querySelector('span.products_id').innerHTML = id;
-    document.forms['delete_products_form']['id'].setAttribute('value', id);
+    function get_products_delete(el) {
+        id = el.getAttribute('data-product-id');
+        var delete_products_box = document.querySelector('.delete-products-box');
+        delete_products_box.querySelector('span.products_id').innerHTML = id;
+        document.forms['delete_products_form']['id'].setAttribute('value', id);
 
-}
+    }
 </script>

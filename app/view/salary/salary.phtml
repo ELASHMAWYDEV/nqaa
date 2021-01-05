@@ -9,8 +9,8 @@
     <div class="search-container">
       <h3>البحث المتقدم</h3>
       <div class="search-box">
-        <div type="datepicker" placeholder="تاريخ الدفع" id="date-search" name="date-search"></div>
-        <div type="datepicker" placeholder="تاريخ الإضافة" id="salary-date-search" name="salary-date-search"></div>
+        <div type="datepicker" placeholder="تاريخ الإضافة" id="date-search" name="date-search"></div>
+        <div type="datepicker" placeholder="تاريخ الدفع" id="salary-date-search" name="salary-date-search"></div>
 
         <div class="select-item">
           <select id="employee-search" onclick="rotateSelect(this)">
@@ -217,13 +217,32 @@
 
 
   //search with date
-  document.querySelector('div[type="datepicker"]').onclick = e => {
-    let date_search = document.querySelector('input[name="date-search"]');
-    searchInput(date_search, 2);
-    document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 2);
+  let date_search;
+  document.querySelector('div[name="date-search"]').onclick = e => {
+    date_search = document.querySelector('input[name="date-search"]');
+    searchForSalary();
+    document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForSalary();;
+  }
+
+
+  let salary_date_search;
+  document.querySelector('div[name="salary-date-search"]').onclick = e => {
+    salary_date_search = document.querySelector('input[name="salary-date-search"]');
+    searchForSalary();
+    document.querySelector('div[name="salary-date-search"]').querySelector('.day-box').onclick = e => searchForSalary();;
   }
 
   //search with employee
   let employee_search = document.querySelector('#employee-search');
-  employee_search.oninput = e => searchInput(employee_search, 4);
+  employee_search.oninput = e => searchForSalary();;
+
+
+
+  const searchForSalary = () => {
+    updateSalaryTable({
+      create_date: date_search && date_search.value,
+      salary_date: salary_date_search && salary_date_search.value,
+      employee_name: employee_search.value
+    });
+  }
 </script>

@@ -152,5 +152,7 @@
 
     //search with name
     let search_region = document.querySelector('#region-search');
-    search_region.oninput = e => searchInput(search_region, 2);
+    search_region.oninput = e => updateRegionsTable({
+        region: search_region.value
+    });
 </script>

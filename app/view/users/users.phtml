@@ -1,11 +1,10 @@
-
 <div class="main-container">
     <div class="page-position">
         <h2>لوحة التحكم</h2>
         <p>/</p>
         <h6>المستخدمين</h6>
     </div>
-    <?=!empty($this->showNews) ? $this->showNews : null;?>
+    <?= !empty($this->showNews) ? $this->showNews : null; ?>
     <div class="container users">
         <div class="search-container">
             <h3>البحث المتقدم</h3>
@@ -18,15 +17,15 @@
                 <div class="select-item">
                     <select id="lvl-search" onclick="rotateSelect(this)">
                         <option value="">المستوي</option>
-                        <?php if($this->role('مدير')):?>
-                        <option value="مدير">مدير</option>
-                        <?php endif;?>
+                        <?php if ($this->role('مدير')) : ?>
+                            <option value="مدير">مدير</option>
+                        <?php endif; ?>
                         <option value="مشرف">مشرف</option>
                         <option value="فني">فني</option>
                     </select>
                     <span></span>
                 </div>
-                
+
             </div>
         </div>
         <div class="add-new">
@@ -48,25 +47,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($this->data as $user):?>
-                        <tr>
-                            <td><?=$user->id;?></td>
-                            <td><?=$user->username;?></td>
-                            <td><?=$user->email;?></td>
-                            <td><?=$user->name;?></td>
-                            <td><?=$user->phone;?></td>
-                            <td><?=$user->lvl;?></td>                            
-                            <td><?=$user->login_date?></td>
-                            <!--Signed user => Don't show buttons-->
-                            <td class="action">
-                                <?php if($_SESSION['id'] != $user->id):?>
-                                <button onclick="get_user_edit(this)" class="btn-edit edit_user_btn" data-user-id="<?=$user->id;?>">تعديل</button>
-                                <img onclick="popupBox('.delete-user-box'); get_user_delete(this);" src="<?=PUBLIC_URL;?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-user-id="<?=$user->id;?>" class="delete_user_btn">
+                        <?php foreach ($this->data as $user) : ?>
+                            <tr>
+                                <td><?= $user->id; ?></td>
+                                <td><?= $user->username; ?></td>
+                                <td><?= $user->email; ?></td>
+                                <td><?= $user->name; ?></td>
+                                <td><?= $user->phone; ?></td>
+                                <td><?= $user->lvl; ?></td>
+                                <td><?= $user->login_date ?></td>
+                                <!--Signed user => Don't show buttons-->
+                                <td class="action">
+                                    <?php if ($_SESSION['id'] != $user->id) : ?>
+                                        <button onclick="get_user_edit(this)" class="btn-edit edit_user_btn" data-user-id="<?= $user->id; ?>">تعديل</button>
+                                        <img onclick="popupBox('.delete-user-box'); get_user_delete(this);" src="<?= PUBLIC_URL; ?>assets/img/trash.svg" alt="حذف المستخدم" title="حذف المستخدم" data-user-id="<?= $user->id; ?>" class="delete_user_btn">
 
-                                <?php endif;?>
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -110,7 +109,7 @@
                 <div class="input-item"><button class="save-btn" type="submit" name="add_new_user">اضافة</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Add New user Box END-->
@@ -180,53 +179,63 @@
                 <div class="input-item"><button class="abort-btn" type="" onclick="abort('.delete-user-box')">الغاء</button></div>
             </div>
         </form>
-        
+
     </div>
 </div>
 <!--Delete user Box END-->
 
 
 <script>
-
     //search with username
     let username_search = document.querySelector('#username-search');
-    username_search.oninput = e => searchInput(username_search, 2);
+    username_search.oninput = e => searchForUsers();
 
     //search with email
     let email_search = document.querySelector('#email-search');
-    email_search.oninput = e => searchInput(email_search, 3);
+    email_search.oninput = e => searchForUsers();
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchInput(name_search, 4);
+    name_search.oninput = e => searchForUsers();
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchInput(phone_search, 5);
+    phone_search.oninput = e => searchForUsers();
 
     //search with id
     let id_search = document.querySelector('#id-search');
-    id_search.oninput = e => searchInput(id_search, 1);
+    id_search.oninput = e => searchForUsers();
 
     //search with lvl
     let lvl_search = document.querySelector('#lvl-search');
-    lvl_search.onchange = e => searchInput(lvl_search, 6);
+    lvl_search.onchange = e => searchForUsers();
 
+
+    const searchForUsers = () => {
+        updateUsersTable({
+            username: username_search.value,
+            email: email_search.value,
+            name: name_search.value,
+            phone: phone_search.value,
+            id: id_search.value,
+            lvl: lvl_search.value,
+        });
+    }
 
     //form validation
     let change_user_password_form = document.forms['change_user_password_form'];
     change_user_password_form.onsubmit = e => {
-        if(change_user_password_form['pass1'].value == '') {
+        if (change_user_password_form['pass1'].value == '') {
             e.preventDefault();
-            messages(['يجب كتابة كلمة المرور']);  
+            messages(['يجب كتابة كلمة المرور']);
         } else if (change_user_password_form['pass2'].value == '') {
             e.preventDefault();
             messages(['يجب تأكيد كلمة المرور']);
         } else if (change_user_password_form['pass2'].value != change_user_password_form['pass1'].value) {
             e.preventDefault();
             messages(['يجب أن تكون كلمتي المرور متطابقتان']);
-        } 
+        }
 
-        
+
     }
 </script>

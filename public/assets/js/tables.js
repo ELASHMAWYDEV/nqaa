@@ -304,16 +304,20 @@ function updatePaymentsTable({
   );
 }
 
-function updateProductsTable({ page = 1 }) {
+function updateProductsTable({ page = 1, name = "" }) {
   //Get all data for search
-  ajax("post", ajaxUrl + "products", { get_products: true, page }, (output) => {
-    output = JSON.parse(output);
-    messages(output.errors, output.success);
-    let tbody = document.querySelector(".table-container table tbody");
-    let tbodyContent = "";
-    if (output.products.length != 0)
-      for (let product of output.products) {
-        tbodyContent += `
+  ajax(
+    "post",
+    ajaxUrl + "products",
+    { get_products: true, page, name },
+    (output) => {
+      output = JSON.parse(output);
+      messages(output.errors, output.success);
+      let tbody = document.querySelector(".table-container table tbody");
+      let tbodyContent = "";
+      if (output.products.length != 0)
+        for (let product of output.products) {
+          tbodyContent += `
         <tr>
           <td>${product.id}</td>
           <td>${product.name}</td >
@@ -330,24 +334,35 @@ function updateProductsTable({ page = 1 }) {
         }   
         </tr>
         `;
-      }
+        }
 
-    page_count = output.page_count;
-    tbody.innerHTML = tbodyContent;
-    SetupPagination(page_count);
-  });
+      page_count = output.page_count;
+      tbody.innerHTML = tbodyContent;
+      SetupPagination(page_count);
+    }
+  );
 }
 
-function updateSalaryTable({ page = 1 }) {
+function updateSalaryTable({
+  page = 1,
+  create_date = "",
+  salary_date = "",
+  employee_name = "",
+}) {
+  console.log(salary_date);
   //Get all data for search
-  ajax("post", ajaxUrl + "salary", { get_salary: true, page }, (output) => {
-    output = JSON.parse(output);
-    messages(output.errors, output.success);
-    let tbody = document.querySelector(".table-container table tbody");
-    let tbodyContent = "";
-    if (output.salary.length != 0)
-      for (let oneSalary of output.salary) {
-        tbodyContent += `
+  ajax(
+    "post",
+    ajaxUrl + "salary",
+    { get_salary: true, page, create_date, salary_date, employee_name },
+    (output) => {
+      output = JSON.parse(output);
+      messages(output.errors, output.success);
+      let tbody = document.querySelector(".table-container table tbody");
+      let tbodyContent = "";
+      if (output.salary.length != 0)
+        for (let oneSalary of output.salary) {
+          tbodyContent += `
         <tr>
           <td>${oneSalary.id}</td>
           <td>${oneSalary.create_date}</td>
@@ -371,12 +386,13 @@ function updateSalaryTable({ page = 1 }) {
           }
         </tr>
         `;
-      }
+        }
 
-    page_count = output.page_count;
-    tbody.innerHTML = tbodyContent;
-    SetupPagination(page_count);
-  });
+      page_count = output.page_count;
+      tbody.innerHTML = tbodyContent;
+      SetupPagination(page_count);
+    }
+  );
 }
 
 function updateNewsTable({ page = 1 }) {
@@ -407,16 +423,20 @@ function updateNewsTable({ page = 1 }) {
   });
 }
 
-function updateRegionsTable({ page = 1 }) {
+function updateRegionsTable({ page = 1, region }) {
   //Get all data for search
-  ajax("post", ajaxUrl + "regions", { get_regions: true, page }, (output) => {
-    output = JSON.parse(output);
-    messages(output.errors, output.success);
-    let tbody = document.querySelector(".table-container table tbody");
-    let tbodyContent = "";
-    if (output.regions.length != 0)
-      for (let region of output.regions) {
-        tbodyContent += `
+  ajax(
+    "post",
+    ajaxUrl + "regions",
+    { get_regions: true, page, region },
+    (output) => {
+      output = JSON.parse(output);
+      messages(output.errors, output.success);
+      let tbody = document.querySelector(".table-container table tbody");
+      let tbodyContent = "";
+      if (output.regions.length != 0)
+        for (let region of output.regions) {
+          tbodyContent += `
         <tr>
             <td>${region.id}</td>
             <td>${region.region}</td>
@@ -431,25 +451,38 @@ function updateRegionsTable({ page = 1 }) {
 
         </tr>
         `;
-      }
+        }
 
-    page_count = output.page_count;
-    tbody.innerHTML = tbodyContent;
+      page_count = output.page_count;
+      tbody.innerHTML = tbodyContent;
 
-    SetupPagination(page_count);
-  });
+      SetupPagination(page_count);
+    }
+  );
 }
 
-function updateUsersTable({ page = 1 }) {
+function updateUsersTable({
+  page = 1,
+  username = "",
+  email = "",
+  name = "",
+  phone = "",
+  id = "",
+  lvl = "",
+}) {
   //Get all data for search
-  ajax("post", ajaxUrl + "users", { get_users: true, page }, (output) => {
-    output = JSON.parse(output);
-    messages(output.errors, output.success);
-    let tbody = document.querySelector(".table-container table tbody");
-    let tbodyContent = "";
-    if (output.users.length != 0)
-      for (let user of output.users) {
-        tbodyContent += `
+  ajax(
+    "post",
+    ajaxUrl + "users",
+    { get_users: true, page, username, email, name, phone, id, lvl },
+    (output) => {
+      output = JSON.parse(output);
+      messages(output.errors, output.success);
+      let tbody = document.querySelector(".table-container table tbody");
+      let tbodyContent = "";
+      if (output.users.length != 0)
+        for (let user of output.users) {
+          tbodyContent += `
         <tr>
           <td>${user.id}</td>
           <td>${user.username}</td>
@@ -471,12 +504,13 @@ function updateUsersTable({ page = 1 }) {
           </td>
       </tr>
         `;
-      }
+        }
 
-    page_count = output.page_count;
-    tbody.innerHTML = tbodyContent;
+      page_count = output.page_count;
+      tbody.innerHTML = tbodyContent;
 
-    SetupPagination(page_count);
-  });
+      SetupPagination(page_count);
+    }
+  );
 }
 /*-------------------AJAX Table END---------------------*/

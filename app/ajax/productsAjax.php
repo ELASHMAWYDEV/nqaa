@@ -53,7 +53,9 @@ class productsAjax extends Ajax
         $this->data->products = $stmt->fetchAll();
 
         //Get the total count
-        $sql = "SELECT COUNT(*) AS numOfResults FROM products";
+        $sql = "SELECT COUNT(*) AS numOfResults FROM products  
+        WHERE 
+        products.name LIKE '%$name%'";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->data->numOfResults = $stmt->fetchAll()[0]->numOfResults;
