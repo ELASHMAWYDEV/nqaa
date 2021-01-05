@@ -29,18 +29,20 @@ class regularAjax extends Ajax
     $start = ($page - 1) * 10;
 
 
-    $sql = "SELECT regular.*, orders.type, orders.status, regions.region FROM regular 
-        LEFT JOIN orders ON regular.old_order_id = orders.id 
-        LEFT JOIN regions ON regular.region = regions.id
-        WHERE
-        regular.old_order_id LIKE '%$old_order_id%' AND 
-        regular.name LIKE '%$name%' AND 
-        regular.phone LIKE '%$phone%' AND 
-        regular.region LIKE '%$region%' AND
-        regular.next_date LIKE '%$next_date%' AND
-        orders.type LIKE '%$old_order_type%' AND
-        orders.status LIKE '$old_order_status%'
-        ORDER BY id DESC LIMIT $start, 10";
+    $sql = "SELECT regular.*, orders.type, orders.status, regions.region 
+            FROM regular 
+            LEFT JOIN orders ON regular.old_order_id = orders.id 
+            LEFT JOIN regions ON regular.region = regions.id
+            WHERE
+            regular.old_order_id LIKE '%$old_order_id%' AND 
+            regular.name LIKE '%$name%' AND 
+            regular.phone LIKE '%$phone%' AND 
+            regular.region LIKE '%$region%' AND
+            regular.next_date LIKE '%$next_date%' AND
+            orders.type LIKE '%$old_order_type%' AND
+            orders.status LIKE '$old_order_status%'
+            ORDER BY id DESC 
+            LIMIT $start, 10";
 
     $stmt = $this->db->prepare($sql);
     $stmt->execute();

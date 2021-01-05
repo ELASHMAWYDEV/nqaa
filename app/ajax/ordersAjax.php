@@ -73,12 +73,12 @@ class ordersAjax extends Ajax
                 orders.phone LIKE '%$phone%' AND 
                 regions.region LIKE '%$region%' AND
                 orders.type LIKE '%$type%' AND
-                users.name LIKE '%$technical%' AND
+                orders.technical LIKE '%$technical%' AND
                 orders.status LIKE '$status%' AND
                 orders.date LIKE '%$date%' AND
-                orders.appointment_status LIKE '%$appointment_status%' AND
-                orders.invoice_num LIKE '%$invoice_num%'
-                ORDER BY id DESC
+                orders.appointment_status LIKE '%$appointment_status%' " .
+            (!empty($invoice_num) ? "AND orders.invoice_num LIKE '%$invoice_num%' " : "") .
+            "ORDER BY id DESC
                 LIMIT $start, 10";
 
         $stmt = $this->db->prepare($sql);
