@@ -1,16 +1,46 @@
 // @ts-nocheck
 /*-------------------AJAX Table START-------------------*/
 
-function updateOrdersTable({ page = 1 }) {
-  //Get all data for search
-  ajax("post", ajaxUrl + "orders", { get_orders: true, page }, (output) => {
-    output = JSON.parse(output);
-    messages(output.errors, output.success);
-    let tbody = document.querySelector(".table-container table tbody");
-    let tbodyContent = "";
-    if (output.orders.length != 0)
-      for (let order of output.orders) {
-        tbodyContent += `
+function updateOrdersTable({
+  page = 1,
+  id = "",
+  name = "",
+  phone = "",
+  type = "",
+  region = "",
+  technical = "",
+  status = "",
+  date = "",
+  appointment_status = "",
+  invoice_num
+}) {
+  console.log(region);
+  //Send the request
+  ajax(
+    "post",
+    ajaxUrl + "orders",
+    {
+      get_orders: true,
+      page,
+      id,
+      name,
+      phone,
+      type,
+      region,
+      technical,
+      status,
+      date,
+      appointment_status,
+      invoice_num
+    },
+    (output) => {
+      output = JSON.parse(output);
+      messages(output.errors, output.success);
+      let tbody = document.querySelector(".table-container table tbody");
+      let tbodyContent = "";
+      if (output.orders.length != 0)
+        for (let order of output.orders) {
+          tbodyContent += `
             <tr>
             <td>${order.id}</td>
             <td>${order.name}</td>
@@ -83,12 +113,13 @@ function updateOrdersTable({ page = 1 }) {
 
             </tr>
         `;
-      }
+        }
 
-    page_count = output.page_count;
-    tbody.innerHTML = tbodyContent;
-    SetupPagination(page_count);
-  });
+      page_count = output.page_count;
+      tbody.innerHTML = tbodyContent;
+      SetupPagination(page_count);
+    }
+  );
 }
 
 function updateRegularTable({ page = 1 }) {

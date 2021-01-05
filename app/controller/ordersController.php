@@ -10,7 +10,7 @@ class ordersController extends Controller
         isset($_POST['add_order']) ? $this->addOrder() : null;
         isset($_POST['delete_order']) ? $this->deleteOrder($_POST['id']) : null;
         isset($_POST['get_orders']) ? $this->getOrders() : null;
-        
+
 
         $this->loggedIn();
         $this->view('orders');
@@ -285,7 +285,4 @@ class ordersController extends Controller
         }
         $this->redirect('orders', '2');
     }
-
-
-    
 }

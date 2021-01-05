@@ -301,7 +301,6 @@ function searchInput(input, child, exact = false) {
   });
 
   SetupPagination(new_table_rows, pagintation_container);
-  DisplayTable(new_table_rows, 10, 1);
   resetAll(input);
 }
 

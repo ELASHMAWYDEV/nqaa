@@ -57,7 +57,8 @@ class ordersAjax extends Ajax
         $technical = isset($_POST['technical']) ? $_POST['technical'] : "";
         $status = isset($_POST['status']) ? $_POST['status'] : "";
         $date = isset($_POST['date']) ? $_POST['date'] : "";
-
+        $appointment_status = isset($_POST['appointment_status']) ? $_POST['appointment_status'] : "";
+        $invoice_num = isset($_POST['invoice_num']) ? $_POST['invoice_num'] : "";
 
         $start = ($page - 1) * 10;
 
@@ -70,11 +71,13 @@ class ordersAjax extends Ajax
                 orders.id LIKE '%$id%' AND 
                 orders.name LIKE '%$name%' AND 
                 orders.phone LIKE '%$phone%' AND 
-                orders.region LIKE '%$region%' AND
+                orders.region LIKE '$region' AND
                 orders.type LIKE '%$type%' AND
                 orders.technical LIKE '%$technical%' AND
-                orders.status LIKE '%$status%' AND
-                orders.date LIKE '%$date%'
+                orders.status LIKE '$status%' AND
+                orders.date LIKE '%$date%' AND
+                orders.appointment_status LIKE '%$appointment_status%' AND
+                orders.invoice_num LIKE '%$invoice_num%'
                 ORDER BY id DESC
                 LIMIT $start, 10";
 
@@ -82,6 +85,7 @@ class ordersAjax extends Ajax
         $stmt->execute();
         $this->data->orders = [];
         $this->data->numOfResults = 0;
+
 
         if ($stmt->rowCount() == '0') {
             $this->data->errors[] = 'لا يوجد طلبات لعرضها';
@@ -100,8 +104,10 @@ class ordersAjax extends Ajax
             orders.region LIKE '%$region%' AND
             orders.type LIKE '%$type%' AND
             orders.technical LIKE '%$technical%' AND
-            orders.status LIKE '%$status%' AND
-            orders.date LIKE '%$date%'";
+            orders.status LIKE '$status%' AND
+            orders.date LIKE '%$date%' AND
+            orders.appointment_status LIKE '%$appointment_status%' AND
+            orders.invoice_num LIKE '%$invoice_num%'";
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute();

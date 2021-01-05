@@ -16,7 +16,7 @@
                     <select id="region-search" onclick="rotateSelect(this)">
                         <option value="">الحي / المنطقة</option>
                         <?php foreach ($this->regions as $region) : ?>
-                            <option value="<?= $region->region ?>"><?= $region->region ?></option>
+                            <option value="<?= $region->id ?>"><?= $region->region ?></option>
                         <?php endforeach; ?>
                     </select>
                     <span></span>
@@ -48,6 +48,18 @@
                 </div>
                 <div type="datepicker" placeholder="التاريخ" id="date-search" name="date-search"></div>
                 <input type="text" id="invoice_num-search" placeholder="رقم الفاتورة">
+                <div class="select-item">
+                    <select id="appointment-status-search" onclick="rotateSelect(this);">
+                        <option value="">حالة الموعد</option>
+                        <option value="تحت الإجراء في الموعد المحدد">تحت الإجراء في الموعد المحدد</option>
+                        <option value="تم إلغاء الموعد من العميل">تم إلغاء الموعد من العميل</option>
+                        <option value="تم تأجيل الموعد">تم تأجيل الموعد</option>
+                        <option value="لم يرد علي الجوال">لم يرد علي الجوال</option>
+                        <option value="الفني لم يتصل علي العميل">الفني لم يتصل علي العميل</option>
+                        <option value="تم اجراء الموعد">تم اجراء الموعد</option>
+                    </select>
+                    <span></span>
+                </div>
             </div>
         </div>
         <?php if (!$this->role('فني')) : ?>
@@ -473,44 +485,64 @@
 
     //search with id
     let id_search = document.querySelector('#id-search');
-    id_search.oninput = e => searchInput(id_search, 1);
+    id_search.oninput = e => searchForOrders();
 
 
     //search with name
     let name_search = document.querySelector('#name-search');
-    name_search.oninput = e => searchInput(name_search, 2);
+    name_search.oninput = e => searchForOrders();
 
     //search with phone
     let phone_search = document.querySelector('#phone-search');
-    phone_search.oninput = e => searchInput(phone_search, 3);
+    phone_search.oninput = e => searchForOrders();
 
     //search with type
     let type_search = document.querySelector('#type-search');
-    type_search.oninput = e => searchInput(type_search, 4, true);
+    type_search.oninput = e => searchForOrders();
 
     //search with region
     let region_search = document.querySelector('#region-search');
-    region_search.oninput = e => searchInput(region_search, 5);
-
+    region_search.oninput = e => {searchForOrders();     console.log(region_search.value);
+};
+    
     //search with technical
     let technical_search = document.querySelector('#technical-search');
-    technical_search.oninput = e => searchInput(technical_search, 14);
+    technical_search.oninput = e => searchForOrders();
 
     //search with status
     let status_search = document.querySelector('#status-search');
-    status_search.oninput = e => searchInput(status_search, 16, true);
+    status_search.oninput = e => searchForOrders();
 
     //search with invoice_num
     let invoice_num_search = document.querySelector('#invoice_num-search');
-    invoice_num_search.oninput = e => searchInput(invoice_num_search, 17);
+    invoice_num_search.oninput = e => searchForOrders();
+
+    //search with invoice_num
+    let appointment_status_search = document.querySelector('#appointment-status-search');
+    appointment_status_search.oninput = e => searchForOrders();
 
     //search with date
-    document.querySelector('div[type="datepicker"]').onclick = e => {
-        let date_search = document.querySelector('input[name="date-search"]');
-        searchInput(date_search, 8);
-        document.querySelector('div[type="datepicker"]').querySelector('.day-box').onclick = e => searchInput(date_search, 8);
+    let date_search;
+    document.querySelector('div[name="date-search"]').onclick = e => {
+        date_search = document.querySelector('input[name="date-search"]');
+        searchForOrders();
+        document.querySelector('div[name="date-search"]').querySelector('.day-box').onclick = e => searchForOrders();
     }
 
+    const searchForOrders = () => {
+        updateOrdersTable({
+            id: id_search.value,
+            name: name_search.value,
+            phone: phone_search.value,
+            type: type_search.value,
+            region: region_search.value,
+            technical: technical_search.value,
+            status: status_search.value,
+            date: date_search && date_search.value,
+            appointment_status: appointment_status_search.value,
+            invoice_num: invoice_num_search.value
+        });
+    }
 
     //Allow editing on dbclick
     function readOnly() {
@@ -608,12 +640,6 @@
         map_box.setAttribute('data-phone', phone);
 
         popupBox('.show-map-box');
-
-    }
-
-
-    function print_orders(from) {
-        console.log("printing");
 
     }
 </script>
