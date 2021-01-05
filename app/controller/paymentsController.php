@@ -17,7 +17,7 @@ class paymentsController extends Controller
 
         $this->loggedIn();
         $this->view('payments');
-        $this->view->title = "شركة نقاء | المبلغ اليومي";
+        $this->view->title = "مؤسسة نقاء | المبلغ اليومي";
         $this->getPayemnts();
         $this->getUsers();
         $this->view->renderHeader();
@@ -33,9 +33,10 @@ class paymentsController extends Controller
     {
 
 
+        $limit =  $this->role('مشرف') ? 5 : 10;
         //payments
         $sql = "SELECT payments.*, users.name FROM payments
-                LEFT JOIN users ON payments.advance_maker_id = users.id ORDER BY id DESC LIMIT 0, 10";
+                LEFT JOIN users ON payments.advance_maker_id = users.id ORDER BY id DESC LIMIT 0, $limit";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $this->view->payments = [];
@@ -64,7 +65,7 @@ class paymentsController extends Controller
         $stmt->execute();
         $this->view->numOfResults = $stmt->fetchAll()[0]->numOfResults;
 
-        $this->role('مشرف') && $this->view->numOfResults = 10;
+        $this->role('مشرف') && $this->view->numOfResults = 5;
     }
 
 
