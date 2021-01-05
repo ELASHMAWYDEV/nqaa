@@ -123,6 +123,11 @@ class ordersAjax extends Ajax
     public function printOrders()
     {
 
+        //Set header information to export data in excel format
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=orders_' . date("d_m_Y") . ".csv");
+
+        $output = fopen("php://output", "w");
         //Get the start & end date
         $start = isset($_POST['start_date']) && $_POST['start_date'] != "null" ? $_POST['start_date'] : date("d/m/Y");
         $end = isset($_POST['end_date']) && $_POST['end_date'] != "null" ? $_POST['end_date'] : date("d/m/Y");
@@ -142,11 +147,11 @@ class ordersAjax extends Ajax
             $orders = $stmt->fetchAll();
 
             //Print Heading
-            echo implode("\t", [
+            fputcsv($output, [
                 "#", "الاسم", "الجوال", "نوع الطلب", "الحي / المنطقة", "العنوان بالتفصيل",
                 "التاريخ", "الوقت", "ملاحظات العميل", "حالة الموعد", "المبلغ", "الفني المسؤول",
                 "تفاصيل الطلب", "الحالة",
-            ]) . "\n";
+            ]);
 
             $finalOrders = [];
 
@@ -169,16 +174,14 @@ class ordersAjax extends Ajax
             }
 
             foreach ($finalOrders as $order) {
-                echo implode("\t", [
+                fputcsv($output, [
                     $order->id, $order->name, $order->phone, $order->type, $order->region, $order->address,
                     $order->date, $order->time, $order->notes, $order->appointment_status, $order->money, $order->technical,
                     $order->details, $order->status
-                ]) . "\n";
+                ]);
             }
         }
 
-        //Set header information to export data in excel format
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename=orders_' . date("d_m_Y") . ".xls");
+        fclose($output);
     }
 }
