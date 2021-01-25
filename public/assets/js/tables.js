@@ -95,9 +95,9 @@ function updateOrdersTable({
                     order.name
                   }%0D%0Aالحي/المنطقة: ${order.region}%0D%0Aالعنوان: ${
                     order.address
-                  }%0D%0Aالموعد: ${
-                    order.date
-                  } . ' ' . $order->time}%0D%0Aسوف يتواصل معك أحد موظفينا قريبا" target="_blank">تنبيه العميل</a>
+                  }%0D%0Aالموعد: ${order.date} . ' ' . ${
+                    order.time
+                  }%0D%0Aسوف يتواصل معك أحد موظفينا قريبا" target="_blank">تنبيه العميل</a>
             ${
               order.technical
                 ? `
@@ -348,7 +348,6 @@ function updateSalaryTable({
   salary_date = "",
   employee_name = "",
 }) {
-
   console.log(page);
   //Get all data for search
   ajax(
